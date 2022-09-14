@@ -1,0 +1,8 @@
+Dockerfile
+docker-compose.yml
+package-lock.json
+yarn.lock
+.next
+public
+.*ignore
+generated
