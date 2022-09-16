@@ -25,6 +25,7 @@ module.exports = {
     'prettier',
   ],
   rules: {
+    '@typescript-eslint/no-inferrable-types': 'off',
     'react/display-name': 1,
     'react/jsx-curly-brace-presence': [
       1,
