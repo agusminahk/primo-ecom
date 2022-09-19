@@ -9,32 +9,35 @@ const Login = () => {
       justifyContent: 'center',
       alignItems: 'center',
       height: '100vh',
-      backgroundColor: 'black ',
-      background:
-        'linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 50%, rgba(255, 255, 255, 1) 51%, rgba(255, 255, 255, 1) 100%)',
-      // borderRadius: '50px',
-      borderColor: 'black',
+      background: 'linear-gradient(90deg, rgba(184,216,190,1) 0%, rgba(232,244,234,1) 100%)',
+      borderColor: 'white',
     },
     formBox: {
       display: 'flex',
+      flexWrap: 'wrap',
       justifyContent: 'center',
       alignItems: 'center',
+      alignContent: 'space-around',
       flexDirection: 'column',
-      backgroundColor: 'white',
-      width: '50vw',
+      background: 'linear-gradient(-90deg, rgba(184,216,190,1) 0%, rgba(232,244,234,1) 100%)',
+      width: { xs: '90%', md: '40vw', lg: '30vw', xl: '35vw' }, //Responsive
       borderRadius: '12px',
       height: 'fit-content',
-      borderColor: 'black',
+      borderColor: 'divider',
     },
   };
 
   return (
     <Box className="first Box" sx={style.firstBox}>
       <Box className="fromBox" sx={style.formBox}>
-        <Typography variant="h2">Login</Typography>
-        <TextField label="email" sx={{ m: '2vh' }} variant="filled" />
-        <TextField label="Contraseña" sx={{ m: '2vh' }} variant="filled" />
-        <Button sx={{ color: 'black' }}>Sing in</Button>
+        <Typography variant="h2" color={'#ff4d00'}>
+          Login
+        </Typography>
+        <TextField label="email" sx={{ m: '2vh' }} color="warning" variant="filled" />
+        <TextField label="Contraseña" sx={{ m: '2vh' }} color="warning" variant="filled" />
+        <Button variant="contained" color="warning" sx={{ color: 'white', backgroundColor: '#4c9054' }}>
+          Sing in
+        </Button>
       </Box>
     </Box>
   );
