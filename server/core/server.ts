@@ -13,6 +13,7 @@ import morgan from 'morgan'
 
 dotenv.config({ path: './.env.local' });
 import '../security/passport';
+import { mongoConnect } from './clients/mongodb';
 
 const app: Express = express();
 const router: Router = express.Router();
@@ -56,6 +57,10 @@ router.use((err: Error, req: Request, res: Response, next: Function) => {
   return res.status(httpStatus.INTERNAL_SERVER_ERROR).send(err.message);
 });
 
-app.listen(process.env.PORT || 8080, () => {
-  console.log(`⚡️Server is running at https://localhost:${process.env.PORT || 8080}`);
-});
+mongoConnect().then(() => {
+  console.info('⚡️ MongoDB is connectedd')
+  app.listen(process.env.PORT || 8080, () => {
+    console.info(`⚡️ Server is running at https://localhost:${process.env.PORT || 8080}`);
+  })
+})
+
