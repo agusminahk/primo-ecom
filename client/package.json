@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:8080",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write './src/**/*.{css,js,ts,tsx}'"
+  },
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
@@ -28,19 +35,6 @@
     "typescript": "^4.8.3",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "format": "prettier --write './src/**/*.{css,js,ts,tsx}'"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "devDependencies": {
     "@next/eslint-plugin-next": "12.3.0",
     "@typescript-eslint/eslint-plugin": "5.10.1",
@@ -56,6 +50,12 @@
     "lint-staged": "13.0.3",
     "prettier": "^2.7.1",
     "pretty-quick": "3.1.3"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "husky": {
     "hooks": {
