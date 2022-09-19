@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx tsc",
     "start": "nodemon server.ts",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/core/server.js\"",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q build/core/server.js\"",
     "format": "prettier --write ."
   },
   "keywords": [],
