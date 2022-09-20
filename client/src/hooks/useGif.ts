@@ -40,5 +40,3 @@ const useGif = () => {
 };
 
 export default useGif;
-
-// P: '#31b0cc',
