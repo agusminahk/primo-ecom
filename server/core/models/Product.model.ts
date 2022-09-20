@@ -18,16 +18,12 @@ interface Review {
 
 @modelOptions({ schemaOptions: { collection: "product", timestamps: true } })
 class Product {
-
     @prop({ type: () => String, required: true })
     public name: string
-
     @prop({ type: () => Number, required: true })
     public price: number
-
     @prop({ type: () => Array, required: true })
     public colors: string[]
-
     @prop({ type: () => String })
     public description?: string
 
