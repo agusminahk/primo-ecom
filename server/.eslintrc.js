@@ -1,6 +1,6 @@
 module.exports = {
   env: {
-    es6: true,
+    es5: true,
     node: true,
   },
   parser: '@typescript-eslint/parser',
@@ -23,14 +23,6 @@ module.exports = {
     'prettier',
   ],
   rules: {
-    'react/display-name': 1,
-    'react/jsx-curly-brace-presence': [
-      1,
-      {
-        props: 'never',
-        children: 'never',
-      },
-    ],
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/consistent-type-imports': [
       1,
@@ -47,10 +39,5 @@ module.exports = {
         },
       },
     ],
-  },
-  settings: {
-    react: {
-      version: 'detect',
-    },
   },
 };

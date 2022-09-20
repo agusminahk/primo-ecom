@@ -1,8 +1,9 @@
 import React from 'react';
-import Login from '../../components/Login';
+
+import FrontDoor from '../components/FrontDoor';
 
 const index = () => {
-  return <Login />;
+  return <FrontDoor />;
 };
 
 export default index;
