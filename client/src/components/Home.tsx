@@ -14,7 +14,6 @@ const Home = () => {
       backgroundPosition: 'center',
       backgroundImage: gif.isActive ? gif.url || '' : '',
       backgroundSize: 'cover',
-      backgroundColor: 'white',
     },
 
     titleBox: {
@@ -25,6 +24,7 @@ const Home = () => {
 
     firstTypoStyle: {
       userSelect: 'none',
+      fontSize: { xl: '7vw', lg: '10vw', md: '12vw', xs: '19vw' },
       color: gif.isActive ? gif.color || '' : 'black',
       '&:hover': gif.isActive
         ? { color: 'white' }
@@ -39,7 +39,8 @@ const Home = () => {
     buttonStyle: {
       color: 'black',
       backgroundColor: 'white',
-      m: '10px',
+      fontSize: { xl: '0.8vw', lg: '1vw', md: '1.5vw', xs: '3vw' },
+      m: '0.6rem',
       '&:hover': {
         color: 'black',
         backgroundColor: 'white',
@@ -54,8 +55,7 @@ const Home = () => {
           return (
             <Typography
               variant="h1"
-              fontSize="15vh"
-              margin="0px"
+              margin="0rem"
               sx={styles.firstTypoStyle}
               key={i}
               onClick={() => setGif({ type: letter as Title, isActive: !gif.isActive, url: '' })}>
@@ -65,9 +65,15 @@ const Home = () => {
         })}
       </Box>
       <Box>
-        <Button sx={styles.buttonStyle}>Home</Button>
-        <Button sx={styles.buttonStyle}>Login</Button>
-        <Button sx={styles.buttonStyle}>About</Button>
+        <Button size="small" sx={styles.buttonStyle}>
+          Home
+        </Button>
+        <Button size="small" sx={styles.buttonStyle}>
+          Login
+        </Button>
+        <Button size="small" sx={styles.buttonStyle}>
+          About
+        </Button>
       </Box>
     </Box>
   );
