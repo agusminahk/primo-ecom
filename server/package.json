@@ -56,8 +56,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn format",
-      "pre-push": "yarn format"
+      "pre-commit": "npm run format",
+      "pre-push": "npm run format"
     }
   },
   "lint-staged": {
