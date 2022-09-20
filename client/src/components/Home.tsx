@@ -27,6 +27,7 @@ const Home = () => {
     firstTypoStyle: {
       userSelect: 'none',
       fontSize: { xl: '7vw', lg: '10vw', md: '12vw', xs: '19vw' },
+      margin: '0rem',
       color: gif.isActive ? gif.color || '' : 'black',
       '&:hover': gif.isActive
         ? { color: 'white' }
@@ -57,7 +58,6 @@ const Home = () => {
           return (
             <Typography
               variant="h1"
-              margin="0rem"
               sx={styles.firstTypoStyle}
               key={i}
               onClick={() => setGif({ type: letter as Title, isActive: !gif.isActive, url: '' })}>
