@@ -33,6 +33,8 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "17.1.2",
+    "@commitlint/config-conventional": "17.1.0",
     "@types/compression": "1.7.2",
     "@types/cookie-session": "2.0.44",
     "@types/cors": "^2.8.12",
@@ -62,10 +64,25 @@
   },
   "lint-staged": {
     "./**/*.{css,js,ts,tsx}": [
-      "prettier --write ."
+      "prettier --write"
     ],
     "./**/*.{js,ts,tsx}": [
       "eslint --fix"
     ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "header-max-length": [
+        2,
+        "always",
+        "120"
+      ],
+      "scope-case": [
+        0
+      ]
+    }
   }
 }
