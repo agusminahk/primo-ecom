@@ -1,4 +1,6 @@
 import { Box, Typography, Button } from '@mui/material';
+import Link from 'next/link';
+
 import useGif from '../hooks/useGif';
 import type { Title } from '../utils/interfaces';
 
@@ -65,15 +67,21 @@ const Home = () => {
         })}
       </Box>
       <Box>
-        <Button size="small" sx={styles.buttonStyle}>
-          Home
-        </Button>
-        <Button size="small" sx={styles.buttonStyle}>
-          Login
-        </Button>
-        <Button size="small" sx={styles.buttonStyle}>
-          About
-        </Button>
+        <Link href="/home">
+          <Button size="small" sx={styles.buttonStyle}>
+            Home
+          </Button>
+        </Link>
+        <Link href="/login">
+          <Button size="small" sx={styles.buttonStyle}>
+            Login
+          </Button>
+        </Link>
+        <Link href="/about">
+          <Button size="small" sx={styles.buttonStyle}>
+            About
+          </Button>
+        </Link>
       </Box>
     </Box>
   );
