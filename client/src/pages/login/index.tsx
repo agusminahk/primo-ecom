@@ -1,7 +1,23 @@
-import { Button, TextField, Typography } from '@mui/material';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import {
+  Button,
+  FilledInput,
+  FormControl,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+  TextField,
+  Typography,
+} from '@mui/material';
+
 import { Box } from '@mui/system';
+import { useState } from 'react';
 
 const Login = () => {
+  const [eye, setEye] = useState(false);
+
   const style = {
     firstBox: {
       display: 'flex',
@@ -28,11 +44,27 @@ const Login = () => {
   return (
     <Box className="first Box" sx={style.firstBox}>
       <Box className="fromBox" sx={style.formBox}>
-        <Typography variant="h2" color={'#ff4d00'}>
+        <Typography variant="h2" color="#ff4d00">
           Login
         </Typography>
         <TextField type="email" label="email" sx={{ m: '2vh' }} color="warning" variant="filled" />
-        <TextField type="password" label="Contraseña" sx={{ m: '2vh' }} color="warning" variant="filled" />
+        <FormControl sx={{ m: 1, width: '25ch' }} variant="filled" color="warning">
+          <InputLabel variant="filled" color="warning" sx={{ m: '2vh' }}>
+            Password
+          </InputLabel>
+          <FilledInput
+            sx={{ m: '2vh' }}
+            color="warning"
+            type={eye ? 'password' : 'text'}
+            endAdornment={
+              <InputAdornment position="end" variant="filled" color="warning">
+                <IconButton onClick={() => setEye(!eye)} edge="end">
+                  {eye ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+        </FormControl>
         <Button variant="contained" color="warning" sx={{ color: 'white', backgroundColor: '#4c9054' }}>
           Sing in
         </Button>
