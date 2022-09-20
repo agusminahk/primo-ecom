@@ -13,11 +13,11 @@ interface Colors {
 }
 
 const colors: Colors = {
-  P: '#31b0cc',
-  R: 'violet',
-  I: 'white',
-  M: 'pink',
-  O: '#ff4d00',
+  P: '#124670',
+  R: '#701217',
+  I: '#88418c',
+  M: '#12706b',
+  O: '#c7ece6',
 };
 
 interface Gif {

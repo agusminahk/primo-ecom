@@ -1,15 +1,24 @@
 import type { Gifs } from './interfaces';
 
-//function to explicit backgroundImage with parameters of gifs
-
 export const gifs: Gifs[] = [
-  { letter: `P`, url: `url(https://wallpapercave.com/wp/wp2757844.gif)` },
-  { letter: `R`, url: `url(https://wallpapercave.com/wp/wp2730878.gif)` },
-  { letter: `I`, url: `url(https://wallpapercave.com/wp/wp2757902.gif)` },
-  { letter: `M`, url: `url(https://wallpapercave.com/dwp2x/wp2757885.gif)` },
-  { letter: `O`, url: `url(https://wallpapercave.com/dwp2x/wp2757959.gif)` },
+  {
+    letter: `P`,
+    url: `url(https://i.imgur.com/mNMvjDG.gif)`,
+  },
+  {
+    letter: `R`,
+    url: `url(https://i.imgur.com/ZNsdH1R.gif)`,
+  },
+  {
+    letter: `I`,
+    url: `url(https://i.imgur.com/0JVXKUH.gif)`,
+  },
+  {
+    letter: `M`,
+    url: `url(https://i.imgur.com/AL5iMqj.gif)`,
+  },
+  {
+    letter: `O`,
+    url: `url(https://i.imgur.com/NC4dbuk.gif)`,
+  },
 ];
-
-// export const colors = [{ P: '#31b0cc' }, { R: 'violet' }, { I: 'white' }, { M: 'pink' }, { O: '#ff4d00' }];
-
-// tratar de que no de false la imagen
