@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Home from '../components/Home';
+import FrontDoor from '../components/FrontDoor';
 
 const index = () => {
-  return <Home />;
+  return <FrontDoor />;
 };
 
 export default index;

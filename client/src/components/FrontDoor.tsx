@@ -5,7 +5,7 @@ import useGif from '../hooks/useGif';
 import type { Title } from '../utils/interfaces';
 
 const TITLE = ['P', 'R', 'I', 'M', 'O'];
-const Home = () => {
+const FrontDoor = () => {
   const { gif, setGif } = useGif();
   const styles = {
     firstBox: {
@@ -87,4 +87,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default FrontDoor;
