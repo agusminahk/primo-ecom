@@ -29,8 +29,8 @@ class User {
     @prop({ type: () => String, required: true })
     public country!: string;
 
-    @prop({ type: () => Boolean, required: true, default: false })
-    public isAdmin!: boolean;
+    @prop({ type: () => Boolean, default: false })
+    public isAdmin: boolean;
 
     @prop({ type: String })
     public phone: string;
