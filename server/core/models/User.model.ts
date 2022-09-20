@@ -13,30 +13,30 @@ class Address {
     postCode: string;
 }
 
-class User {
+export class User {
     @prop({ type: () => String, required: true, unique: true })
-    public email!: string;
+    public email: string;
 
     @prop({ type: () => String, required: true })
-    public firstName!: string;
+    public firstName: string;
 
     @prop({ type: () => String, required: true })
-    public lastName!: string;
+    public lastName: string;
 
     @prop({ type: () => String, required: true })
-    public password!: string;
+    public password: string;
 
     @prop({ type: () => String, required: true })
-    public country!: string;
+    public country: string;
 
     @prop({ type: () => Boolean, default: false })
     public isAdmin: boolean;
 
     @prop({ type: String })
-    public phone: string;
+    public phone?: string;
 
     @prop({ type: () => Address })
-    public address: Address;
+    public address?: Address;
 
 }
 

@@ -4,7 +4,6 @@ import passport from 'passport';
 import cookieSession from 'cookie-session';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
-import { registerRoutes } from '../routes';
 import bodyParser from 'body-parser';
 import compress from 'compression';
 import errorHandler from 'errorhandler';
@@ -14,6 +13,7 @@ import morgan from 'morgan'
 dotenv.config({ path: './.env.local' });
 import '../security/passport';
 import { mongoConnect } from './clients/mongodb';
+import { registerRoutes } from '../routes';
 
 const app: Express = express();
 const router: Router = express.Router();
@@ -58,7 +58,7 @@ router.use((err: Error, req: Request, res: Response, next: Function) => {
 });
 
 mongoConnect().then(() => {
-  console.info('⚡️ MongoDB is connectedd')
+  console.info('⚡️ MongoDB is connected')
   app.listen(process.env.PORT || 8080, () => {
     console.info(`⚡️ Server is running at https://localhost:${process.env.PORT || 8080}`);
   })
