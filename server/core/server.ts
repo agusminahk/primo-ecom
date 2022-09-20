@@ -8,7 +8,7 @@ import bodyParser from 'body-parser';
 import compress from 'compression';
 import errorHandler from 'errorhandler';
 import httpStatus from 'http-status';
-import morgan from 'morgan'
+import morgan from 'morgan';
 
 dotenv.config({ path: './.env.local' });
 import '../security/passport';
@@ -41,7 +41,7 @@ app.use(helmet.xssFilter());
 app.use(helmet.noSniff());
 app.use(helmet.hidePoweredBy());
 app.use(helmet.frameguard({ action: 'deny' }));
-app.use(morgan('short'))
+app.use(morgan('short'));
 app.use(compress());
 
 app.use(helmet());
@@ -58,9 +58,8 @@ router.use((err: Error, req: Request, res: Response, next: Function) => {
 });
 
 mongoConnect().then(() => {
-  console.info('⚡️ MongoDB is connected')
+  console.info('⚡️ MongoDB is connected');
   app.listen(process.env.PORT || 8080, () => {
     console.info(`⚡️ Server is running at https://localhost:${process.env.PORT || 8080}`);
-  })
-})
-
+  });
+});

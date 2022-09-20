@@ -3,7 +3,6 @@ import passport, { AuthenticateOptions } from 'passport';
 import { AuthController } from '../controllers/Auth.controller';
 
 export const register = (app: Express) => {
-
   const redirects = {
     successRedirect: process.env.GCLIENT_URL,
     failureRedirect: '/login/failed',
@@ -18,5 +17,4 @@ export const register = (app: Express) => {
   app.get('/auth/google/callback', passport.authenticate('google', redirects));
 
   app.get('/auth/logout', AuthController.logout);
-
 };

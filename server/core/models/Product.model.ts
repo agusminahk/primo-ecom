@@ -8,13 +8,13 @@ type sizes = 'XL' | 'L' | 'M' | 'S' | 'XS' | number
 interface Image {
     url: string
     color: string
-}
+};
 
 interface Review {
     user: Ref<User>
     content: string
     ranking?: number
-}
+};
 
 @modelOptions({ schemaOptions: { collection: "product", timestamps: true } })
 class Product {
