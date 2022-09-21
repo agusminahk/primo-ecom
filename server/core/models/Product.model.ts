@@ -3,49 +3,57 @@ import { Category } from './Category.model';
 import { SubCategory } from './SubCategory.model';
 import { User } from './User.model';
 
-type sizes = 'XL' | 'L' | 'M' | 'S' | 'XS' | number;
+type Sizes = 'XL' | 'L' | 'M' | 'S' | 'XS' | number;
 
-interface Image {
-  url: string;
-  color: string;
+class Image {
+  @prop({ type: () => String, required: true })
+  public url!: string;
+
+  @prop({ type: () => String, required: true })
+  public color!: string;
 }
 
-interface Review {
-  user: Ref<User>;
-  content: string;
-  ranking?: number;
+class Review {
+  @prop({ ref: () => User, required: true })
+  public user!: Ref<User>;
+
+  @prop({ type: () => String, required: true })
+  public content!: string;
+
+  @prop({ type: () => Number })
+  public ranking?: number;
 }
 
 @modelOptions({ schemaOptions: { collection: 'product', timestamps: true } })
 export class Product {
   @prop({ type: () => String, required: true })
-  public name: string;
+  public name!: string;
 
   @prop({ type: () => Number, required: true })
-  public price: number;
+  public price!: number;
 
-  @prop({ type: () => Array, required: true })
-  public colors: string[];
+  @prop({ type: () => [String], required: true })
+  public colors!: string[];
 
   @prop({ type: () => String })
   public description?: string;
 
-  @prop({ type: () => Array, required: true })
-  public sizes: sizes[];
+  @prop({ required: true })
+  public sizes!: Sizes[];
 
-  @prop({ type: () => Array, default: [] })
+  @prop({ type: () => [Image], default: [] })
   public images?: Image[];
 
   @prop({ type: () => Number, default: 0 })
   public ranking?: number;
 
-  @prop({ type: () => Array, default: [] })
+  @prop({ type: () => [Review], default: [] })
   public reviews?: Review[];
 
-  @prop({ type: () => Category, required: true })
-  public category: Ref<Category>;
+  @prop({ ref: () => Category, required: true })
+  public category!: Ref<Category>;
 
-  @prop({ type: () => SubCategory })
+  @prop({ ref: () => SubCategory })
   public subCategory?: Ref<SubCategory>[];
 }
 

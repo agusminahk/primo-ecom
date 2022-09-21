@@ -2,31 +2,31 @@ import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
 
 export class Address {
   @prop({ type: () => String })
-  street: string;
+  public street?: string;
 
   @prop({ type: () => String })
-  city: string;
+  public city?: string;
 
   @prop({ type: () => String })
-  postCode: string;
+  public postCode?: string;
 }
 
 @modelOptions({ schemaOptions: { collection: 'user', timestamps: true } })
 export class User {
   @prop({ type: () => String, required: true, unique: true })
-  public email: string;
+  public email!: string;
 
   @prop({ type: () => String, required: true })
-  public firstName: string;
+  public firstName!: string;
 
   @prop({ type: () => String, required: true })
-  public lastName: string;
+  public lastName!: string;
 
   @prop({ type: () => String, required: true })
-  public password: string;
+  public password!: string;
 
   @prop({ type: () => String, required: true })
-  public country: string;
+  public country!: string;
 
   @prop({ type: () => Boolean, default: false })
   public isAdmin?: boolean;
@@ -34,7 +34,7 @@ export class User {
   @prop({ type: String })
   public phone?: string;
 
-  @prop({ type: () => Address })
+  @prop()
   public address?: Address;
 }
 

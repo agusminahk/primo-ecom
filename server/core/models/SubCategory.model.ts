@@ -6,7 +6,7 @@ export class SubCategory {
   @prop({ type: () => String, required: true, unique: true })
   public subCategoryName!: string;
 
-  @prop({ type: () => Category, required: true })
+  @prop({ ref: () => Category, required: true })
   public category!: Ref<Category>;
 }
 
