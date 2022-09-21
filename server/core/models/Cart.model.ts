@@ -11,10 +11,10 @@ export class Cart {
   public user: Ref<User>;
 
   @prop({ type: () => Date, default: new Date() })
-  public date: Date;
+  public date?: string;
 
   @prop({ type: () => Boolean, default: false })
-  public status: boolean;
+  public status?: boolean;
 }
 
 export default getModelForClass(Cart);

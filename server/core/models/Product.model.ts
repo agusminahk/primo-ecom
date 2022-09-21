@@ -46,7 +46,7 @@ export class Product {
   public category: Ref<Category>;
 
   @prop({ type: () => SubCategory })
-  public subCategory: Ref<SubCategory>[];
+  public subCategory?: Ref<SubCategory>[];
 }
 
 export default getModelForClass(Product);

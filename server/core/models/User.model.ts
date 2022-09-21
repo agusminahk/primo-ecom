@@ -1,7 +1,6 @@
 import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
 
-@modelOptions({ schemaOptions: { collection: 'user', timestamps: true } })
-class Address {
+export class Address {
   @prop({ type: () => String })
   street: string;
 
@@ -12,6 +11,7 @@ class Address {
   postCode: string;
 }
 
+@modelOptions({ schemaOptions: { collection: 'user', timestamps: true } })
 export class User {
   @prop({ type: () => String, required: true, unique: true })
   public email: string;
@@ -29,7 +29,7 @@ export class User {
   public country: string;
 
   @prop({ type: () => Boolean, default: false })
-  public isAdmin: boolean;
+  public isAdmin?: boolean;
 
   @prop({ type: String })
   public phone?: string;
