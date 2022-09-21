@@ -1,12 +1,13 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import React from 'react';
+import React, { FC } from 'react';
 import { Provider } from 'react-redux';
+import Layout from '../components/Layout';
 import { store } from '../state/store';
 import { theme } from '../theme';
 
-export default function App({ Component, pageProps }: AppProps) {
+const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
@@ -17,9 +18,13 @@ export default function App({ Component, pageProps }: AppProps) {
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </ThemeProvider>
       </Provider>
     </>
   );
-}
+};
+
+export default App;
