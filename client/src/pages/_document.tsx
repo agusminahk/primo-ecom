@@ -1,6 +1,6 @@
 import type { DocumentContext } from 'next/document';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
-import { theme } from '../theme';
+// import { theme } from '../theme';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -12,7 +12,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta name="theme-color" content={theme.palette.primary?.main} />
           <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
             rel="stylesheet"

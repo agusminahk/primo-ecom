@@ -1,6 +1,5 @@
 module.exports = {
   env: {
-    browser: true,
     es5: true,
     node: true,
   },
@@ -12,28 +11,18 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'unicorn', 'react', 'prettier'],
+  plugins: ['@typescript-eslint', 'node', 'promise', 'prettier'],
   extends: [
     'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:@next/next/recommended',
+    'plugin:node',
+    'plugin:promise',
     'prettier',
   ],
   rules: {
-    '@typescript-eslint/no-inferrable-types': 'off',
-    'react/display-name': 1,
-    'react/jsx-curly-brace-presence': [
-      1,
-      {
-        props: 'never',
-        children: 'never',
-      },
-    ],
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/consistent-type-imports': [
       1,
@@ -50,13 +39,5 @@ module.exports = {
         },
       },
     ],
-  },
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
-  globals: {
-    React: 'writable',
   },
 };
