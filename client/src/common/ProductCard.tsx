@@ -25,13 +25,10 @@ const ProductCard: React.FC<CardProps> = ({ product }) => {
         <Divider />
         <Typography sx={{ mt: 1.5 }}>{product.description} </Typography>
       </CardContent>
-      <CardMedia component="img" image={product.image} alt="media" />
+      <CardMedia component="img" image={product.image} alt="media" sx={{ py: 1 }} />
       <CardActions sx={{ justifyContent: 'space-between' }}>
         <IconButton>
           <AddShoppingCartIcon sx={{ color: 'orange' }}></AddShoppingCartIcon>
-        </IconButton>
-        <IconButton>
-          <ShoppingBagIcon sx={{ color: 'orange' }}></ShoppingBagIcon>
         </IconButton>
         <IconButton>
           <FavoriteIcon sx={{ color: 'orange' }}></FavoriteIcon>
