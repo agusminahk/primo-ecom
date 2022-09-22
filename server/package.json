@@ -5,8 +5,9 @@
   "main": "server.ts",
   "scripts": {
     "build": "npx tsc",
-    "start": "nodemon server.ts",
+    "start": "nodemon core/server.ts",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q build/core/server.js\"",
+    "dev2": "ts-node core/server.ts",
     "format": "prettier --write ."
   },
   "keywords": [],
@@ -45,6 +46,7 @@
     "@types/node": "^18.7.18",
     "@types/passport": "1.0.11",
     "@types/passport-google-oauth20": "2.0.11",
+    "@types/bcrypt": "^5.0.0",
     "concurrently": "^7.4.0",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-promise": "6.0.1",
