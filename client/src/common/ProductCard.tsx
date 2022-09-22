@@ -1,6 +1,5 @@
 import { Card, CardActions, CardContent, CardMedia, Divider, IconButton, Typography } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import React from 'react';
 
@@ -16,22 +15,50 @@ type CardProps = {
 };
 
 const ProductCard: React.FC<CardProps> = ({ product }) => {
+  const style = {
+    cardStyle: {
+      maxWidth: '345',
+      boxShadow: '3',
+      width: { xs: '90%', md: '40vw', lg: '30vw', xl: '25vw' }, //Responsive
+    },
+    contentStyle: {
+      py: '2',
+    },
+    mediaStyle: {
+      justifyContent: 'center',
+    },
+    actionStyle: {
+      justifyContent: 'space-between',
+    },
+    iconStyle: {
+      color: 'orange',
+    },
+    typoStyle: {
+      mt: '1.5',
+    },
+    dividerStyle: {
+      py: 0.5,
+    },
+  };
+
   return (
-    <Card sx={{ maxWidth: '345', width: '25vw', boxShadow: '3' }}>
-      <CardContent>
-        <Typography variant={'h3'} sx={{ mt: 1.5 }}>
+    <Card sx={style.cardStyle}>
+      <CardContent sx={style.contentStyle}>
+        <Typography variant={'h2'} sx={style.typoStyle}>
           {product.name}
         </Typography>
-        <Divider />
-        <Typography sx={{ mt: 1.5 }}>{product.description} </Typography>
+        <Divider sx={style.dividerStyle} />
+        <Typography variant={'h5'} sx={style.typoStyle}>
+          {product.description}
+        </Typography>
       </CardContent>
-      <CardMedia component="img" image={product.image} alt="media" sx={{ py: 1 }} />
-      <CardActions sx={{ justifyContent: 'space-between' }}>
+      <CardMedia component="img" image={product.image} alt="media" sx={style.mediaStyle} />
+      <CardActions sx={style.actionStyle}>
         <IconButton>
-          <AddShoppingCartIcon sx={{ color: 'orange' }}></AddShoppingCartIcon>
+          <AddShoppingCartIcon sx={style.iconStyle}></AddShoppingCartIcon>
         </IconButton>
         <IconButton>
-          <FavoriteIcon sx={{ color: 'orange' }}></FavoriteIcon>
+          <FavoriteIcon sx={style.iconStyle}></FavoriteIcon>
         </IconButton>
       </CardActions>
     </Card>

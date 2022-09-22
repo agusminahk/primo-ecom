@@ -3,8 +3,6 @@ import React from 'react';
 import ProductCard from '../../common/ProductCard';
 
 const index = () => {
-  // const [prod, setProd] = useState<TypeRopa | null> (null);
-
   const ropa = [
     {
       indice: '1',
@@ -30,14 +28,11 @@ const index = () => {
     <>
       {ropa.map((prenda, i) => (
         <Box key={i}>
-          {/* <ProductCard image={prenda.image} description={prenda.description} name={prenda.name} /> */}
           <ProductCard product={prenda} />
         </Box>
       ))}
     </>
   );
-
-  // return <ProductCard image={ropa.image} name={ropa.name} description={ropa.description} />;
 };
 
 export default index;
