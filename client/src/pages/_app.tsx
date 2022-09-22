@@ -6,8 +6,7 @@ import { Provider } from 'react-redux';
 import Layout from '../components/Layout';
 import { store } from '../state/store';
 import { theme } from '../theme';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import 'react-multi-carousel/lib/styles.css';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
