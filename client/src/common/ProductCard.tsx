@@ -32,7 +32,7 @@ const ProductCard: React.FC<CardProps> = ({ product }) => {
     cardStyle: {
       maxWidth: '345',
       boxShadow: '3',
-      width: { xs: '90%', md: '40vw', lg: '30vw', xl: '25vw' }, //Responsive
+      width: { xs: '90%', md: '40vw', lg: '30vw', xl: '15vw' },
     },
     cardActionStyle: {
       display: 'flex',
