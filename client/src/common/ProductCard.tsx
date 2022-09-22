@@ -46,7 +46,7 @@ const ProductCard: React.FC<CardProps> = ({ product }) => {
       justifyContent: 'center',
     },
     iconStyle: {
-      color: '',
+      color: 'warning.main',
       mr: 1,
     },
     typoStyle: {
