@@ -1,15 +1,16 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-export default function ActionAreaCard() {
+const PromoCard: FC = () => {
   return (
-    <Card sx={{ m: '1vw' }}>
+    <Card sx={{ width: '100vw', height: '30vh' }}>
       <CardActionArea>
         <CardMedia
+          sx={{ backgroundPosition: 'center' }}
           component="img"
           image="https://rare-gallery.com/thumbs/1175892-Gentleman-jacket-spring-clothing-group-of-people-man-male-outerwear.jpg"
           alt="test"
@@ -17,4 +18,6 @@ export default function ActionAreaCard() {
       </CardActionArea>
     </Card>
   );
-}
+};
+
+export default PromoCard;
