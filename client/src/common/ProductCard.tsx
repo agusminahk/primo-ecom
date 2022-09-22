@@ -1,6 +1,18 @@
-import { Card, CardActions, CardContent, CardMedia, Divider, IconButton, Typography } from '@mui/material';
+import {
+  Card,
+  CardActions,
+  CardContent,
+  CardActionArea,
+  CardMedia,
+  Divider,
+  IconButton,
+  Typography,
+  Box,
+} from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+// import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import React from 'react';
 
 export interface TypeRopa {
@@ -8,6 +20,7 @@ export interface TypeRopa {
   name: string;
   description: string;
   image: string;
+  price: number;
 }
 
 type CardProps = {
@@ -21,45 +34,67 @@ const ProductCard: React.FC<CardProps> = ({ product }) => {
       boxShadow: '3',
       width: { xs: '90%', md: '40vw', lg: '30vw', xl: '25vw' }, //Responsive
     },
+    cardActionStyle: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      flexDirection: 'row-reverse',
+    },
     contentStyle: {
-      py: '2',
+      py: 2,
     },
     mediaStyle: {
       justifyContent: 'center',
     },
-    actionStyle: {
-      justifyContent: 'space-between',
-    },
     iconStyle: {
       color: 'orange',
+      mr: 1,
     },
     typoStyle: {
       mt: '1.5',
     },
     dividerStyle: {
       py: 0.5,
+      m: 0.5,
+    },
+    moneyIcon: {
+      color: 'orange',
+    },
+    boxStyle: {
+      display: 'flex',
     },
   };
 
   return (
     <Card sx={style.cardStyle}>
       <CardContent sx={style.contentStyle}>
-        <Typography variant={'h2'} sx={style.typoStyle}>
-          {product.name}
-        </Typography>
+        <CardActionArea>
+          <Typography variant={'h2'} sx={style.typoStyle}>
+            {product.name}
+          </Typography>
+        </CardActionArea>
         <Divider sx={style.dividerStyle} />
         <Typography variant={'h5'} sx={style.typoStyle}>
           {product.description}
         </Typography>
       </CardContent>
-      <CardMedia component="img" image={product.image} alt="media" sx={style.mediaStyle} />
-      <CardActions sx={style.actionStyle}>
-        <IconButton>
-          <AddShoppingCartIcon sx={style.iconStyle}></AddShoppingCartIcon>
-        </IconButton>
-        <IconButton>
-          <FavoriteIcon sx={style.iconStyle}></FavoriteIcon>
-        </IconButton>
+      <CardActionArea>
+        <CardMedia component="img" image={product.image} alt="media" sx={style.mediaStyle} />
+      </CardActionArea>
+      <CardActions sx={style.cardActionStyle}>
+        <Box sx={style.boxStyle}>
+          <IconButton sx={style.iconStyle}>
+            <AddShoppingCartIcon sx={style.iconStyle} />
+          </IconButton>
+          <IconButton>
+            <FavoriteBorderIcon sx={style.iconStyle} />
+          </IconButton>
+        </Box>
+        <Box sx={style.boxStyle}>
+          {/* <IconButton><FavoriteIcon sx={style.iconStyle}/> </IconButton> */}
+          {/* TODO: Favorit Icon una vez que se produzca el  add Favs */}
+          <AttachMoneyIcon sx={style.moneyIcon}></AttachMoneyIcon>
+          <Typography> {product.price} </Typography>
+        </Box>
       </CardActions>
     </Card>
   );
