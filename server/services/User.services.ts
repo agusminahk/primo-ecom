@@ -1,7 +1,7 @@
 import User, { User as UserClass } from "../core/models/User.model";
 
 interface Service {
-    data: unknown
+    data: any
     error: boolean
     status: number
 }
@@ -18,9 +18,14 @@ export class UserServices {
 
     }
 
-    // static async getOne(): Service {
-
-    // }
+    static async getOne(id: string): Promise<Service> {
+        try {
+            const user = await User.findById(id, { password: 0, __v: 0, updatedAt: 0 })
+            return { status: 200, data: user, error: false }
+        } catch (error) {
+            return { status: 500, data: error, error: true }
+        }
+    }
 
     static async createOne(user: UserClass): Promise<Service> {
         try {
