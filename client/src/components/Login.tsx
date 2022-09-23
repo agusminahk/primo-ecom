@@ -14,7 +14,11 @@ const Login = () => {
       justifyContent: 'center',
       alignItems: 'center',
       height: '100vh',
-      background: 'linear-gradient(90deg, rgba(184,216,190,1) 0%, rgba(232,244,234,1) 100%)',
+      // background: 'linear-gradient(90deg, rgba(184,216,190,1) 0%, rgba(232,244,234,1) 100%)',
+      backgroundImage:
+        'url(https://bafybeifzfde6j4if4c7unk5n46cp5g2obawcsquwkuf6ii5k5rzxlvurwu.ipfs.nftstorage.link//)',
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
       borderColor: 'white',
     },
     formBox: {
