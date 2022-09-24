@@ -1,5 +1,3 @@
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import {
   Button,
   FilledInput,
@@ -10,16 +8,26 @@ import {
   Typography,
   Input,
   Divider,
+  Box,
 } from '@mui/material';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import GoogleLogin from 'react-google-login';
 import GoogleButton from 'react-google-button';
-
-import { Box } from '@mui/system';
 import Link from 'next/link';
-import { FC, useState } from 'react';
+import React, { FC, useMemo, useState } from 'react';
 
 const Login: FC = () => {
   const [eye, setEye] = useState(true);
+
+  type EachPosition = 'vertical' | 'horizontal';
+
+  interface Positions {
+    dividerPosition: any;
+    setDividerPosition: () => any;
+  }
+
+  const [dividerPosition, setDividerPosition] = useState<EachPosition>('vertical');
 
   const style = {
     firstBox: {
@@ -35,18 +43,19 @@ const Login: FC = () => {
       width: '50%',
       maxHeight: '30%',
       display: 'flex',
-      flexDirection: 'row',
+      flexDirection: { xl: 'row', lg: 'row', md: 'column', xs: 'column' },
       justifyContent: 'space-evenly',
       alignItems: 'center',
-      mb: '5vh',
+      mb: '5%',
     },
-    formBox: { display: 'flex', alignItems: 'center', flexDirection: 'column', width: '30%' },
+    formBox: { display: 'flex', alignItems: 'center', flexDirection: 'column', width: '35%' },
     titleBox: {
       display: 'flex',
       alignItems: 'center',
       flexWrap: 'wrap',
       flexDirection: 'column',
       color: 'neutral.main',
+      width: '100%',
       mb: '1.5vh',
     },
     eachForm: {
@@ -60,22 +69,51 @@ const Login: FC = () => {
       color: 'white',
       '&multilineColor': { color: 'white' },
     },
+    divider: {
+      m: '2vw',
+      width: '0.1rem',
+      color: 'white',
+      alignItems: 'center',
+      my: '0px',
+      display: { xs: 'none', lg: 'flex' },
+      '&::before': { backgroundColor: 'white', height: '8vh' },
+      '&::after': { backgroundColor: 'white', height: '8vh' },
+    },
+    divider1: {
+      // m: '2vw',
+      // width: '100%',
+      // color: 'white',
+      // alignItems: 'center',
+      // my: '0px',
+      // '&::before, &::after': {
+      // borderColor: 'red',
+      // },
+      display: { xs: 'flex', lg: 'none' },
+      // '&::before': { backgroundColor: 'red', heigth: '0.1rem', width: 1 },
+      // '&::after': { backgroundColor: 'red', height: '0.1rem', width: 1 },
+    },
     SignInBtn: {
-      color: 'highlight.main',
-      backgroundColor: 'black',
+      color: 'black',
+      backgroundColor: 'neutral.main',
       width: '90%',
       borderRadius: '7rem',
       '&:hover': { color: 'black', backgroundColor: 'warning.main' },
     },
     googleBtn: {
       color: 'white',
-      backgroundColor: 'black',
+      // backgroundColor: 'black',
       width: '100%',
-      height: '5vh',
+      height: '30%',
       borderRadius: 0,
       boxShadow: '0 0 0 0 ',
     },
   };
+
+  // const width = useMemo(() => {
+  //   if (screen.width >= 768) return 'vertical';
+  //   return 'horizontal';
+  // }, [screen.width]);
+  // console.log(screen.width);
 
   return (
     <Box className="first Box" sx={style.firstBox}>
@@ -83,8 +121,9 @@ const Login: FC = () => {
         <Typography variant="h1" fontSize="4rem" m="1vh">
           LOGIN
         </Typography>
+        <Divider>____________ . ____________</Divider>
         <Box display="flex">
-          <Typography variant="h6" mr="0.3rem">
+          <Typography variant="h6" fontSize="0.8rem" mr="0.3rem">
             Don't have an account yet?
           </Typography>
           <Link href="/signup">
@@ -123,23 +162,14 @@ const Login: FC = () => {
             Sign in
           </Button>
         </Box>
-        <Box sx={{ width: '5%', display: 'flex', justifyContent: 'center' }}>
-          <Divider
-            sx={{
-              m: '2vw',
-              width: '0.1rem',
-              color: 'white',
-              alignItems: 'center',
-              my: '0px',
-              '&::before': { backgroundColor: 'white', height: '8vh' },
-              '&::after': { backgroundColor: 'white', height: '8vh' },
-            }}
-            orientation="vertical"
-            flexItem>
+
+        {/* <Box sx={{ width: { xl: '5%', lg: '5%', md: '100%', xs: '100%' }, display: 'flex', justifyContent: 'center' }}>
+          <Divider sx={style.divider} orientation="vertical" flexItem>
             o
           </Divider>
-        </Box>
+        </Box> */}
         <Box sx={style.formBox}>
+          <Divider sx={style.divider1}>o</Divider>
           <GoogleLogin
             icon={false}
             render={renderProps => (
