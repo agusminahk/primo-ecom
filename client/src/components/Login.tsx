@@ -15,19 +15,10 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import GoogleLogin from 'react-google-login';
 import GoogleButton from 'react-google-button';
 import Link from 'next/link';
-import React, { FC, useMemo, useState } from 'react';
+import React, { FC, useState } from 'react';
 
 const Login: FC = () => {
   const [eye, setEye] = useState(true);
-
-  type EachPosition = 'vertical' | 'horizontal';
-
-  interface Positions {
-    dividerPosition: any;
-    setDividerPosition: () => any;
-  }
-
-  const [dividerPosition, setDividerPosition] = useState<EachPosition>('vertical');
 
   const style = {
     firstBox: {
@@ -40,15 +31,19 @@ const Login: FC = () => {
       flexDirection: 'column',
     },
     secondBox: {
-      width: '50%',
-      maxHeight: '30%',
+      width: { xl: '50%', lg: '50%', md: '70%', sm: '90%', xs: '90%' },
       display: 'flex',
       flexDirection: { xl: 'row', lg: 'row', md: 'column', xs: 'column' },
       justifyContent: 'space-evenly',
       alignItems: 'center',
       mb: '5%',
     },
-    formBox: { display: 'flex', alignItems: 'center', flexDirection: 'column', width: '35%' },
+    formBox: {
+      display: 'flex',
+      alignItems: 'center',
+      flexDirection: 'column',
+      width: { xl: '40%', lg: '40%', md: '55%', sm: '60%', xs: '90%' },
+    },
     titleBox: {
       display: 'flex',
       alignItems: 'center',
@@ -70,28 +65,35 @@ const Login: FC = () => {
       '&multilineColor': { color: 'white' },
     },
     divider: {
-      m: '2vw',
       width: '0.1rem',
       color: 'white',
+      '& .MuiDivider-wrapper': {
+        alignSelf: 'center',
+      },
+      '&::before, &::after': { border: '0.5px solid', borderRadius: '20px', height: '8vh' },
+    },
+    boxDivider: {
+      justifyContent: 'center',
       alignItems: 'center',
-      my: '0px',
       display: { xs: 'none', lg: 'flex' },
-      '&::before': { backgroundColor: 'white', height: '8vh' },
-      '&::after': { backgroundColor: 'white', height: '8vh' },
     },
     divider1: {
-      // m: '2vw',
-      // width: '100%',
-      // color: 'white',
-      // alignItems: 'center',
-      // my: '0px',
-      // '&::before, &::after': {
-      // borderColor: 'red',
-      // },
-      display: { xs: 'flex', lg: 'none' },
-      // '&::before': { backgroundColor: 'red', heigth: '0.1rem', width: 1 },
-      // '&::after': { backgroundColor: 'red', height: '0.1rem', width: 1 },
+      color: 'white',
+      alignItems: 'center',
+      height: '3px',
+      mx: '100%',
+      '&::before, &::after': {
+        border: '0.5px solid',
+        borderRadius: '20px',
+        mx: 1,
+        borderRigthWidth: '5rem',
+        borderLeftWidth: '5rem',
+      },
+      '& .MuiDivider-wrapper': {
+        mt: '4px',
+      },
     },
+    boxDivider1: { justifyContent: 'center', alignItems: 'center', display: { xs: 'flex', lg: 'none' }, my: 5 },
     SignInBtn: {
       color: 'black',
       backgroundColor: 'neutral.main',
@@ -100,20 +102,13 @@ const Login: FC = () => {
       '&:hover': { color: 'black', backgroundColor: 'warning.main' },
     },
     googleBtn: {
-      color: 'white',
-      // backgroundColor: 'black',
+      color: 'black',
       width: '100%',
-      height: '30%',
+      height: '100%',
       borderRadius: 0,
       boxShadow: '0 0 0 0 ',
     },
   };
-
-  // const width = useMemo(() => {
-  //   if (screen.width >= 768) return 'vertical';
-  //   return 'horizontal';
-  // }, [screen.width]);
-  // console.log(screen.width);
 
   return (
     <Box className="first Box" sx={style.firstBox}>
@@ -121,7 +116,6 @@ const Login: FC = () => {
         <Typography variant="h1" fontSize="4rem" m="1vh">
           LOGIN
         </Typography>
-        <Divider>____________ . ____________</Divider>
         <Box display="flex">
           <Typography variant="h6" fontSize="0.8rem" mr="0.3rem">
             Don't have an account yet?
@@ -162,24 +156,20 @@ const Login: FC = () => {
             Sign in
           </Button>
         </Box>
-
-        {/* <Box sx={{ width: { xl: '5%', lg: '5%', md: '100%', xs: '100%' }, display: 'flex', justifyContent: 'center' }}>
+        <Box sx={style.boxDivider}>
           <Divider sx={style.divider} orientation="vertical" flexItem>
-            o
+            or
           </Divider>
-        </Box> */}
+        </Box>
+        <Box sx={style.boxDivider1}>
+          <Divider sx={style.divider1} component="li">
+            or
+          </Divider>
+        </Box>
         <Box sx={style.formBox}>
-          <Divider sx={style.divider1}>o</Divider>
-          <GoogleLogin
-            icon={false}
-            render={renderProps => (
-              <GoogleButton type="dark" style={style.googleBtn}>
-                Sign in with Google
-              </GoogleButton>
-            )}
-            clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
-            cookiePolicy={'single_host_origin'}
-          />
+          <GoogleButton type="dark" style={style.googleBtn}>
+            SIGN IN WITH GOOGLE
+          </GoogleButton>
         </Box>
       </Box>
     </Box>
