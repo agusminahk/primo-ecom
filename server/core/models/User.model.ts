@@ -1,5 +1,5 @@
-import { prop, getModelForClass, modelOptions, pre } from '@typegoose/typegoose';
-import bcrypt from 'bcrypt'
+import { prop, getModelForClass, modelOptions, pre, post } from '@typegoose/typegoose';
+import bcrypt from 'bcrypt';
 
 export class Address {
   @prop({ type: () => String })
@@ -13,7 +13,7 @@ export class Address {
 }
 
 @pre<User>('save', async function (next) {
-  this.password = await bcrypt.hash(this.password, 10)
+  this.password = await bcrypt.hash(this.password, 10);
   return next();
 })
 @modelOptions({ schemaOptions: { collection: 'user', timestamps: true } })

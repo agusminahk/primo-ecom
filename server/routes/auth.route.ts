@@ -12,7 +12,10 @@ export const register = (app: Express) => {
 
   app.get('/auth/google/failed', AuthController.failed);
 
-  app.get('/auth/google', passport.authenticate('google', ['profile', 'email'] as AuthenticateOptions));
+  app.get(
+    '/auth/google',
+    passport.authenticate('google', ['profile', 'email'] as AuthenticateOptions),
+  );
 
   app.get('/auth/google/callback', passport.authenticate('google', redirects));
 

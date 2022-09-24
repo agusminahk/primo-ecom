@@ -23,6 +23,8 @@ export class AuthController {
   }
 
   static async logout(req: Request, res: Response) {
-    return req.logout({ keepSessionInfo: false }, () => res.redirect(process.env.GCLIENT_URL || ''));
+    return req.logout({ keepSessionInfo: false }, () =>
+      res.redirect(process.env.GCLIENT_URL || ''),
+    );
   }
 }
