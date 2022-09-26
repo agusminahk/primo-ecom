@@ -9,11 +9,12 @@ import compress from 'compression';
 import errorHandler from 'errorhandler';
 import httpStatus from 'http-status';
 import morgan from 'morgan';
-
-dotenv.config({ path: './.env.local' });
-import '../security/passport';
 import { mongoConnect } from './clients/mongodb';
 import { registerRoutes } from '../routes';
+
+dotenv.config({ path: './.env.local' });
+import '../security/passportGoogle';
+import '../security/passportLocal'
 
 const app: Express = express();
 const router: Router = express.Router();

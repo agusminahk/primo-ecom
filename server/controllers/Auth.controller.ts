@@ -1,7 +1,14 @@
 import { Request, Response } from 'express';
+import { AuthServices } from '../services/Auth.services';
+import { ExpressMiddleware } from '../shared/types/ExpressMiddleware';
 
 export class AuthController {
-  static async success(req: Request, res: Response) {
+
+  static localSignIn: ExpressMiddleware = async (req, res) => {
+    return !req.user ? res.status(401).json({ data: 'User Credentials are incorrect' }) : res.json({ data: req.user });
+  }
+
+  static successGoogle: ExpressMiddleware = async (req, res) => {
     if (req.user) {
       return res.status(200).json({
         error: false,
@@ -12,7 +19,7 @@ export class AuthController {
     }
   }
 
-  static async failed(req: Request, res: Response) {
+  static failed: ExpressMiddleware = async (req, res) => {
     return res
       .status(401)
       .json({
@@ -22,7 +29,7 @@ export class AuthController {
       .end();
   }
 
-  static async logout(req: Request, res: Response) {
+  static logout: ExpressMiddleware = async (req, res) => {
     return req.logout({ keepSessionInfo: false }, () =>
       res.redirect(process.env.GCLIENT_URL || ''),
     );

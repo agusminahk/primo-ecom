@@ -1,4 +1,4 @@
-import { prop, getModelForClass, modelOptions, pre, post } from '@typegoose/typegoose';
+import { prop, getModelForClass, modelOptions, pre, post, DocumentType } from '@typegoose/typegoose';
 import bcrypt from 'bcrypt';
 
 export class Address {
@@ -18,6 +18,11 @@ export class Address {
 })
 @modelOptions({ schemaOptions: { collection: 'user', timestamps: true } })
 export class User {
+
+  public async matchPassword(this: DocumentType<User>, password: string) {
+    return await bcrypt.compare(password, this.password);
+  }
+
   @prop({ type: () => String, required: true, unique: true })
   public email!: string;
 
@@ -42,5 +47,6 @@ export class User {
   @prop({ type: () => Address, default: null })
   public address?: Address;
 }
+
 
 export default getModelForClass(User);
