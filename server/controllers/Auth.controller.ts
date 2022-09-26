@@ -30,8 +30,13 @@ export class AuthController {
   }
 
   static logout: ExpressMiddleware = async (req, res) => {
-    return req.logout({ keepSessionInfo: false }, () =>
-      res.redirect(process.env.GCLIENT_URL || ''),
-    );
+    return req.logOut({ keepSessionInfo: false }, () => {
+      res.status(200).clearCookie('connect.sid', {
+        path: '/',
+      })
+      req.session?.destroy(() => res.send({}))
+    })
   }
+
 }
+

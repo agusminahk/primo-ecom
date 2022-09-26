@@ -1,5 +1,4 @@
 import { Express } from 'express';
-import { get } from 'http';
 import { UserController } from '../controllers/User.controller';
 import { ExpressMiddleware } from '../shared/types/ExpressMiddleware';
 
