@@ -1,11 +1,6 @@
 import bcrypt from 'bcrypt';
 import User, { User as UserClass } from '../core/models/User.model';
-
-interface Service {
-    data: any;
-    error: boolean;
-    status: number;
-}
+import type { Service } from '../shared/interfaces';
 
 export class UserServices {
     static async getAll(): Promise<Service> {
