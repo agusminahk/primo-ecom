@@ -22,15 +22,15 @@ const router: Router = express.Router();
 app.use(
   cookieSession({
     secret: process.env.SESSION_SECRET,
-    name: 'primo',
+    name: 'session.primo',
     keys: ['primo'],
-    maxAge: 24 * 60 * 60 * 100,
+    maxAge: 3600 * 24 * 60 * 60 * 365,
   }),
 );
 
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: '*',
     methods: 'GET,POST,PUT,DELETE',
     credentials: true,
   }),
