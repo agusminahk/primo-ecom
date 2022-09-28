@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import Checkbox from '@mui/material/Checkbox';
-import { ValueContext } from './FirstSteep';
+// import { ValueContext } from './FirstSteep';
 import { useForm, useFormContext } from 'react-hook-form';
 
 interface SecondStepProps {
@@ -26,12 +26,7 @@ const SecondStep: FC<SecondStepProps> = ({ handleBack, handleNext }) => {
     watch,
     formState: { errors },
     getValues,
-  } = useForm({
-    defaultValues: {
-      city: '',
-      phone: '',
-    },
-  });
+  } = useFormContext();
   console.log(watch());
 
   return (

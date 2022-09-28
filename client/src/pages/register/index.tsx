@@ -1,8 +1,9 @@
 import React from 'react';
-import Register from '../../components/Register';
+import { NextPage } from 'next';
+import RegisterStepper from '../../components/RegisterForm/RegisterStepper';
 
-const index = () => {
-  return <Register />;
+const Register: NextPage = () => {
+  return <RegisterStepper />;
 };
 
-export default index;
+export default Register;

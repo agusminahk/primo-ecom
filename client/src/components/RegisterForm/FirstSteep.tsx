@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useForm, useFormContext } from 'react-hook-form';
+import { Typography } from '@mui/material';
 
 interface FirstStepProps {
   handleNext: () => void;
@@ -104,18 +105,21 @@ const FirstStep: FC<FirstStepProps> = ({ handleNext }) => {
       </Grid>
       {console.log(getValues())}
       <Box sx={{ display: 'flex', justifyContent: 'flex-end', color: 'white' }}>
-        <Button
-          // disabled={isValid}
-          variant="contained"
-          sx={{ mt: 3, ml: 1, color: 'highlight.main' }}
-          onClick={() => {
-            console.log('Error', errors);
-            console.log('Valid', isValid);
-
-            isValid && handleNext();
-          }}>
-          Next
-        </Button>
+        {isValid ? (
+          <Button
+            // disabled={isValid}
+            variant="contained"
+            sx={{ mt: 3, ml: 1, color: 'highlight.main' }}
+            onClick={() => {
+              console.log('Error', errors);
+              console.log('Valid', isValid);
+              handleNext();
+            }}>
+            Next
+          </Button>
+        ) : (
+          <Typography> Complete date </Typography>
+        )}
       </Box>
     </>
   );
