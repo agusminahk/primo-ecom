@@ -66,7 +66,6 @@ const SecondStep: FC<SecondStepProps> = ({ handleBack, handleNext }) => {
             color="warning"
             fullWidth
             label="Phone number"
-            name="phone"
             placeholder="i.e: xxx-xxx-xxxx"
             onClick={e => {
               console.log(getValues());

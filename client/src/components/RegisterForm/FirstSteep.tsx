@@ -10,7 +10,11 @@ interface FirstStepProps {
 }
 
 const FirstStep: FC<FirstStepProps> = ({ handleNext }) => {
-  const { register, getValues } = useFormContext();
+  const {
+    register,
+    getValues,
+    formState: { errors, isValid },
+  } = useFormContext();
 
   const style = {
     textStyle: {
@@ -33,7 +37,7 @@ const FirstStep: FC<FirstStepProps> = ({ handleNext }) => {
             style={style.textStyle}
             fullWidth
             label="First Name"
-            {...register('firstName', { required: true })}
+            {...register('firstName', { required: 'Required' })}
             placeholder="Your first name"
           />
         </Grid>
@@ -66,10 +70,9 @@ const FirstStep: FC<FirstStepProps> = ({ handleNext }) => {
                 '&.Mui-focused': { color: 'highlight.main' },
               },
             }}
-            // sx={{ color: 'white' }}
             fullWidth
             label="Email"
-            {...(register('email'), { required: 'Email Adress is required' })}
+            {...register('email', { required: 'Email Adress is required' })}
             placeholder="Your email address"
             type="email"
           />
@@ -102,16 +105,25 @@ const FirstStep: FC<FirstStepProps> = ({ handleNext }) => {
       {console.log(getValues())}
       <Box sx={{ display: 'flex', justifyContent: 'flex-end', color: 'white' }}>
         <Button
+          // disabled={isValid}
           variant="contained"
           sx={{ mt: 3, ml: 1, color: 'highlight.main' }}
-          //   disabled={isError()}
-          onClick={handleNext}>
+          onClick={() => {
+            console.log('Error', errors);
+            console.log('Valid', isValid);
+            // {
+            //   isValid && handleNext();
+            // }
+            handleNext();
+          }}>
           Next
         </Button>
       </Box>
     </>
   );
 };
+
+//disabled={true}
 
 //Chekear valores del submit, si hya errores mostrarlos, si no, contionuo = (handleNext)
 
