@@ -6,7 +6,6 @@ import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import Checkbox from '@mui/material/Checkbox';
-import { ValueContext } from './FirstSteep';
 import { useForm, useFormContext } from 'react-hook-form';
 
 interface SecondStepProps {
@@ -21,18 +20,17 @@ const SecondStep: FC<SecondStepProps> = ({ handleBack, handleNext }) => {
   //   const { city, date, phone, agreenemt } = formValues;
 
   const { register } = useFormContext();
-  const {
-    handleSubmit,
-    watch,
-    formState: { errors },
-    getValues,
-  } = useForm({
-    defaultValues: {
-      city: '',
-      phone: '',
-    },
-  });
-  console.log(watch());
+  // const {
+  //   handleSubmit,
+  //   watch,
+  //   formState: { errors },
+  //   getValues,
+  // } = useForm({
+  //   defaultValues: {
+  //     city: '',
+  //     phone: '',
+  //   },
+  // });
 
   return (
     <>
@@ -47,9 +45,9 @@ const SecondStep: FC<SecondStepProps> = ({ handleBack, handleNext }) => {
             label="City"
             placeholder="Enter your city"
             // value={city.value}
-            onClick={e => {
-              console.log(getValues());
-            }}
+            // onClick={e => {
+            //   console.log(getValues());
+            // }}
             {...register('city', { required: true })}
 
             // // error={!!city.error}
@@ -67,9 +65,9 @@ const SecondStep: FC<SecondStepProps> = ({ handleBack, handleNext }) => {
             fullWidth
             label="Phone number"
             placeholder="i.e: xxx-xxx-xxxx"
-            onClick={e => {
-              console.log(getValues());
-            }}
+            // onClick={e => {
+            //   console.log(getValues());
+            // }}
             {...register('phone', { required: true, minLength: { value: 10, message: 'min length is 10' } })}
             // error={!!phone.error}
             // helperText={phone.error}
@@ -82,7 +80,6 @@ const SecondStep: FC<SecondStepProps> = ({ handleBack, handleNext }) => {
         <Button onClick={handleBack} variant="contained" sx={{ mt: 3, ml: 1, color: 'highlight.main' }}>
           Back
         </Button>
-        {console.log('Second', getValues())}
         <Button variant="contained" sx={{ mt: 3, ml: 1, color: 'highlight.main' }} onClick={handleNext}>
           Next
         </Button>

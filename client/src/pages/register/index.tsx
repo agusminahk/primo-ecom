@@ -1,8 +1,8 @@
 import React from 'react';
-import Register from '../../components/Register';
+import RegisterStepper from '../../components/RegisterForm/RegisterStepper';
 
 const index = () => {
-  return <Register />;
+  return <RegisterStepper />;
 };
 
 export default index;

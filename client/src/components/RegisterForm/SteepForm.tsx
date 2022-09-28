@@ -18,24 +18,7 @@ const StepForm = () => {
   // Go back to prev step
   const handleBack = () => setActiveStep(activeStep - 1);
 
-  const methods = useForm({
-    defaultValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      gender: '',
-      phone: '',
-      city: '',
-    },
-  });
-  // const {
-  //   // register,
-  //   // handleSubmit,
-  //   watch,
-  //   formState: { errors },
-  //   getValues,
-
-  // }
+  // const methods = useForm();
 
   const handleSteps = (step: number) => {
     switch (step) {
@@ -63,18 +46,19 @@ const StepForm = () => {
               enter your data
             </Typography>
           </Box>
-          <FormProvider {...methods}>
-            <Stepper activeStep={activeStep} sx={{ py: 3, color: 'white' }} alternativeLabel>
-              {labels.map(label => (
-                <Step key={label} sx={{ color: 'white' }}>
-                  <StepLabel
-                    sx={{ '& .MuiStepLabel-label': { color: '#fff' }, '& .Mui-active': { color: 'highlight.main' } }}>
-                    {label}
-                  </StepLabel>
-                </Step>
-              ))}
-            </Stepper>
-          </FormProvider>
+
+          <Stepper activeStep={activeStep} sx={{ py: 3, color: 'white' }} alternativeLabel>
+            {/* <FormProvider {...methods}> */}
+            {labels.map(label => (
+              <Step key={label} sx={{ color: 'white' }}>
+                <StepLabel
+                  sx={{ '& .MuiStepLabel-label': { color: '#fff' }, '& .Mui-active': { color: 'highlight.main' } }}>
+                  {label}
+                </StepLabel>
+              </Step>
+            ))}
+            {/* </FormProvider> */}
+          </Stepper>
 
           {handleSteps(activeStep)}
         </>
