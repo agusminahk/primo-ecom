@@ -111,10 +111,8 @@ const FirstStep: FC<FirstStepProps> = ({ handleNext }) => {
           onClick={() => {
             console.log('Error', errors);
             console.log('Valid', isValid);
-            // {
-            //   isValid && handleNext();
-            // }
-            handleNext();
+
+            isValid && handleNext();
           }}>
           Next
         </Button>
