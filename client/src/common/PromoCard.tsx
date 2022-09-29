@@ -7,12 +7,12 @@ import { CardActionArea } from '@mui/material';
 
 const PromoCard: FC = () => {
   return (
-    <Card sx={{ width: '100vw', height: '30vh' }}>
+    <Card sx={{ width: '100%', height: '100%', borderRadius: 0 }}>
       <CardActionArea>
         <CardMedia
-          sx={{ backgroundPosition: 'center' }}
+          sx={{ backgroundPosition: 'center', backgroundSize: 'cover' }}
           component="img"
-          image="https://rare-gallery.com/thumbs/1175892-Gentleman-jacket-spring-clothing-group-of-people-man-male-outerwear.jpg"
+          image={'/laputa.jpg'}
           alt="test"
         />
       </CardActionArea>
