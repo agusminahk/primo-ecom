@@ -3,7 +3,6 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import React, { FC } from 'react';
 import { Provider } from 'react-redux';
-import Layout from '../components/Layout';
 import { store } from '../state/store';
 import { theme } from '../theme';
 import 'react-multi-carousel/lib/styles.css';
@@ -18,9 +17,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <Component {...pageProps} />
         </ThemeProvider>
       </Provider>
     </>
