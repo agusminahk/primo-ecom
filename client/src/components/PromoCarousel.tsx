@@ -26,17 +26,17 @@ const responsive = {
   },
 };
 
-const styles = {};
+const styles = {
+  firstBoxStyle: {
+    zIndex: '-20',
+    mx: '0vw',
+    height: '100%',
+  },
+};
 
 const PromoCarousel: FC = () => {
   return (
-    <Box
-      component="div"
-      sx={{
-        zIndex: '-20',
-        mx: '0vw',
-        height: '100%',
-      }}>
+    <Box component="div" sx={styles.firstBoxStyle}>
       <Carousel
         additionalTransfrom={0}
         responsive={responsive}
@@ -51,12 +51,7 @@ const PromoCarousel: FC = () => {
         partialVisible
         renderButtonGroupOutside
         customDot={<CustomDot />}
-        customButtonGroup={<CustomButtonGroupAsArrows />}
-        // customRightArrow={<RightArrow />}
-        // customLeftArrow={<LeftArrow />}
-      >
-        {/* CustomLeftArrow={<CustomLeftArrow />} */}
-
+        customButtonGroup={<CustomButtonGroupAsArrows />}>
         <PromoCard />
         <PromoCard />
         <PromoCard />

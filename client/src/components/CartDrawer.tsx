@@ -35,13 +35,17 @@ const CartDrawer: FC<DrawerProps> = ({ open, onClose }) => {
         borderRadius: 2,
       },
     },
+    appBarStyle: {
+      backgroundColor: 'rgb(8,18,41,0.90)',
+      backdropFilter: 'blur(70px)',
+      width: '24%',
+    },
     firstBoxDrawer: {
       display: 'flex',
       width: '80%',
       alignItems: 'center',
       m: '5%',
     },
-
     boxAllItems: {
       mt: '5%',
       maxHeight: '100vh',
@@ -58,14 +62,7 @@ const CartDrawer: FC<DrawerProps> = ({ open, onClose }) => {
       anchor={'right'}
       open={open}
       onClose={() => onClose(false)}>
-      <AppBar
-        position="fixed"
-        sx={{
-          backgroundColor: 'rgb(8,18,41,0.90)',
-          backdropFilter: 'blur(70px)',
-
-          width: '24%',
-        }}>
+      <AppBar position="fixed" sx={styles.appBarStyle}>
         <Toolbar>
           <Typography variant="h5" noWrap component="div">
             SHOPPING BAG

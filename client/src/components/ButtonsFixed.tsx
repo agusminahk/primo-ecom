@@ -16,23 +16,30 @@ const ButtonsFixed: FC = () => {
   }
   `;
 
+  const styles = {
+    firstBoxStyle: {
+      position: 'fixed',
+      mt: '85vh',
+      ml: '90%',
+      display: 'flex',
+      alignContent: 'center',
+      flexDirection: 'column',
+    },
+    cartFabStyle: {
+      backgroundColor: 'highlight.main',
+      m: '4%',
+      animation: `${fabAnimation} 0.7s both`,
+    },
+    scrollFabStyle: {
+      backgroundColor: 'highlight.main',
+      m: '4%',
+      animation: `${fabAnimation} 0.7s both`,
+    },
+  };
+
   return (
-    <Box
-      sx={{
-        position: 'fixed',
-        mt: '85vh',
-        ml: '90%',
-        display: 'flex',
-        alignContent: 'center',
-        flexDirection: 'column',
-      }}>
-      <Fab
-        onClick={() => setOpen(!open)}
-        sx={{
-          backgroundColor: 'highlight.main',
-          m: '4%',
-          animation: `${fabAnimation} 0.7s both`,
-        }}>
+    <Box sx={styles.firstBoxStyle}>
+      <Fab onClick={() => setOpen(!open)} sx={styles.cartFabStyle}>
         <LocalMallRoundedIcon />
       </Fab>
       <Fab
@@ -42,11 +49,7 @@ const ButtonsFixed: FC = () => {
             behavior: 'smooth',
           });
         }}
-        sx={{
-          backgroundColor: 'highlight.main',
-          m: '4%',
-          animation: `${fabAnimation} 0.7s both`,
-        }}>
+        sx={styles.scrollFabStyle}>
         <UpIcon />
       </Fab>
       <CartDrawer open={open} onClose={setOpen} />

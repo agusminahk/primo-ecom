@@ -22,35 +22,40 @@ const Navbar: FC = () => {
   });
 
   const styles = {
-    AppBarStyle: {
+    firstBoxStyle: {
       position: 'absolute',
       width: '100%',
       height: '7%',
       display: 'flex',
       justifyContent: 'center',
-      // flexDirection: 'column',
       zIndex: '10',
     },
+    appBarStyle: {
+      width: '50%',
+      height: '60%',
+      boxShadow: '0 0 0 0',
+      borderRadius: '30px',
+      mt: '0.6%',
+      justifyContent: 'center',
+      backgroundColor: 'rgb(236,89,144,0.54)',
+      backdropFilter: 'blur(50px)',
+    },
+    toolbarStyle: { display: 'flex', justifyContent: 'space-between' },
+    secondBoxStyle: {
+      display: 'flex',
+      justifyContent: 'space-around',
+      width: 'auto',
+      alignItems: 'center',
+      height: '40%',
+    },
+    linkBtnStyle: { borderRadius: '15px', px: '4px' },
   };
 
   return (
     <>
-      <Box sx={styles.AppBarStyle}>
-        <AppBar
-          component="div"
-          ref={ref}
-          sx={{
-            width: '50%',
-            height: '60%',
-            boxShadow: '0 0 0 0',
-            borderRadius: '30px',
-            mt: '0.6%',
-            justifyContent: 'center',
-            backgroundColor: 'rgb(236,89,144,0.54)',
-            backdropFilter: 'blur(50px)',
-          }}
-          position="static">
-          <Toolbar component="div" sx={{ display: 'flex', justifyContent: 'space-between' }}>
+      <Box sx={styles.firstBoxStyle}>
+        <AppBar component="div" ref={ref} sx={styles.appBarStyle} position="static">
+          <Toolbar component="div" sx={styles.toolbarStyle}>
             <Tooltip title="hola">
               <Button size="small" sx={{ borderRadius: '15px' }}>
                 CATEGORIES
@@ -61,14 +66,7 @@ const Navbar: FC = () => {
             <Typography variant="h5" component="div" sx={{ fontWeight: 600, fontSize: '0.8rem' }}>
               PRIMO
             </Typography>
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'space-around',
-                width: 'auto',
-                alignItems: 'center',
-                height: '40%',
-              }}>
+            <Box sx={styles.secondBoxStyle}>
               {/* user???
               <Typography variant="h6">Username</Typography>
               <IconButton component="div" sx={{ color: 'primary.main' }}>
@@ -84,10 +82,10 @@ const Navbar: FC = () => {
               </IconButton>
               <ButtonGroup variant="text" size="small">
                 <Link href={'/signin'}>
-                  <Button sx={{ borderRadius: '15px', px: '4px' }}>Sign In</Button>
+                  <Button sx={styles.linkBtnStyle}>Sign In</Button>
                 </Link>
                 <Link href={'/login'}>
-                  <Button sx={{ borderRadius: '15px', px: '4px' }}>Login</Button>
+                  <Button sx={styles.linkBtnStyle}>Login</Button>
                 </Link>
               </ButtonGroup>
             </Box>
