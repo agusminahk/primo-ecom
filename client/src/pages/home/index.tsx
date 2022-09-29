@@ -1,18 +1,16 @@
-import { Box, Typography } from '@mui/material';
 import { NextPage } from 'next';
 
 import PromoCarousel from '../../components/PromoCarousel';
 
+import Layout from '../../components/Layout';
 import React from 'react';
 
 const home: NextPage = () => {
-  return <PromoCarousel />;
+  return (
+    <Layout>
+      <PromoCarousel />
+    </Layout>
+  );
 };
 
 export default home;
-
-{
-  /* <Box sx={{ backgroundColor: 'red', height: '10vh', display: 'flex', justifyContent: 'center' }}>
-<Typography variant="h2">SR HOME</Typography>
-</Box> */
-}
