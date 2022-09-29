@@ -4,12 +4,14 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import { Tooltip } from '@mui/material';
 import LocalMallRoundedIcon from '@mui/icons-material/LocalMallRounded';
 import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 import CartDrawer from './CartDrawer';
 import ButtonsFixed from './ButtonsFixed';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React, { FC, useState } from 'react';
 
 const Navbar: FC = () => {
@@ -26,6 +28,7 @@ const Navbar: FC = () => {
       height: '7%',
       display: 'flex',
       justifyContent: 'center',
+      // flexDirection: 'column',
       zIndex: '10',
     },
   };
@@ -48,9 +51,13 @@ const Navbar: FC = () => {
           }}
           position="static">
           <Toolbar component="div" sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <IconButton size="small" color="inherit">
-              <MenuIcon fontSize="small" />
-            </IconButton>
+            <Tooltip title="hola">
+              <Button size="small" sx={{ borderRadius: '15px' }}>
+                CATEGORIES
+                <ExpandMoreIcon fontSize="small" sx={{ fontSize: '90%' }} />
+              </Button>
+            </Tooltip>
+
             <Typography variant="h5" component="div" sx={{ fontWeight: 600, fontSize: '0.8rem' }}>
               PRIMO
             </Typography>
@@ -67,20 +74,26 @@ const Navbar: FC = () => {
               <IconButton component="div" sx={{ color: 'primary.main' }}>
                 <AccountCircleIcon />
               </IconButton> */}
-              <IconButton size="small" component="div" sx={{ color: 'primary.main' }}>
-                <LocalMallRoundedIcon
-                  fontSize="small"
-                  onClick={() => {
-                    setOpen(!open);
-                  }}
-                />
+              <IconButton
+                size="small"
+                sx={{ color: 'primary.main' }}
+                onClick={() => {
+                  setOpen(!open);
+                }}>
+                <LocalMallRoundedIcon fontSize="small" sx={{ fontSize: '95%' }} />
               </IconButton>
-              <Link href={'/login'}>
-                <Button sx={{ height: '100%', width: '20%', fontSize: '0.8rem' }}>Login</Button>
-              </Link>
+              <ButtonGroup variant="text" size="small">
+                <Link href={'/signin'}>
+                  <Button sx={{ borderRadius: '15px', px: '4px' }}>Sign In</Button>
+                </Link>
+                <Link href={'/login'}>
+                  <Button sx={{ borderRadius: '15px', px: '4px' }}>Login</Button>
+                </Link>
+              </ButtonGroup>
             </Box>
           </Toolbar>
         </AppBar>
+
         <CartDrawer open={open} onClose={setOpen} />
         {inView === false && <ButtonsFixed />}
       </Box>
