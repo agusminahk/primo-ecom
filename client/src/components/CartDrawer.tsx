@@ -19,7 +19,6 @@ const CartDrawer: FC<DrawerProps> = ({ open, onClose }) => {
       justifyContent: 'center',
       width: '24%',
       backgroundColor: 'primary.main',
-
       flexDirection: 'row-reverse',
       overflowY: 'scroll',
       overflowX: 'hidden',
@@ -75,7 +74,7 @@ const CartDrawer: FC<DrawerProps> = ({ open, onClose }) => {
       <Box sx={styles.firstBoxDrawer}></Box>
       <Box sx={styles.boxAllItems}>
         {exampleRequest.clothes.map((e, i) => (
-          <Box sx={styles.boxItemDrawer} key={i}>
+          <Box key={i}>
             <CartCard product={e} />
           </Box>
         ))}
