@@ -12,7 +12,6 @@ import {
 } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import GoogleLogin from 'react-google-login';
 import GoogleButton from 'react-google-button';
 import Link from 'next/link';
 import React, { FC, useState } from 'react';
@@ -95,14 +94,14 @@ const Login: FC = () => {
     },
     boxDivider1: { justifyContent: 'center', alignItems: 'center', display: { xs: 'flex', lg: 'none' }, my: 5 },
     SignInBtn: {
-      color: 'black',
+      color: 'dark.main',
       backgroundColor: 'neutral.main',
       width: '90%',
       borderRadius: '7rem',
-      '&:hover': { color: 'black', backgroundColor: 'warning.main' },
+      '&:hover': { color: 'dark.main', backgroundColor: 'warning.main' },
     },
     googleBtn: {
-      color: 'black',
+      color: 'dark.main',
       width: '100%',
       height: '100%',
       borderRadius: 0,
