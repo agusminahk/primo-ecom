@@ -80,14 +80,16 @@ const Navbar: FC = () => {
                 }}>
                 <LocalMallRoundedIcon fontSize="small" sx={{ fontSize: '95%' }} />
               </IconButton>
-              <ButtonGroup variant="text" size="small">
-                <Link href={'/signin'}>
-                  <Button sx={styles.linkBtnStyle}>Sign In</Button>
-                </Link>
-                <Link href={'/login'}>
-                  <Button sx={styles.linkBtnStyle}>Login</Button>
-                </Link>
-              </ButtonGroup>
+              <Link href={'/signin'}>
+                <Button size="small" sx={styles.linkBtnStyle}>
+                  Sign In
+                </Button>
+              </Link>
+              <Link href={'/login'}>
+                <Button size="small" sx={styles.linkBtnStyle}>
+                  Login
+                </Button>
+              </Link>
             </Box>
           </Toolbar>
         </AppBar>
