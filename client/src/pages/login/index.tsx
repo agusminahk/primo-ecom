@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import React from 'react';
 import Login from '../../components/Login';
+=======
+import { Button, TextField, Typography } from '@mui/material';
+import { Box } from '@mui/system';
+>>>>>>> 1cc68a0 (input types and clear imports)
 
 <<<<<<< HEAD
 const index = () => {
@@ -17,7 +22,6 @@ const Login = () => {
     },
     formBox: {
       display: 'flex',
-      flexWrap: 'wrap',
       justifyContent: 'center',
       alignItems: 'center',
       alignContent: 'space-around',
@@ -36,8 +40,8 @@ const Login = () => {
         <Typography variant="h2" color={'#ff4d00'}>
           Login
         </Typography>
-        <TextField label="email" sx={{ m: '2vh' }} color="warning" variant="filled" />
-        <TextField label="Contraseña" sx={{ m: '2vh' }} color="warning" variant="filled" />
+        <TextField type="email" label="email" sx={{ m: '2vh' }} color="warning" variant="filled" />
+        <TextField type="password" label="Contraseña" sx={{ m: '2vh' }} color="warning" variant="filled" />
         <Button variant="contained" color="warning" sx={{ color: 'white', backgroundColor: '#4c9054' }}>
           Sing in
         </Button>

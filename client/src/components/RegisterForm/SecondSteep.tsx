@@ -1,30 +1,26 @@
-import React, { FC, useCallback, useContext } from 'react';
+import React, { FC } from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
-import Checkbox from '@mui/material/Checkbox';
-// import { ValueContext } from './FirstSteep';
-import { useForm, useFormContext } from 'react-hook-form';
+import { validateForm } from '../../utils';
+import { useFormContext } from 'react-hook-form';
+import { FormControl, Input, InputLabel } from '@mui/material';
 
 interface SecondStepProps {
   handleBack: () => void;
   handleNext: () => void;
 }
 
-//React hook form, formState.errors, estado del formulario. Manejar contextos
-
 const SecondStep: FC<SecondStepProps> = ({ handleBack, handleNext }) => {
-  //   const { formValues, handleChange, handleBack, handleNext, variant, margin } = useContext(AppContext);
-  //   const { city, date, phone, agreenemt } = formValues;
+  const [showError, setShowError] = React.useState<boolean>(true);
+  const values = ['city', 'phone'];
 
   const { register } = useFormContext();
   const {
-    handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isValid },
+    setError,
     getValues,
   } = useFormContext();
   console.log(watch());
@@ -33,52 +29,66 @@ const SecondStep: FC<SecondStepProps> = ({ handleBack, handleNext }) => {
     <>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <TextField
-            variant={'standard'}
-            inputProps={{ sx: { color: 'white' } }}
-            InputLabelProps={{ sx: { color: 'highlight.main', '&.Mui-focused': { color: 'highlight.main' } } }}
-            color="warning"
-            fullWidth
-            label="City"
-            placeholder="Enter your city"
-            // value={city.value}
-            onClick={e => {
-              console.log(getValues());
-            }}
-            {...register('city', { required: true })}
+          <FormControl error={!!errors.city} variant="standard">
+            <InputLabel htmlFor="city" sx={{ color: 'highlight.main' }}>
+              City
+            </InputLabel>
+            <Input
+              inputProps={{ sx: { color: 'white' } }}
+              InputLabelProps={{ sx: { color: 'highlight.main', '&.Mui-focused': { color: 'highlight.main' } } }}
+              fullWidth
+              placeholder="Enter your City"
+              id="city"
+              {...register('city', {
+                required: 'Complete the field',
 
-            // // error={!!city.error}
-            // // helperText={city.error}
-            // // required={city.required}
-          />
+                minLength: {
+                  value: 3,
+                  message: 'Minimun length is 3',
+                },
+              })}
+              onClick={e => {
+                console.log(getValues());
+              }}
+            />
+            {errors.city && <FormHelperText>{errors?.city?.message as string}</FormHelperText>}
+          </FormControl>
         </Grid>
 
         <Grid item xs={12}>
-          <TextField
-            variant={'standard'}
-            inputProps={{ sx: { color: 'white' } }}
-            InputLabelProps={{ sx: { color: 'highlight.main', '&.Mui-focused': { color: 'highlight.main' } } }}
-            color="warning"
-            fullWidth
-            label="Phone number"
-            placeholder="i.e: xxx-xxx-xxxx"
-            onClick={e => {
-              console.log(getValues());
-            }}
-            {...register('phone', { required: true, minLength: { value: 10, message: 'min length is 10' } })}
-            // error={!!phone.error}
-            // helperText={phone.error}
-            // required={phone.required}
-          />
+          <FormControl error={!!errors.phone} variant="standard">
+            <InputLabel htmlFor="city" sx={{ color: 'highlight.main' }}>
+              Phone
+            </InputLabel>
+            <Input
+              inputProps={{ sx: { color: 'white' } }}
+              InputLabelProps={{ sx: { color: 'highlight.main', '&.Mui-focused': { color: 'highlight.main' } } }}
+              fullWidth
+              placeholder="i.e: xxx-xxx-xxxx"
+              id="phone"
+              {...register('phone', {
+                required: 'Complete the field',
+                minLength: { value: 10, message: 'min length is 10' },
+              })}
+              onClick={e => {
+                console.log(getValues());
+              }}
+            />
+            {errors.phone && <FormHelperText>{errors?.phone?.message as string}</FormHelperText>}
+          </FormControl>
         </Grid>
       </Grid>
-
       <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 3, color: 'secondary' }}>
         <Button onClick={handleBack} variant="contained" sx={{ mt: 3, ml: 1, color: 'highlight.main' }}>
           Back
         </Button>
         {console.log('Second', getValues())}
-        <Button variant="contained" sx={{ mt: 3, ml: 1, color: 'highlight.main' }} onClick={handleNext}>
+        <Button
+          variant="contained"
+          sx={{ mt: 3, ml: 1, color: 'highlight.main' }}
+          onClick={() =>
+            isValid ? handleNext() : validateForm({ setError, setShowError, errors, showError, values })
+          }>
           Next
         </Button>
       </Box>

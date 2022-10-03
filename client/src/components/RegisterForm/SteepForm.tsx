@@ -8,7 +8,6 @@ import FirstStep from './FirstSteep';
 import SecondStep from './SecondSteep';
 import Confirm from './Confirm';
 import Success from './Success';
-import { FormProvider, useForm } from 'react-hook-form';
 
 const StepForm = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -17,25 +16,6 @@ const StepForm = () => {
   const handleNext = () => setActiveStep(activeStep + 1);
   // Go back to prev step
   const handleBack = () => setActiveStep(activeStep - 1);
-
-  // const methods = useForm({
-  //   defaultValues: {
-  //     firstName: '',
-  //     lastName: '',
-  //     email: '',
-  //     gender: '',
-  //     phone: '',
-  //     city: '',
-  //   },
-  // });
-  // const {
-  //   // register,
-  //   // handleSubmit,
-  //   watch,
-  //   formState: { errors },
-  //   getValues,
-
-  // }
 
   const handleSteps = (step: number) => {
     switch (step) {
@@ -63,18 +43,19 @@ const StepForm = () => {
               enter your data
             </Typography>
           </Box>
-          {/* <FormProvider {...methods}> */}
           <Stepper activeStep={activeStep} sx={{ py: 3, color: 'white' }} alternativeLabel>
             {labels.map(label => (
-              <Step key={label} sx={{ color: 'white' }}>
-                <StepLabel
-                  sx={{ '& .MuiStepLabel-label': { color: '#fff' }, '& .Mui-active': { color: 'highlight.main' } }}>
-                  {label}
-                </StepLabel>
+              <Step
+                key={label}
+                sx={
+                  {
+                    // '& .MuiStepLabel-label': { color: '#fff' },
+                  }
+                }>
+                <StepLabel>{label}</StepLabel>
               </Step>
             ))}
           </Stepper>
-          {/* </FormProvider> */}
 
           {handleSteps(activeStep)}
         </>

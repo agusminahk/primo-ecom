@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { gifs as arrayGifs } from '../utils/home';
+import { gifs as arrayGifs } from '../utils';
 import type { Gifs, Title } from '../utils/interfaces';
 
 interface Colors {

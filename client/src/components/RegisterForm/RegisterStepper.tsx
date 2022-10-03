@@ -6,10 +6,20 @@ import { useForm, FormProvider, useFormContext } from 'react-hook-form';
 
 const RegisterStepper: FC = () => {
   const methods = useForm({
-    defaultValues: { firstName: '', lastName: '', email: '', gender: '', phone: '', city: '' },
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      gender: '',
+      password: '',
+      confirmPassword: '',
+      phone: '',
+      country: '',
+    },
     mode: 'onBlur',
     reValidateMode: 'onChange',
   });
+
   return (
     <Box
       sx={{ width: '100%', height: '100vh', backgroundColor: 'primary.main', display: 'flex', alignItems: 'center' }}>

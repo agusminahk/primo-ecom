@@ -5,7 +5,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
-import { useForm, useFormContext } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import { Grid } from '@mui/material';
 
 interface ConfirmProp {
@@ -13,68 +13,90 @@ interface ConfirmProp {
   handleBack: () => void;
 }
 
-//Use Context hooks form
-
-//Hnadle submit, on Submit
-
 const Confirm: FC<ConfirmProp> = ({ handleNext, handleBack }) => {
   const {
-    register,
     getValues,
     handleSubmit,
     formState: { errors },
   } = useFormContext();
 
-  console.log('URA', errors);
-
   const onSubmit = (data: any) => {};
   const value = getValues();
 
   return (
-    // <form onSubmit={handleSubmit(onSubmit)}>
-    // <Box sx={{ display: 'flex', my: 5, color: 'primary.main' }}>
     <>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} mt={'-28px'} mb={'-40px'}>
         <Grid item xs={12} sm={6}>
           <List disablePadding>
             <ListItem>
-              <ListItemText primary="First Name" secondary={'Not Provided'} sx={{ color: 'white' }} />
+              <ListItemText
+                primary="First Name"
+                secondary={value.firstName}
+                sx={{
+                  '.MuiListItemText-secondary': { color: 'highlight.main' },
+                  '.MuiListItemText-primary': { color: 'white' },
+                }}
+              />
             </ListItem>
-
             <Divider />
-
             <ListItem>
-              <ListItemText primary="Last Name" secondary={'Not Provided'} sx={{ color: 'white' }} />
+              <ListItemText
+                primary="Last Name"
+                secondary={value.lastName}
+                sx={{
+                  '.MuiListItemText-secondary': { color: 'highlight.main' },
+                  '.MuiListItemText-primary': { color: 'white' },
+                }}
+              />
             </ListItem>
-
             <Divider />
-
             <ListItem>
-              <ListItemText primary="Email Address" secondary={'Not Provided'} sx={{ color: 'white' }} />
+              <ListItemText
+                primary="Email Address"
+                secondary={value.email}
+                sx={{
+                  '.MuiListItemText-secondary': { color: 'highlight.main' },
+                  '.MuiListItemText-primary': { color: 'white' },
+                }}
+              />
             </ListItem>
-
             <Divider />
-
             <ListItem>
-              <ListItemText primary="Gender" secondary={'Not Provided'} sx={{ color: 'white' }} />
+              <ListItemText
+                primary="Gender"
+                secondary={value.gender}
+                sx={{
+                  '.MuiListItemText-secondary': { color: 'highlight.main' },
+                  '.MuiListItemText-primary': { color: 'white' },
+                }}
+              />
             </ListItem>
-
             <Divider />
-
             <ListItem>
-              <ListItemText primary="City" secondary={'Not Provided'} sx={{ color: 'white' }} />
+              <ListItemText
+                primary="City"
+                secondary={value.city}
+                sx={{
+                  '.MuiListItemText-secondary': { color: 'highlight.main' },
+                  '.MuiListItemText-primary': { color: 'white' },
+                }}
+              />
             </ListItem>
-
             <Divider />
-
             <ListItem>
-              <ListItemText primary="phone" secondary={'Not Provided'} sx={{ color: 'white' }} />
+              <ListItemText
+                primary="phone"
+                secondary={value.phone}
+                sx={{
+                  '.MuiListItemText-secondary': { color: 'highlight.main' },
+                  '.MuiListItemText-primary': { color: 'white' },
+                }}
+              />
             </ListItem>
           </List>
         </Grid>
       </Grid>
       {console.log(handleSubmit(onSubmit))}
-      {/* {errors?.[props.name]?.message && <p className="errMsg">{errors?.[value.firstName].message}</p>} */}
       {console.log('Confirm', value)}
       <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 3 }}>
         <Button sx={{ mr: 1, mt: 3, ml: 1, color: 'highlight.main' }} onClick={handleBack} color="secondary">
@@ -85,11 +107,7 @@ const Confirm: FC<ConfirmProp> = ({ handleNext, handleBack }) => {
         </Button>
       </Box>
     </>
-    // </Box>
-    // </form>
   );
 };
-
-//Consologuear en confirm el handleSbumit(onsUBMIT) --> Data, para ver si se guardaron los datos
 
 export default Confirm;

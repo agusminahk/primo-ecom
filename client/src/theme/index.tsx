@@ -191,6 +191,51 @@ const themeShadows = createTheme({
   ],
 });
 
+const themeComponents = createTheme({
+  components: {
+    MuiStepIcon: {
+      styleOverrides: {
+        root: {
+          '&.completed': {
+            color: themeColors.palette.highlight.main,
+          },
+          '&.active': {
+            color: themeColors.palette.highlight.main,
+          },
+        },
+        active: {
+          color: themeColors.palette.highlight.main,
+        },
+        completed: {
+          color: themeColors.palette.highlight.main,
+        },
+      },
+    },
+    MuiStepLabel: {
+      styleOverrides: {
+        label: {
+          color: 'white',
+        },
+        active: {
+          color: themeColors.palette.highlight.main,
+        },
+      },
+    },
+    MuiStepper: {
+      styleOverrides: {
+        root: {
+          '&$completed': {
+            color: themeColors.palette.highlight.main,
+          },
+          '&$active': {
+            color: themeColors.palette.highlight.main,
+          },
+        },
+      },
+    },
+  },
+});
+
 export const theme = createTheme({
   palette: {
     ...themeColors.palette,
@@ -203,5 +248,8 @@ export const theme = createTheme({
   },
   shadows: {
     ...themeShadows.shadows,
+  },
+  components: {
+    ...themeComponents.components,
   },
 });
