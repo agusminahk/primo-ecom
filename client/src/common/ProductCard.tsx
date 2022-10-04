@@ -13,6 +13,7 @@ export interface TypeRopa {
   description: string;
   image: string;
   price: number;
+  promotion: number;
 }
 
 type CardProps = {
@@ -23,29 +24,8 @@ const ProductCard: FC<CardProps> = ({ product }) => {
   const [hover, setHover] = useState<boolean>(false);
   const [hoverCartButton, setHoverCartButton] = useState<boolean>(false);
 
-  const priceAnimation = keyframes`
-	0% {
-		opacity: 1;
-		transform: translateY(0);
-	}
-
-	100% {
-		opacity: 1;
-		transform: translateY(-18px);
-	}
-  `;
-
-  const titleAnimation = keyframes`
-	0% {
-		opacity: 1;
-		transform: translateY(140px);
-	}
-
-	100% {
-		opacity: 1;
-		transform: translateY(0);
-	}
-  `;
+  const percentage: number | boolean =
+    product.promotion > 0 ? product.price - (product.price / 100) * product.promotion : false;
 
   const btnAnimation = keyframes`
   0% {
@@ -56,48 +36,58 @@ const ProductCard: FC<CardProps> = ({ product }) => {
   }
   `;
 
+  const btnAnimationReverse = keyframes`
+  0% {
+    transform: scale(0.9);
+    opacity: 100%
+  }
+  100% {
+    transform: scale(0.70);
+    opacity: 0%
+  }
+  `;
+
   const style = {
     cardStyle: {
-      boxShadow: '3',
-      width: '12rem',
+      boxShadow: '0px',
+      width: { xl: '22rem', lg: '17rem', md: '15rem', xs: '15rem' },
       position: 'relative',
-      borderRadius: '3%',
+      borderRadius: '0',
+      transition: 'all 0.2s ease-in-out',
     },
-    boxTypoStyle: {
-      top: '170.5px',
-      backgroundColor: 'primaryTransparent.light',
-      backdropFilter: 'blur(50px)',
-      display: 'flex',
-      width: '100%',
-      justifyContent: 'center',
-      position: 'absolute',
-      borderTopLeftRadius: '10px 10px',
-      borderTopRightRadius: '10px 10px',
-      animation: `${titleAnimation} 0.15s both`,
-    },
+
     typoStyle: {
-      px: '7px',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
     },
-    dividerStyle: {
-      my: 1,
+    titleBoxStyle: {
+      backgroundColor: 'neutral.main',
+      display: 'flex',
+      alignItems: 'center',
+      position: 'absolute',
+      width: 'auto',
+      maxWidth: '80%',
+      pl: '4%',
+      pr: '2%',
+      top: '5%',
+      left: '0%',
     },
     cardMediaStyle: {
-      width: '12rem',
-      height: '12rem',
+      width: '100%',
+      height: '100%',
     },
     cardActionStyle: {
+      boxShadow: '0px',
       display: 'flex',
       justifyContent: 'center',
       flexDirection: 'column',
       position: 'absolute',
-      top: '10px',
-      left: '155px',
+      top: '4%',
+      left: { xl: '87%', lg: '83%', md: '80%', xs: '80%' },
     },
     iconStyle: {
-      animation: `${btnAnimation} 0.25s both`,
+      animation: hover ? `${btnAnimation} 0.25s both` : `${btnAnimationReverse} 0.25s both`,
       backgroundColor: 'neutral.main',
       color: 'primary.main',
       my: '2px',
@@ -105,23 +95,62 @@ const ProductCard: FC<CardProps> = ({ product }) => {
     },
     priceBoxStyle: {
       backgroundColor: 'neutral.main',
-      borderRadius: '25px',
       display: 'flex',
       alignItems: 'center',
       position: 'absolute',
       width: 'auto',
-      top: '160px',
-      animation: hover && `${priceAnimation} 0.3s both`,
-      left: '5px',
+      top: { xl: '91%', lg: '89%', md: '88%', xs: '88%' },
+      left: '0%',
+      pl: '5%',
+    },
+    promotionBox: {
+      backgroundColor: 'highlight.main',
+      display: 'flex',
+      alignItems: 'center',
+      position: 'absolute',
+      px: '2%',
+      width: 'auto',
+      top: { xl: '85%', lg: '82%', md: '80%', xs: '79%' },
+      left: '5%',
+      borderRadius: '20px',
     },
     moneyIconStyle: {
       my: '2px',
-      color: 'highlight.main',
+      color: 'primary.main',
     },
     priceTypoStyle: {
       color: 'primary.main',
       mr: '8px',
       userSelect: 'none',
+      fontWeight: '700',
+    },
+    TypoStylePromo: {
+      color: 'primary.main',
+      userSelect: 'none',
+      fontWeight: '700',
+    },
+    moneyIconStylePromo: {
+      my: '2px',
+      color: 'highlight.main',
+    },
+    priceTypoStylePromo: {
+      color: 'highlight.main',
+      mr: '8px',
+      userSelect: 'none',
+      fontWeight: '700',
+    },
+    moneyIconStyleDeactivated: {
+      my: '2px',
+      color: 'primary.main',
+      opacity: '45%',
+    },
+    priceTypoStyleDeactivated: {
+      color: 'primary.main',
+      mr: '8px',
+      textDecoration: 'line-through 2px',
+      userSelect: 'none',
+      opacity: '45%',
+      fontWeight: '700',
     },
   };
 
@@ -137,13 +166,59 @@ const ProductCard: FC<CardProps> = ({ product }) => {
       <CardActionArea>
         <CardMedia component="img" sx={style.cardMediaStyle} image={product.image} alt={product.name} />
       </CardActionArea>
-      <Box sx={style.priceBoxStyle}>
-        <AttachMoneyIcon fontSize={'inherit'} sx={style.moneyIconStyle} />
-        <Typography variant="h6" sx={style.priceTypoStyle}>
-          {product.price}
+
+      <Box sx={style.titleBoxStyle}>
+        <Typography variant="h6" sx={style.typoStyle}>
+          {product.name}
         </Typography>
       </Box>
-      {hover && (
+
+      {percentage ? (
+        <>
+          <Box sx={style.promotionBox}>
+            <Typography variant="h6" sx={style.TypoStylePromo}>
+              {product.promotion}% OFF
+            </Typography>
+          </Box>
+          <Box sx={style.priceBoxStyle}>
+            <AttachMoneyIcon fontSize={'inherit'} sx={style.moneyIconStyle} />
+            <Typography variant="h6" sx={style.priceTypoStylePromo}>
+              {percentage}
+            </Typography>
+            <Box sx={{ display: 'flex' }}>
+              <AttachMoneyIcon fontSize={'inherit'} sx={style.moneyIconStyleDeactivated} />
+              <Typography variant="h6" sx={style.priceTypoStyleDeactivated}>
+                {product.price}
+              </Typography>
+            </Box>
+          </Box>
+        </>
+      ) : (
+        <Box sx={style.priceBoxStyle}>
+          <AttachMoneyIcon fontSize={'inherit'} sx={style.moneyIconStyle} />
+          <Typography variant="h6" sx={style.priceTypoStyle}>
+            {product.price}
+          </Typography>
+        </Box>
+      )}
+
+      <Box sx={style.cardActionStyle}>
+        <IconButton size="small" sx={style.iconStyle}>
+          <FavoriteBorderIcon fontSize="small" />
+        </IconButton>
+        <IconButton
+          size="small"
+          sx={style.iconStyle}
+          onMouseEnter={e => {
+            setHoverCartButton(true);
+          }}
+          onMouseLeave={e => {
+            setHoverCartButton(false);
+          }}>
+          {!hoverCartButton ? <LocalMallIcon fontSize="small" /> : <PlusOneIcon fontSize="small" />}
+        </IconButton>
+      </Box>
+      {/* {hover && (
         <>
           <Box sx={style.cardActionStyle}>
             <IconButton size="small" sx={style.iconStyle}>
@@ -161,14 +236,8 @@ const ProductCard: FC<CardProps> = ({ product }) => {
               {!hoverCartButton ? <LocalMallIcon fontSize="small" /> : <PlusOneIcon fontSize="small" />}
             </IconButton>
           </Box>
-
-          <Box sx={style.boxTypoStyle}>
-            <Typography variant="subtitle2" sx={style.typoStyle}>
-              {product.name}
-            </Typography>
-          </Box>
         </>
-      )}
+      )} */}
     </Card>
   );
 };
