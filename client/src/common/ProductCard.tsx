@@ -137,7 +137,7 @@ const ProductCard: FC<CardProps> = ({ product }) => {
       color: 'highlight.main',
       mr: '8px',
       userSelect: 'none',
-      fontWeight: '700',
+      fontWeight: '701',
     },
     moneyIconStyleDeactivated: {
       my: '2px',
