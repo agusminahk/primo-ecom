@@ -4,7 +4,6 @@ import { TextField, Box, Button } from '@mui/material';
 import Cookies from 'js-cookie';
 
 const form = () => {
-  const { NEXT_PUBLIC_BASE_URL: BASE_URL = '' } = process.env;
   const [form, setForm] = React.useState({ email: '', password: '' });
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -18,12 +17,16 @@ const form = () => {
     withCredentials: true,
   };
   const onSubmit = () => {
-    axios.post(`${BASE_URL}/auth/local`, form, config).then(({ data }) => console.log('LOGIN', data));
+    axios
+      .post(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/local`, form, config)
+      .then(({ data }) => console.log('LOGIN', data));
   };
 
   React.useEffect(() => {
     Cookies.get('primo')
-      ? axios.get(`${BASE_URL}/auth/local/me`, { withCredentials: true }).then(({ data }) => console.log('ME', data))
+      ? axios
+          .get(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/local/me`, { withCredentials: true })
+          .then(({ data }) => console.log('ME', data))
       : console.log('cookie not found');
   }, []);
 
@@ -36,7 +39,7 @@ const form = () => {
       </Button>
       <Button
         onClick={() => {
-          axios.get(`${BASE_URL}/auth/local/logout`, { withCredentials: true });
+          axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/local/logout`, { withCredentials: true });
         }}>
         logout
       </Button>
