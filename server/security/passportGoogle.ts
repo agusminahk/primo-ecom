@@ -1,3 +1,4 @@
+// @ts-ignore
 import GoogleStrategy from 'passport-google-oauth20';
 import passport from 'passport';
 
@@ -9,7 +10,7 @@ passport.use(
       callbackURL: '/api/auth/google/callback',
       scope: ['profile', 'email'],
     },
-    function (accessToken, refreshToken, profile, callback) {
+    function (accessToken: string, refreshToken: string, profile: any, callback: any) {
       callback(null, profile);
     },
   ),
