@@ -16,7 +16,6 @@ export class UserServices {
     static async getOne(id: string): Promise<Service> {
         try {
             const user = await User.findById(id, { password: 0, __v: 0, updatedAt: 0 }).lean();
-
             return { status: 200, data: user, error: false };
         } catch (error) {
             return { status: 500, data: error, error: true };
@@ -25,8 +24,7 @@ export class UserServices {
 
     static async createOne(user: UserClass): Promise<Service> {
         try {
-            const newUser = await (await User.create(user)).save();
-
+            const newUser = await User.create(user)
             return { status: 201, data: newUser, error: false };
         } catch (error) {
             return { status: 500, data: error, error: true };
