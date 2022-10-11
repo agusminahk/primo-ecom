@@ -212,13 +212,15 @@ const themeComponents = createTheme({
     MuiCssBaseline: {
       styleOverrides: themeParam => ({
         body: {
+          '& ::selection': {
+            background: themeColors.palette.highlight.main,
+            color: themeColors.palette.neutral.main,
+          },
           '&::-webkit-scrollbar': {
             width: '5px',
-            // height: '100px',
           },
           '&::-webkit-scrollbar-track': {
             background: themeColors.palette.primary.main,
-            // width: '12px',
           },
           '&::-webkit-scrollbar-thumb': {
             background: themeColors.palette.highlight.main,
