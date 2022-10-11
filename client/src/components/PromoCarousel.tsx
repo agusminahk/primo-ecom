@@ -1,9 +1,8 @@
 import { Box, Typography, IconButton } from '@mui/material';
 import Carousel from 'react-multi-carousel';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { CustomButtonGroupAsArrows, CustomDot, LeftArrow, RightArrow } from './CustomCarousel';
+import { CustomButtonGroupAsArrows, CustomDot } from './CustomCarousel';
 import React, { FC, useState } from 'react';
+import falseRequest from '../static/promoExample.json';
 
 import PromoCard from '../common/PromoCard';
 
@@ -28,9 +27,12 @@ const responsive = {
 
 const styles = {
   firstBoxStyle: {
-    zIndex: '-20',
+    zIndex: '-50',
+    mt: '-5%',
     mx: '0vw',
-    height: '100%',
+    height: '0px',
+    position: 'relative',
+    display: 'block',
   },
 };
 
@@ -52,10 +54,9 @@ const PromoCarousel: FC = () => {
         renderButtonGroupOutside
         customDot={<CustomDot />}
         customButtonGroup={<CustomButtonGroupAsArrows />}>
-        <PromoCard />
-        <PromoCard />
-        <PromoCard />
-        <PromoCard />
+        {falseRequest.images.map((image, i) => {
+          return <PromoCard image={image} />;
+        })}
       </Carousel>
     </Box>
   );
