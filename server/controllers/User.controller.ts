@@ -1,4 +1,4 @@
-import { UserServices } from '../services/User.services';
+import { UserServices } from '../services/User.service';
 import { ExpressMiddleware } from '../shared/types/ExpressMiddleware';
 
 export class UserController {
