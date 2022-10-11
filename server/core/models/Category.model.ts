@@ -1,11 +1,9 @@
-import { prop, modelOptions, Ref, mongoose } from '@typegoose/typegoose';
-import { SubCategory } from './SubCategory.model';
+import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
 
 @modelOptions({ schemaOptions: { collection: 'category' } })
 export class Category {
   @prop({ type: () => String, required: true, unique: true })
   public categoryName!: string;
-
-  @prop({ type: () => Array, ref: SubCategory })
-  public subCategories?: Ref<SubCategory>[];
 }
+
+export default getModelForClass(Category);

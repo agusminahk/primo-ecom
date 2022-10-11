@@ -5,39 +5,23 @@ import { User } from './User.model';
 
 type Sizes = 'XL' | 'L' | 'M' | 'S' | 'XS' | number;
 
-class Composition {
-  @prop({ type: () => String })
-  cotton?: string;
-
-  @prop({ type: () => String })
-  polyester?: string;
-
-  @prop({ type: () => String })
-  elastane?: string;
-}
-
-class Details {
-  @prop({ type: () => Composition, default: undefined })
-  composition!: Composition;
-}
-
 class Image {
   @prop({ type: () => String, required: true })
-  public url: string;
+  public url!: string;
 
   @prop({ type: () => String, required: true })
-  public color: string;
+  public color!: string;
 }
 
 class Review {
   @prop({ ref: () => User, required: true })
   public user!: Ref<User>;
 
-  @prop({ type: () => String })
+  @prop({ type: () => String, required: true })
   public content!: string;
 
-  @prop({ type: () => Number, required: true })
-  public ranking!: number;
+  @prop({ type: () => Number })
+  public ranking?: number;
 }
 
 @modelOptions({ schemaOptions: { collection: 'product', timestamps: true } })
@@ -54,17 +38,11 @@ export class Product {
   @prop({ type: () => String })
   public description?: string;
 
-  @prop({ type: [String || Number], required: true })
+  @prop({ required: true })
   public sizes!: Sizes[];
 
   @prop({ type: () => [Image], default: [] })
   public images?: Image[];
-
-  @prop({ type: () => Number, default: 0 })
-  public promotion?: number;
-
-  @prop({ type: () => Details })
-  public details?: Details;
 
   @prop({ type: () => Number, default: 0 })
   public ranking?: number;
