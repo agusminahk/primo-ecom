@@ -1,15 +1,14 @@
-import { Box } from '@mui/material';
+// import { Box } from '@mui/material';
 import React from 'react';
-import MainProductCard from '../../common/MainProductCard';
+import GridProducts from '../../components/GridProducts';
 import Layout from '../../components/Layout';
+// import MainProductCard from '../../components/MainProductCard';
 
 const index = () => {
   return (
-    <>
-      {/* <Layout> */}
-      <MainProductCard />
-      {/* </Layout> */}
-    </>
+    <Layout>
+      <GridProducts />
+    </Layout>
   );
 };
 
