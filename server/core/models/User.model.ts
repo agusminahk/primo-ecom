@@ -1,40 +1,56 @@
-import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
+import {
+  prop,
+  getModelForClass,
+  modelOptions,
+  pre,
+  post,
+  DocumentType,
+} from '@typegoose/typegoose';
+import bcrypt from 'bcrypt';
 
-@modelOptions({ schemaOptions: { collection: 'user', timestamps: true } })
-class Address {
+export class Address {
   @prop({ type: () => String })
-  street: string;
+  public street?: string;
 
   @prop({ type: () => String })
-  city: string;
+  public city?: string;
 
   @prop({ type: () => String })
-  postCode: string;
+  public postCode?: string;
 }
 
+@pre<User>('save', async function (next) {
+  this.password = await bcrypt.hash(this.password, 12);
+  return next();
+})
+@modelOptions({ schemaOptions: { collection: 'user', timestamps: true } })
 export class User {
+  public async matchPassword(this: DocumentType<User>, password: string) {
+    return await bcrypt.compare(password, this.password);
+  }
+
   @prop({ type: () => String, required: true, unique: true })
-  public email: string;
+  public email!: string;
 
   @prop({ type: () => String, required: true })
-  public firstName: string;
+  public firstName!: string;
 
   @prop({ type: () => String, required: true })
-  public lastName: string;
+  public lastName!: string;
 
   @prop({ type: () => String, required: true })
-  public password: string;
+  public password!: string;
 
   @prop({ type: () => String, required: true })
-  public country: string;
+  public country!: string;
 
   @prop({ type: () => Boolean, default: false })
-  public isAdmin: boolean;
+  public isAdmin?: boolean;
 
-  @prop({ type: String })
+  @prop({ type: () => String, default: null })
   public phone?: string;
 
-  @prop({ type: () => Address })
+  @prop({ type: () => Address, default: null })
   public address?: Address;
 }
 

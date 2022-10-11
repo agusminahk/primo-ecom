@@ -4,22 +4,17 @@ import { User } from './User.model';
 
 @modelOptions({ schemaOptions: { collection: 'cart' } })
 export class Cart {
-  @prop({ type: () => Array, required: true })
+  @prop({ ref: () => Product, required: true })
   public products: Ref<Product>[];
 
-  @prop({ type: () => User, required: true })
+  @prop({ ref: () => User, required: true })
   public user: Ref<User>;
 
-  @prop({ type: () => Date, default: new Date() })
-  public date: Date;
+  @prop({ type: () => String, default: new Date() })
+  public date?: string;
 
   @prop({ type: () => Boolean, default: false })
-  public status: boolean;
+  public status?: boolean;
 }
 
 export default getModelForClass(Cart);
-
-// products - [{...Product, count: 1}]
-// userId - ObjectId
-// date - DATE
-// status - BOOLEAN

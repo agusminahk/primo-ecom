@@ -1,7 +1,22 @@
-import { Request, Response } from 'express';
+import { ExpressMiddleware } from '../shared/types/ExpressMiddleware';
+import passport from '../security/passportLocal';
 
 export class AuthController {
-  static async success(req: Request, res: Response) {
+  static localSignIn: ExpressMiddleware = async (req, res, next) => {
+    return passport.authenticate('local', (err, user, info) => {
+      if (!user)
+        return res.status(401).json({
+          message: 'Unauthorized',
+        });
+
+      req.logIn(user, err => {
+        if (err) throw new Error(err);
+        res.status(200).json({ user });
+      });
+    })(req, res, next);
+  };
+
+  static successGoogle: ExpressMiddleware = async (req, res) => {
     if (req.user) {
       return res.status(200).json({
         error: false,
@@ -10,9 +25,9 @@ export class AuthController {
     } else {
       return res.status(403).json({ error: true, data: 'Not Authorized' });
     }
-  }
+  };
 
-  static async failed(req: Request, res: Response) {
+  static failed: ExpressMiddleware = async (req, res) => {
     return res
       .status(401)
       .json({
@@ -20,9 +35,17 @@ export class AuthController {
         data: 'Log in failure',
       })
       .end();
-  }
+  };
 
-  static async logout(req: Request, res: Response) {
-    return req.logout({ keepSessionInfo: false }, () => res.redirect(process.env.GCLIENT_URL || ''));
-  }
+  static logout: ExpressMiddleware = async (req, res, next) => {
+    req.logout(() => null);
+    req.session.destroy(() => {
+      res
+        .status(200)
+        .clearCookie('primo', {
+          path: '/',
+        })
+        .json({ user: null });
+    });
+  };
 }
