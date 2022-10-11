@@ -1,0 +1,424 @@
+{
+  "clothes": [
+    {
+      "_id": "633e0ab8c604b13823cfcea6",
+      "name": "SWEATSHIRT",
+      "price": 120,
+      "colors": ["blue", "grey"],
+      "description": "Because sometimes you need a reliable, no-frills sweatshirt. We kept it simple with cozy fleece, a versatile fit and a classic logo across the chest.",
+      "sizes": ["M", "XL", "S"],
+      "image": [
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202206/28/00156120333655____1__210x260.jpg",
+          "color": "blue"
+        },
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202206/28/00156120333689____1__210x260.jpg",
+          "color": "grey"
+        },
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202206/28/00156120333663____1__210x260.jpg",
+          "color": "pink"
+        }
+      ],
+      "promotion": 30,
+      "details": {
+        "material": "TO DO | undefined",
+        "charasteristic": "TO DO | undefined",
+        "composition": [{ "cotton": "10%" }, { "polyester": "60%" }, { "elastane": "30%" }],
+        "care": [{ "wash": "Maximum 30º wash" }, { "bleach": "Do not use bleach" }, { "iron": "Iron at max. 110º" }]
+      },
+      "ranking": 0,
+      "reviews": [
+        { "user": { "firstName": "fran" }, "content": "No me gusto un pingo, le falta calidad", "ranking": 1 },
+        { "user": { "firstName": "agus" }, "content": "Se rompio y lo tuve que arreglar", "ranking": 3 },
+        { "user": { "firstName": "nico" }, "content": "Me encanta, esta buenisimo el diseño", "ranking": 4 }
+      ],
+      "category": { "categoryName": "Sweater" },
+      "subCategory": [{ "subCategoryName": "Adidas" }, { "subCategoryName": "Invierno" }]
+    },
+    {
+      "_id": "782e0ab8c604b13823cfas2G",
+      "name": "HOODIE LACOSTE",
+      "price": 240,
+      "colors": ["blue", "grey"],
+      "description": "Because sometimes you need a reliable, no-frills sweatshirt. We kept it simple with cozy fleece, a versatile fit and a classic logo across the chest.",
+      "sizes": ["M", "L", "XS"],
+      "image": [
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202207/29/00183611627338____1__210x260.jpg",
+          "color": "maroon"
+        },
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202207/29/00183611627312____1__210x260.jpg",
+          "color": "grey"
+        },
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202207/29/00183611627296____1__210x260.jpg",
+          "color": "turquoise"
+        }
+      ],
+      "promotion": 0,
+      "details": {
+        "material": "TO DO | undefined",
+        "charasteristic": "TO DO | undefined",
+        "composition": [{ "cotton": "60%" }, { "polyester": "25%" }, { "elastane": "15%" }],
+        "care": [{ "wash": "Maximum 30º wash" }, { "bleach": "Do not use bleach" }, { "iron": "Iron at max. 110º" }]
+      },
+      "ranking": 0,
+      "reviews": [
+        { "user": { "firstName": "fran" }, "content": "No me gusto un pingo, le falta calidad", "ranking": 1 },
+        { "user": { "firstName": "agus" }, "content": "Se rompio y lo tuve que arreglar", "ranking": 3 },
+        { "user": { "firstName": "nico" }, "content": "Me encanta, esta buenisimo el diseño", "ranking": 4 }
+      ],
+      "category": { "categoryName": "Sweater" },
+      "subCategory": [{ "subCategoryName": "Adidas" }, { "subCategoryName": "Invierno" }]
+    },
+    {
+      "_id": "912e9xb8c604b13123czac2j",
+      "name": "POLO DENIM",
+      "price": 190,
+      "colors": ["multicolor"],
+      "description": "Men's zip-up sports jacket",
+      "sizes": ["M"],
+      "image": [
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202206/20/00129160291083____1__210x260.jpg",
+          "color": "multicolor"
+        }
+      ],
+      "promotion": 0,
+      "details": {
+        "material": "TO DO | undefined",
+        "charasteristic": "TO DO | undefined",
+        "composition": [{ "cotton": "100%" }],
+        "care": [{ "wash": "Maximum 30º wash" }, { "bleach": "Do not use bleach" }, { "iron": "Do not iron" }]
+      },
+      "ranking": 0,
+      "reviews": [
+        { "user": { "firstName": "fran" }, "content": "No me gusto un pingo, le falta calidad", "ranking": 1 },
+        { "user": { "firstName": "agus" }, "content": "Se rompio y lo tuve que arreglar", "ranking": 3 },
+        { "user": { "firstName": "nico" }, "content": "Me encanta, esta buenisimo el diseño", "ranking": 4 }
+      ],
+      "category": { "categoryName": "Sweater" },
+      "subCategory": [{ "subCategoryName": "Adidas" }, { "subCategoryName": "Invierno" }]
+    },
+    {
+      "_id": "601e9zb8c602b131y6czyc8j",
+      "name": "LACOSTE",
+      "price": 305,
+      "colors": ["multicolor", "white", "green"],
+      "description": "Men's classic fit sweatshirt",
+      "sizes": ["M", "S", "XL"],
+      "image": [
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202207/29/00183611627171____1__210x260.jpg",
+          "color": "multicolor"
+        },
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202207/29/00183611627189____1__210x260.jpg",
+          "color": "white"
+        },
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202207/29/00183611627197____1__210x260.jpg",
+          "color": "green"
+        }
+      ],
+      "promotion": 15,
+      "details": {
+        "material": "TO DO | undefined",
+        "charasteristic": "TO DO | undefined",
+        "composition": [{ "cotton": "27%" }, { "polyester": "63%" }, { "elastane": "10%" }],
+        "care": [{ "wash": "Maximum 30º wash" }, { "bleach": "Do not use bleach" }, { "iron": "Iron at max. 110º" }]
+      },
+      "ranking": 0,
+      "reviews": [
+        { "user": { "firstName": "fran" }, "content": "No me gusto un pingo, le falta calidad", "ranking": 1 },
+        { "user": { "firstName": "agus" }, "content": "Se rompio y lo tuve que arreglar", "ranking": 3 },
+        { "user": { "firstName": "nico" }, "content": "Me encanta, esta buenisimo el diseño", "ranking": 4 }
+      ],
+      "category": { "categoryName": "Sweater" },
+      "subCategory": [{ "subCategoryName": "Adidas" }, { "subCategoryName": "Invierno" }]
+    },
+    {
+      "_id": "633e0ab8c604b13823cfcea6",
+      "name": "SWEATSHIRT",
+      "price": 120,
+      "colors": ["blue", "grey"],
+      "description": "Because sometimes you need a reliable, no-frills sweatshirt. We kept it simple with cozy fleece, a versatile fit and a classic logo across the chest.",
+      "sizes": ["M", "XL", "S"],
+      "image": [
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202206/28/00156120333655____1__210x260.jpg",
+          "color": "blue"
+        },
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202206/28/00156120333689____1__210x260.jpg",
+          "color": "grey"
+        },
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202206/28/00156120333663____1__210x260.jpg",
+          "color": "pink"
+        }
+      ],
+      "promotion": 30,
+      "details": {
+        "material": "TO DO | undefined",
+        "charasteristic": "TO DO | undefined",
+        "composition": [{ "cotton": "10%" }, { "polyester": "60%" }, { "elastane": "30%" }],
+        "care": [{ "wash": "Maximum 30º wash" }, { "bleach": "Do not use bleach" }, { "iron": "Iron at max. 110º" }]
+      },
+      "ranking": 0,
+      "reviews": [
+        { "user": { "firstName": "fran" }, "content": "No me gusto un pingo, le falta calidad", "ranking": 1 },
+        { "user": { "firstName": "agus" }, "content": "Se rompio y lo tuve que arreglar", "ranking": 3 },
+        { "user": { "firstName": "nico" }, "content": "Me encanta, esta buenisimo el diseño", "ranking": 4 }
+      ],
+      "category": { "categoryName": "Sweater" },
+      "subCategory": [{ "subCategoryName": "Adidas" }, { "subCategoryName": "Invierno" }]
+    },
+    {
+      "_id": "782e0ab8c604b13823cfas2G",
+      "name": "HOODIE LACOSTE",
+      "price": 240,
+      "colors": ["blue", "grey"],
+      "description": "Because sometimes you need a reliable, no-frills sweatshirt. We kept it simple with cozy fleece, a versatile fit and a classic logo across the chest.",
+      "sizes": ["M", "L", "XS"],
+      "image": [
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202207/29/00183611627338____1__210x260.jpg",
+          "color": "maroon"
+        },
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202207/29/00183611627312____1__210x260.jpg",
+          "color": "grey"
+        },
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202207/29/00183611627296____1__210x260.jpg",
+          "color": "turquoise"
+        }
+      ],
+      "promotion": 0,
+      "details": {
+        "material": "TO DO | undefined",
+        "charasteristic": "TO DO | undefined",
+        "composition": [{ "cotton": "60%" }, { "polyester": "25%" }, { "elastane": "15%" }],
+        "care": [{ "wash": "Maximum 30º wash" }, { "bleach": "Do not use bleach" }, { "iron": "Iron at max. 110º" }]
+      },
+      "ranking": 0,
+      "reviews": [
+        { "user": { "firstName": "fran" }, "content": "No me gusto un pingo, le falta calidad", "ranking": 1 },
+        { "user": { "firstName": "agus" }, "content": "Se rompio y lo tuve que arreglar", "ranking": 3 },
+        { "user": { "firstName": "nico" }, "content": "Me encanta, esta buenisimo el diseño", "ranking": 4 }
+      ],
+      "category": { "categoryName": "Sweater" },
+      "subCategory": [{ "subCategoryName": "Adidas" }, { "subCategoryName": "Invierno" }]
+    },
+    {
+      "_id": "912e9xb8c604b13123czac2j",
+      "name": "POLO DENIM",
+      "price": 190,
+      "colors": ["multicolor"],
+      "description": "Men's zip-up sports jacket",
+      "sizes": ["M"],
+      "image": [
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202206/20/00129160291083____1__210x260.jpg",
+          "color": "multicolor"
+        }
+      ],
+      "promotion": 0,
+      "details": {
+        "material": "TO DO | undefined",
+        "charasteristic": "TO DO | undefined",
+        "composition": [{ "cotton": "100%" }],
+        "care": [{ "wash": "Maximum 30º wash" }, { "bleach": "Do not use bleach" }, { "iron": "Do not iron" }]
+      },
+      "ranking": 0,
+      "reviews": [
+        { "user": { "firstName": "fran" }, "content": "No me gusto un pingo, le falta calidad", "ranking": 1 },
+        { "user": { "firstName": "agus" }, "content": "Se rompio y lo tuve que arreglar", "ranking": 3 },
+        { "user": { "firstName": "nico" }, "content": "Me encanta, esta buenisimo el diseño", "ranking": 4 }
+      ],
+      "category": { "categoryName": "Sweater" },
+      "subCategory": [{ "subCategoryName": "Adidas" }, { "subCategoryName": "Invierno" }]
+    },
+    {
+      "_id": "601e9zb8c602b131y6czyc8j",
+      "name": "LACOSTE",
+      "price": 305,
+      "colors": ["multicolor", "white", "green"],
+      "description": "Men's classic fit sweatshirt",
+      "sizes": ["M", "S", "XL"],
+      "image": [
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202207/29/00183611627171____1__210x260.jpg",
+          "color": "multicolor"
+        },
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202207/29/00183611627189____1__210x260.jpg",
+          "color": "white"
+        },
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202207/29/00183611627197____1__210x260.jpg",
+          "color": "green"
+        }
+      ],
+      "promotion": 15,
+      "details": {
+        "material": "TO DO | undefined",
+        "charasteristic": "TO DO | undefined",
+        "composition": [{ "cotton": "27%" }, { "polyester": "63%" }, { "elastane": "10%" }],
+        "care": [{ "wash": "Maximum 30º wash" }, { "bleach": "Do not use bleach" }, { "iron": "Iron at max. 110º" }]
+      },
+      "ranking": 0,
+      "reviews": [
+        { "user": { "firstName": "fran" }, "content": "No me gusto un pingo, le falta calidad", "ranking": 1 },
+        { "user": { "firstName": "agus" }, "content": "Se rompio y lo tuve que arreglar", "ranking": 3 },
+        { "user": { "firstName": "nico" }, "content": "Me encanta, esta buenisimo el diseño", "ranking": 4 }
+      ],
+      "category": { "categoryName": "Sweater" },
+      "subCategory": [{ "subCategoryName": "Adidas" }, { "subCategoryName": "Invierno" }]
+    },
+    {
+      "_id": "633e0ab8c604b13823cfcea6",
+      "name": "SWEATSHIRT",
+      "price": 120,
+      "colors": ["blue", "grey"],
+      "description": "Because sometimes you need a reliable, no-frills sweatshirt. We kept it simple with cozy fleece, a versatile fit and a classic logo across the chest.",
+      "sizes": ["M", "XL", "S"],
+      "image": [
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202206/28/00156120333655____1__210x260.jpg",
+          "color": "blue"
+        },
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202206/28/00156120333689____1__210x260.jpg",
+          "color": "grey"
+        },
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202206/28/00156120333663____1__210x260.jpg",
+          "color": "pink"
+        }
+      ],
+      "promotion": 30,
+      "details": {
+        "material": "TO DO | undefined",
+        "charasteristic": "TO DO | undefined",
+        "composition": [{ "cotton": "10%" }, { "polyester": "60%" }, { "elastane": "30%" }],
+        "care": [{ "wash": "Maximum 30º wash" }, { "bleach": "Do not use bleach" }, { "iron": "Iron at max. 110º" }]
+      },
+      "ranking": 0,
+      "reviews": [
+        { "user": { "firstName": "fran" }, "content": "No me gusto un pingo, le falta calidad", "ranking": 1 },
+        { "user": { "firstName": "agus" }, "content": "Se rompio y lo tuve que arreglar", "ranking": 3 },
+        { "user": { "firstName": "nico" }, "content": "Me encanta, esta buenisimo el diseño", "ranking": 4 }
+      ],
+      "category": { "categoryName": "Sweater" },
+      "subCategory": [{ "subCategoryName": "Adidas" }, { "subCategoryName": "Invierno" }]
+    },
+    {
+      "_id": "782e0ab8c604b13823cfas2G",
+      "name": "HOODIE LACOSTE",
+      "price": 240,
+      "colors": ["blue", "grey"],
+      "description": "Because sometimes you need a reliable, no-frills sweatshirt. We kept it simple with cozy fleece, a versatile fit and a classic logo across the chest.",
+      "sizes": ["M", "L", "XS"],
+      "image": [
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202207/29/00183611627338____1__210x260.jpg",
+          "color": "maroon"
+        },
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202207/29/00183611627312____1__210x260.jpg",
+          "color": "grey"
+        },
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202207/29/00183611627296____1__210x260.jpg",
+          "color": "turquoise"
+        }
+      ],
+      "promotion": 0,
+      "details": {
+        "material": "TO DO | undefined",
+        "charasteristic": "TO DO | undefined",
+        "composition": [{ "cotton": "60%" }, { "polyester": "25%" }, { "elastane": "15%" }],
+        "care": [{ "wash": "Maximum 30º wash" }, { "bleach": "Do not use bleach" }, { "iron": "Iron at max. 110º" }]
+      },
+      "ranking": 0,
+      "reviews": [
+        { "user": { "firstName": "fran" }, "content": "No me gusto un pingo, le falta calidad", "ranking": 1 },
+        { "user": { "firstName": "agus" }, "content": "Se rompio y lo tuve que arreglar", "ranking": 3 },
+        { "user": { "firstName": "nico" }, "content": "Me encanta, esta buenisimo el diseño", "ranking": 4 }
+      ],
+      "category": { "categoryName": "Sweater" },
+      "subCategory": [{ "subCategoryName": "Adidas" }, { "subCategoryName": "Invierno" }]
+    },
+    {
+      "_id": "912e9xb8c604b13123vb7c2j",
+      "name": "POLO DENIM",
+      "price": 190,
+      "colors": ["multicolor"],
+      "description": "Men's zip-up sports jacket",
+      "sizes": ["M"],
+      "image": [
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202206/20/00129160291083____1__210x260.jpg",
+          "color": "multicolor"
+        }
+      ],
+      "promotion": 0,
+      "details": {
+        "material": "TO DO | undefined",
+        "charasteristic": "TO DO | undefined",
+        "composition": [{ "cotton": "100%" }],
+        "care": [{ "wash": "Maximum 30º wash" }, { "bleach": "Do not use bleach" }, { "iron": "Do not iron" }]
+      },
+      "ranking": 0,
+      "reviews": [
+        { "user": { "firstName": "fran" }, "content": "No me gusto un pingo, le falta calidad", "ranking": 1 },
+        { "user": { "firstName": "agus" }, "content": "Se rompio y lo tuve que arreglar", "ranking": 3 },
+        { "user": { "firstName": "nico" }, "content": "Me encanta, esta buenisimo el diseño", "ranking": 4 }
+      ],
+      "category": { "categoryName": "Sweater" },
+      "subCategory": [{ "subCategoryName": "Adidas" }, { "subCategoryName": "Invierno" }]
+    },
+    {
+      "_id": "601e9zb8c602b131y6czzx5j",
+      "name": "LACOSTE",
+      "price": 305,
+      "colors": ["multicolor", "white", "green"],
+      "description": "Men's classic fit sweatshirt",
+      "sizes": ["M", "S", "XL"],
+      "image": [
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202207/29/00183611627171____1__210x260.jpg",
+          "color": "multicolor"
+        },
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202207/29/00183611627189____1__210x260.jpg",
+          "color": "white"
+        },
+        {
+          "url": "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202207/29/00183611627197____1__210x260.jpg",
+          "color": "green"
+        }
+      ],
+      "promotion": 15,
+      "details": {
+        "material": "TO DO | undefined",
+        "charasteristic": "TO DO | undefined",
+        "composition": [{ "cotton": "27%" }, { "polyester": "63%" }, { "elastane": "10%" }],
+        "care": [{ "wash": "Maximum 30º wash" }, { "bleach": "Do not use bleach" }, { "iron": "Iron at max. 110º" }]
+      },
+      "ranking": 0,
+      "reviews": [
+        { "user": { "firstName": "fran" }, "content": "No me gusto un pingo, le falta calidad", "ranking": 1 },
+        { "user": { "firstName": "agus" }, "content": "Se rompio y lo tuve que arreglar", "ranking": 3 },
+        { "user": { "firstName": "nico" }, "content": "Me encanta, esta buenisimo el diseño", "ranking": 4 }
+      ],
+      "category": { "categoryName": "Sweater" },
+      "subCategory": [{ "subCategoryName": "Adidas" }, { "subCategoryName": "Invierno" }]
+    }
+  ]
+}
