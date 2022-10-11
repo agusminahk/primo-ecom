@@ -4,28 +4,80 @@ import LocalMallIcon from '@mui/icons-material/LocalMall';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import PlusOneIcon from '@mui/icons-material/PlusOne';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import Link from 'next/link';
+import { mouseDownCoords, clickOrDrag } from '../utils/dragAndClick';
+import { useRouter } from 'next/router';
+import React, { FC, useState, useEffect } from 'react';
 
-import React, { FC, useState } from 'react';
-
-export interface TypeRopa {
-  indice: string;
+export interface TypeClothes {
+  _id: string;
   name: string;
-  description: string;
-  image: string;
   price: number;
+  colors: string[];
+  description: string;
+  sizes: string[];
+  image: { url: string; color?: string }[];
   promotion: number;
+  details: TypeDetails;
+  ranking: number;
+  reviews: TypeReviews[];
+  category: { categoryName: string };
+  subCategory: { subCategoryName: string }[];
 }
 
+//Types Details
+type TypeDetails = {
+  material?: string;
+  charasteristic?: string;
+  composition?: TypeComposition[];
+  care?: TypeCare[];
+};
+type TypeCare = {
+  wash?: string;
+  bleach?: string;
+  iron?: string;
+};
+type TypeComposition = {
+  cotton?: string;
+  polyester?: string;
+  elastane?: string;
+};
+
+//Types Reviews
+type TypeReviews = {
+  user: TypeUser;
+  content: string;
+  ranking: number;
+};
+type TypeUser = {
+  firstName: string;
+};
+
+//Type Props
 type CardProps = {
-  product: TypeRopa;
+  product: TypeClothes;
 };
 
 const ProductCard: FC<CardProps> = ({ product }) => {
   const [hover, setHover] = useState<boolean>(false);
   const [hoverCartButton, setHoverCartButton] = useState<boolean>(false);
 
+  const [click, setClick] = useState(false);
+  useEffect(() => {
+    setClick(false);
+  }, [click]);
+  const router = useRouter();
+
+  if (click) {
+    router.push(`/product/${product._id}`);
+  }
+
   const percentage: number | boolean =
     product.promotion > 0 ? product.price - (product.price / 100) * product.promotion : false;
+
+  const [base, next] = product.image[0].url.split('____1');
+
+  const images = [...new Array(5)].map((_, i) => `${base}____${i + 1}__516x640.jpg`);
 
   const btnAnimation = keyframes`
   0% {
@@ -54,8 +106,13 @@ const ProductCard: FC<CardProps> = ({ product }) => {
       position: 'relative',
       borderRadius: '0',
       transition: 'all 0.2s ease-in-out',
+      userSelect: 'none',
+      cursor: 'pointer',
+      userDrag: 'none',
+      '&.MuiPaper-root': {
+        boxShadow: '0px 0px 0px 0px',
+      },
     },
-
     typoStyle: {
       overflow: 'hidden',
       whiteSpace: 'nowrap',
@@ -67,7 +124,9 @@ const ProductCard: FC<CardProps> = ({ product }) => {
       alignItems: 'center',
       position: 'absolute',
       width: 'auto',
-      maxWidth: '80%',
+      maxWidth: '40%',
+      height: 'auto',
+      maxHeight: '30%',
       pl: '4%',
       pr: '2%',
       top: '5%',
@@ -76,6 +135,10 @@ const ProductCard: FC<CardProps> = ({ product }) => {
     cardMediaStyle: {
       width: '100%',
       height: '100%',
+      cursor: 'pointer',
+      pointerEvents: 'none',
+      userSelect: 'none',
+      userDrag: 'none',
     },
     cardActionStyle: {
       boxShadow: '0px',
@@ -87,7 +150,7 @@ const ProductCard: FC<CardProps> = ({ product }) => {
       left: { xl: '87%', lg: '83%', md: '80%', xs: '80%' },
     },
     iconStyle: {
-      animation: hover ? `${btnAnimation} 0.25s both` : `${btnAnimationReverse} 0.25s both`,
+      animation: hover ? `${btnAnimation} 0.2s both` : `${btnAnimationReverse} 0.2s both`,
       backgroundColor: 'neutral.main',
       color: 'primary.main',
       my: '2px',
@@ -157,15 +220,15 @@ const ProductCard: FC<CardProps> = ({ product }) => {
   return (
     <Card
       sx={style.cardStyle}
+      onMouseDown={e => mouseDownCoords(e)}
+      onMouseUp={e => clickOrDrag(e, click, setClick)}
       onMouseOver={e => {
         setHover(true);
       }}
       onMouseOut={e => {
         setHover(false);
       }}>
-      <CardActionArea>
-        <CardMedia component="img" sx={style.cardMediaStyle} image={product.image} alt={product.name} />
-      </CardActionArea>
+      <CardMedia component="img" sx={style.cardMediaStyle} image={images[1]} alt={product.name} />
 
       <Box sx={style.titleBoxStyle}>
         <Typography variant="h6" sx={style.typoStyle}>
@@ -218,26 +281,6 @@ const ProductCard: FC<CardProps> = ({ product }) => {
           {!hoverCartButton ? <LocalMallIcon fontSize="small" /> : <PlusOneIcon fontSize="small" />}
         </IconButton>
       </Box>
-      {/* {hover && (
-        <>
-          <Box sx={style.cardActionStyle}>
-            <IconButton size="small" sx={style.iconStyle}>
-              <FavoriteBorderIcon fontSize="small" />
-            </IconButton>
-            <IconButton
-              size="small"
-              sx={style.iconStyle}
-              onMouseEnter={e => {
-                setHoverCartButton(true);
-              }}
-              onMouseLeave={e => {
-                setHoverCartButton(false);
-              }}>
-              {!hoverCartButton ? <LocalMallIcon fontSize="small" /> : <PlusOneIcon fontSize="small" />}
-            </IconButton>
-          </Box>
-        </>
-      )} */}
     </Card>
   );
 };
