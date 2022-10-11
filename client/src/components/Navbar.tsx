@@ -10,8 +10,8 @@ import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 import CartDrawer from './CartDrawer';
 import ButtonsFixed from './ButtonsFixed';
-import ButtonGroup from '@mui/material/ButtonGroup';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 import React, { FC, useState } from 'react';
 
 const Navbar: FC = () => {
@@ -23,22 +23,22 @@ const Navbar: FC = () => {
 
   const styles = {
     firstBoxStyle: {
-      position: 'absolute',
       width: '100%',
-      height: '7%',
       display: 'flex',
       justifyContent: 'center',
       zIndex: '10',
     },
     appBarStyle: {
       width: '50%',
-      height: '60%',
+      height: '2.8rem',
       boxShadow: '0 0 0 0',
       borderRadius: '30px',
-      mt: '0.6%',
+      m: '0.6%',
       justifyContent: 'center',
-      backgroundColor: 'rgb(236,89,144,0.54)',
-      backdropFilter: 'blur(50px)',
+      backgroundColor: 'transparent',
+      backdropFilter: 'blur(80px)',
+      border: '1px dashed',
+      borderColor: 'highlight.main',
     },
     toolbarStyle: { display: 'flex', justifyContent: 'space-between' },
     secondBoxStyle: {
@@ -63,9 +63,13 @@ const Navbar: FC = () => {
               </Button>
             </Tooltip>
 
-            <Typography variant="h5" component="div" sx={{ fontWeight: 600, fontSize: '0.8rem' }}>
+            <Typography
+              variant="h5"
+              component="div"
+              sx={{ color: 'highlight.main', fontWeight: 600, fontSize: '0.8rem' }}>
               PRIMO
             </Typography>
+
             <Box sx={styles.secondBoxStyle}>
               {/* user???
               <Typography variant="h6">Username</Typography>
@@ -95,7 +99,7 @@ const Navbar: FC = () => {
         </AppBar>
 
         <CartDrawer open={open} onClose={setOpen} />
-        {inView === false && <ButtonsFixed />}
+        <ButtonsFixed inView={inView as boolean} />
       </Box>
     </>
   );
