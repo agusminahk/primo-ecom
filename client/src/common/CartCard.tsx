@@ -16,17 +16,10 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { useInView } from 'react-intersection-observer';
 import React from 'react';
-
-export interface TypeRopa {
-  indice: string;
-  name: string;
-  description: string;
-  image: string;
-  price: number;
-}
+import { TypeClothes } from './ProductCard';
 
 type CardProps = {
-  product: TypeRopa;
+  product: TypeClothes;
 };
 
 const CartCard: React.FC<CardProps> = ({ product }) => {
@@ -80,7 +73,7 @@ const CartCard: React.FC<CardProps> = ({ product }) => {
               <CardMedia
                 component="img"
                 sx={{ width: '100px', height: '100px', borderRadius: '3%', maxHeight: 132 }}
-                image={product.image}
+                image={product.image[0].url}
                 alt="clothe"
               />
             </CardActionArea>
