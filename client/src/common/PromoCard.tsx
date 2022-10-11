@@ -5,14 +5,14 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-const PromoCard: FC = () => {
+const PromoCard = ({ image }: any) => {
   return (
-    <Card sx={{ width: '100%', height: '100%', borderRadius: 0 }}>
+    <Card sx={{ width: '100%', height: '400px', borderRadius: 0 }}>
       <CardActionArea>
         <CardMedia
-          sx={{ backgroundPosition: 'center', backgroundSize: 'cover' }}
+          sx={{ backgroundPosition: 'center', backgroundSize: 'cover', objectFit: 'fill' }}
           component="img"
-          image={'/laputa.jpg'}
+          image={image}
           alt="test"
         />
       </CardActionArea>
