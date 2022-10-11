@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Grid';
 import ProductCard from '../common/ProductCard';
-import falseRequest from '../static/clothesExample.json';
+import falseRequest from '../static/clothesNewExample.json';
 import React, { FC } from 'react';
 
 const GridProducts: FC = () => {
