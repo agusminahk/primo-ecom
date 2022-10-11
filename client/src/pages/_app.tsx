@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { store } from '../state/store';
 import { theme } from '../theme';
 import 'react-multi-carousel/lib/styles.css';
+import '../styles/cardAsDots.css';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
