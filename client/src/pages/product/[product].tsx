@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import React, { FC } from 'react';
 import { Box, Typography } from '@mui/material';
 import Layout from '../../components/Layout';
-import MainProductCard from '../../components/MainProductCard';
+import MainProductCard from '../../common/MainProductCard';
 import CarouselRecommended from '../../common/CarouselRecommended';
 const productDetail: FC = () => {
   const router = useRouter();
