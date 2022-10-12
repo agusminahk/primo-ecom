@@ -17,4 +17,23 @@ export const responsiveCarousels = {
       items: 1,
     },
   },
+
+  responsive2: {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 2570 },
+      items: 6,
+    },
+    desktop: {
+      breakpoint: { max: 2570, min: 1629 },
+      items: 5,
+    },
+    tablet: {
+      breakpoint: { max: 1629, min: 464 },
+      items: 4,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  },
 };
