@@ -1,7 +1,7 @@
 import { Drawer, Typography, Box, IconButton, AppBar, Toolbar } from '@mui/material';
 import { FC } from 'react';
 import CancelIcon from '@mui/icons-material/Cancel';
-import exampleRequest from '../static/clothesExample.json';
+import exampleRequest from '../static/clothesNewExample.json';
 import CartCard from '../common/CartCard';
 
 interface DrawerProps {
@@ -17,12 +17,12 @@ const CartDrawer: FC<DrawerProps> = ({ open, onClose }) => {
       flexWrap: 'wrap',
       alignItems: 'center',
       justifyContent: 'center',
-      width: '24%',
-      backgroundColor: 'primary.main',
+      width: { xl: '30%', lg: '45%', md: '60%', xs: '100%' },
+      backgroundColor: 'neutral.main',
       flexDirection: 'row-reverse',
       overflowY: 'scroll',
       overflowX: 'hidden',
-      height: '65%',
+      height: '100%',
       '&::-webkit-scrollbar': {
         width: '0.3rem',
       },
@@ -30,14 +30,19 @@ const CartDrawer: FC<DrawerProps> = ({ open, onClose }) => {
         backgroundColor: 'transparent',
       },
       '&::-webkit-scrollbar-thumb': {
-        backgroundColor: 'highlight.main',
+        backgroundColor: 'primary.main',
         borderRadius: 2,
       },
     },
     appBarStyle: {
-      backgroundColor: 'rgb(8,18,41,0.90)',
-      backdropFilter: 'blur(70px)',
-      width: '24%',
+      backgroundColor: 'transparent',
+      boxShadow: '0 0 0 0',
+      top: '1%',
+      right: '1%',
+      width: 'auto',
+      '& .MuiToolbar-root': {
+        justifyContent: 'flex-end',
+      },
     },
     firstBoxDrawer: {
       display: 'flex',
@@ -45,6 +50,8 @@ const CartDrawer: FC<DrawerProps> = ({ open, onClose }) => {
       alignItems: 'center',
       m: '5%',
     },
+    boxAfterItems: { p: '5%', mb: '5%', display: 'flex', justifyContent: 'center' },
+    titleStyle: { textDecoration: 'underline dotted' },
     boxAllItems: {
       mt: '5%',
       maxHeight: '100vh',
@@ -55,27 +62,27 @@ const CartDrawer: FC<DrawerProps> = ({ open, onClose }) => {
   return (
     <Drawer
       PaperProps={{ sx: styles.drawerPaperStyle }}
-      variant="persistent"
-      transitionDuration={300}
-      hideBackdrop={true}
+      transitionDuration={100}
       anchor={'right'}
       open={open}
       onClose={() => onClose(false)}>
       <AppBar position="fixed" sx={styles.appBarStyle}>
         <Toolbar>
-          <Typography variant="h5" noWrap component="div">
-            SHOPPING BAG
-          </Typography>
-          <IconButton onClick={() => onClose(false)} sx={{ color: 'neutral.main' }}>
-            <CancelIcon />
+          <IconButton size="large" onClick={() => onClose(false)}>
+            <CancelIcon color="primary" fontSize="medium" />
           </IconButton>
         </Toolbar>
       </AppBar>
       <Box sx={styles.firstBoxDrawer}></Box>
       <Box sx={styles.boxAllItems}>
-        {exampleRequest.clothes.map((e, i) => (
+        <Box sx={styles.boxAfterItems}>
+          <Typography variant="h6" color="primary" sx={styles.titleStyle} component="div">
+            This is currently your Shopping Bag
+          </Typography>
+        </Box>
+        {exampleRequest.clothes.map((product, i) => (
           <Box key={i}>
-            <CartCard product={e} />
+            <CartCard product={product} />
           </Box>
         ))}
       </Box>
