@@ -29,8 +29,8 @@ const Navbar: FC = () => {
       zIndex: '10',
     },
     appBarStyle: {
-      width: '50%',
-      height: '2.8rem',
+      width: { xl: '50%', lg: '50%', md: '70%', xs: '98%' },
+      height: { xl: '2.8rem', lg: '3rem', md: '3.2rem', xs: '3.5rem' },
       boxShadow: '0 0 0 0',
       borderRadius: '30px',
       m: '0.6%',
