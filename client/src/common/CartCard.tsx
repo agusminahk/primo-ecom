@@ -1,29 +1,11 @@
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardActionArea,
-  CardMedia,
-  IconButton,
-  Typography,
-  Box,
-  ButtonGroup,
-  keyframes,
-} from '@mui/material';
-
+import { Card, CardActions, CardContent, CardActionArea, CardMedia, Typography, Box, keyframes } from '@mui/material';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
-import { useInView } from 'react-intersection-observer';
-import React from 'react';
-import { TypeClothes } from './ProductCard';
+import React, { FC, useState } from 'react';
 
-type CardProps = {
-  product: TypeClothes;
-};
+import { CardProps } from './interfaces';
 
-const CartCard: React.FC<CardProps> = ({ product }) => {
-  const { ref, inView }: any = useInView();
+const CartCard: FC<CardProps> = ({ product }) => {
+  const [readMore, setReadMore] = useState(false);
 
   const CartCardAnimation = keyframes`
   0% {
@@ -39,15 +21,35 @@ const CartCard: React.FC<CardProps> = ({ product }) => {
       display: 'flex',
       width: '100%',
       m: '2%',
-      backgroundColor: 'primary.main',
+      backgroundColor: 'neutral.main',
       flexDirection: 'column',
       alingContent: 'space-between',
-      animation: inView && `${CartCardAnimation} 0.25s both`,
+      animation: `${CartCardAnimation} 0.25s both`,
+    },
+    contentContainer: {
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    cardActionAreaStyle: {
+      width: 'auto',
+      mt: '1%',
     },
     cardActionStyle: {
       display: 'flex',
       justifyContent: 'space-between',
       flexDirection: 'row-reverse',
+    },
+    cardMedia: {
+      width: '100px',
+      height: '100px',
+      borderRadius: '3%',
+      maxHeight: 132,
+    },
+    cardContentStyle: { width: '55%' },
+    nameStyle: {
+      color: 'primary.main',
     },
     iconStyle: {
       color: 'highlight.main',
@@ -55,67 +57,71 @@ const CartCard: React.FC<CardProps> = ({ product }) => {
     descriptionStyle: {
       height: 'auto',
       overflow: 'hidden',
-      whiteSpace: 'nowrap',
+      whiteSpace: readMore ? 'normal' : 'nowrap',
       textOverflow: 'ellipsis',
-      '&:hover': { overflow: 'hidden', textOverflow: 'ellipsis', whitSpace: 'normal' },
+      color: 'primary.main',
     },
     boxStyle: {
       display: 'flex',
     },
+    readMoreStyle: {
+      cursor: 'pointer',
+      display: 'flex',
+      mt: '3%',
+      color: 'primary.light',
+    },
+    cardActionsStyle: {
+      justifyContent: 'space-between',
+    },
+    priceStyle: { display: 'flex', justifyContent: 'flex-end', alignItems: 'center', color: 'primary.main' },
+    buttonGroup: { alignItems: 'center', backgroundColor: 'primary.main', borderRadius: '20px', mr: '3%' },
+    eachButtonGroup: { color: 'neutral.main' },
+    moneyIconStyle: { color: 'highlight.main' },
   };
 
+  const [productImage] = product?.image;
+
   return (
-    <Box component="div" ref={ref}>
-      <Card sx={style.cardStyle}>
-        <Box sx={{ width: '100%', display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-          <Box sx={{ width: 'auto', mt: '1%' }}>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                sx={{ width: '100px', height: '100px', borderRadius: '3%', maxHeight: 132 }}
-                image={product.image[0].url}
-                alt="clothe"
-              />
-            </CardActionArea>
-          </Box>
-          <Box sx={{ width: '55%' }}>
-            <CardContent>
-              <Typography component="div" variant="h5" sx={{ color: 'highlight.main' }}>
-                {product.name}
-              </Typography>
-              <Typography variant="h6" color="neutral.main" component="div" sx={style.descriptionStyle}>
-                {product.description}
-              </Typography>
-              <Typography variant="h6" color="neutral.main" sx={{ cursor: 'pointer', display: 'flex' }}>
-                Read More
-              </Typography>
-            </CardContent>
-          </Box>
-        </Box>
-        <CardActions sx={{ justifyContent: 'space-between' }}>
-          <Typography
-            component="div"
-            variant="h6"
-            sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', color: 'neutral.main' }}>
-            <AttachMoneyIcon fontSize="small" sx={{ color: 'highlight.main' }} />
-            {product.price}
+    <Card sx={style.cardStyle}>
+      <Box sx={style.contentContainer}>
+        <CardActionArea sx={style.cardActionAreaStyle}>
+          <CardMedia component="img" sx={style.cardMedia} image={productImage?.url} alt={product.name} />
+        </CardActionArea>
+        <CardContent sx={style.cardContentStyle}>
+          <Typography component="div" variant="h5" sx={style.nameStyle}>
+            {product.name}
           </Typography>
-          <ButtonGroup
-            variant="contained"
-            sx={{ alignItems: 'center', backgroundColor: 'highlight.main', borderRadius: '20px', mr: '3%' }}>
-            <IconButton size="small" sx={{ color: 'primary.main' }}>
-              <RemoveIcon fontSize="small" />
-            </IconButton>
-            <Typography variant="h6" sx={{ color: 'primary.main' }}>
-              index
+          <Typography variant="h6" color="neutral.main" component="div" sx={style.descriptionStyle}>
+            {product.description}
+          </Typography>
+          {readMore ? (
+            <Typography
+              variant="h6"
+              sx={style.readMoreStyle}
+              onClick={() => {
+                setReadMore(!readMore);
+              }}>
+              Read Less
             </Typography>
-            <IconButton size="small" sx={{ color: 'primary.main' }}>
-              <AddIcon fontSize="small" />
-            </IconButton>
-          </ButtonGroup>
-        </CardActions>
-      </Card>
-    </Box>
+          ) : (
+            <Typography
+              variant="h6"
+              sx={style.readMoreStyle}
+              onClick={() => {
+                setReadMore(!readMore);
+              }}>
+              Read More
+            </Typography>
+          )}
+        </CardContent>
+      </Box>
+      <CardActions sx={style.cardActionsStyle}>
+        <Typography component="div" variant="h6" sx={style.priceStyle}>
+          <AttachMoneyIcon fontSize="small" sx={style.moneyIconStyle} />
+          {product.price}
+        </Typography>
+      </CardActions>
+    </Card>
   );
 };
 
