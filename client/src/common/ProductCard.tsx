@@ -78,7 +78,7 @@ const ProductCard: React.FC<CardProps> = ({ product }) => {
         </Typography>
       </CardContent>
       <CardActionArea>
-        <CardMedia component="img" image={product.image} alt="media" sx={style.mediaStyle} />
+        <CardMedia component="img" image={product.image[0]} alt="media" sx={style.mediaStyle} />
       </CardActionArea>
       <CardActions sx={style.cardActionStyle}>
         <Box sx={style.boxStyle}>
