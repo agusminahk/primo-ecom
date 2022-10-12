@@ -30,8 +30,8 @@ const ButtonsFixed: FC<{ inView: boolean }> = ({ inView }) => {
   const styles = {
     firstBoxStyle: {
       position: 'fixed',
-      left: '95%',
-      top: '86%',
+      left: { xl: '95%', lg: '95%', md: '90%', xs: '83%' },
+      top: { xl: '86%', lg: '86%', md: '86%', xs: '78%' },
       display: 'flex',
       alignContent: 'center',
       flexDirection: 'column',
