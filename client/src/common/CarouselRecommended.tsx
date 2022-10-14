@@ -32,7 +32,11 @@ const carouselProps = {
   customDot: <CustomDot />,
 };
 
-const CarouselRecommended: FC<{ productId: string }> = ({ productId }) => {
+interface CarouselProps {
+  productId: string;
+}
+
+const CarouselRecommended: FC<CarouselProps> = ({ productId }) => {
   return (
     <Box component="div" sx={styles.firstBoxStyle}>
       <Carousel {...carouselProps}>
