@@ -5,8 +5,6 @@ import Layout from '../../common/Layout';
 import { ProductProps, CardProps } from '../../components/interfaces';
 import falseRequest from '../../static/clothesNewExample.json';
 
-console.log(falseRequest.clothes);
-
 const ProductIndex: FC<NextPage> = () => {
   return (
     <Layout>
