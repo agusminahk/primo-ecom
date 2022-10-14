@@ -1,4 +1,12 @@
-import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
+import {
+  prop,
+  getModelForClass,
+  modelOptions,
+  pre,
+  post,
+  DocumentType,
+} from '@typegoose/typegoose';
+import bcrypt from 'bcrypt';
 
 export class Address {
   @prop({ type: () => String })
@@ -11,8 +19,16 @@ export class Address {
   public postCode?: string;
 }
 
+@pre<User>('save', async function (next) {
+  this.password = await bcrypt.hash(this.password, 12);
+  return next();
+})
 @modelOptions({ schemaOptions: { collection: 'user', timestamps: true } })
 export class User {
+  public async matchPassword(this: DocumentType<User>, password: string) {
+    return await bcrypt.compare(password, this.password);
+  }
+
   @prop({ type: () => String, required: true, unique: true })
   public email!: string;
 
@@ -31,10 +47,10 @@ export class User {
   @prop({ type: () => Boolean, default: false })
   public isAdmin?: boolean;
 
-  @prop({ type: String })
+  @prop({ type: () => String, default: null })
   public phone?: string;
 
-  @prop()
+  @prop({ type: () => Address, default: null })
   public address?: Address;
 }
 
