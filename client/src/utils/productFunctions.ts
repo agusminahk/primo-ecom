@@ -1,4 +1,4 @@
-import { ProductImage } from '../common/interfaces';
+import { ProductCare, ProductImage } from '../components/interfaces';
 
 export const promotionPrice = (promotion: number, price: number) => {
   if (promotion > 0) {
@@ -14,12 +14,17 @@ type ImageFunction = (params: { image: ProductImage; size: string; setColor?: an
 export const imagesFunction: ImageFunction = ({ image, size, setColor }) => {
   if (!!image) {
     const [base, rest] = image?.url?.split('____1');
-    setColor && setColor(image.color.toUpperCase());
-    let images: string[] | [] = [];
-    if (size === 'small') images = [...new Array(5)].map((_, i) => `${base}____${i + 1}__210x260.jpg`);
-    else if (size === 'medium') images = [...new Array(5)].map((_, i) => `${base}____${i + 1}__516x640.jpg`);
-    else if (size === 'large') images = [...new Array(5)].map((_, i) => `${base}____${i + 1}__967x1200.jpg`);
-    return images;
+    setColor ? setColor(image.color.toUpperCase()) : undefined;
+
+    const arrayImages = [...new Array(5)].map((_, i) => {
+      const imageSize = size == 'small' ? '210x260.jpg' : size == 'medium' ? '516x640.jpg' : '967x1200.jpg';
+      return `${base}____${i + 1}__${imageSize}`;
+    });
+    return arrayImages;
   }
   return [];
 };
+
+type ReverseFunction = (params: ProductCare) => void;
+
+export const reverseFunction: ReverseFunction = obj => Object.fromEntries(Object.entries(obj).map(a => a.reverse()));

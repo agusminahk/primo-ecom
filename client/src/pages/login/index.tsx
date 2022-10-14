@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { NextPage } from 'next';
 import Login from '../../components/Login';
 
-const index = () => {
+const Index: FC<NextPage> = () => {
   return <Login />;
 };
 
-export default index;
+export default Index;

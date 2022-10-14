@@ -1,15 +1,18 @@
-// import { Box } from '@mui/material';
-import React from 'react';
-import GridProducts from '../../components/GridProducts';
-import Layout from '../../components/Layout';
-// import MainProductCard from '../../components/MainProductCard';
+import { NextPage } from 'next';
+import React, { FC } from 'react';
+import GridProducts from '../../common/GridProducts';
+import Layout from '../../common/Layout';
+import { ProductProps, CardProps } from '../../components/interfaces';
+import falseRequest from '../../static/clothesNewExample.json';
 
-const index = () => {
+console.log(falseRequest.clothes);
+
+const ProductIndex: FC<NextPage> = () => {
   return (
     <Layout>
-      <GridProducts />
+      <GridProducts products={falseRequest.clothes} />
     </Layout>
   );
 };
 
-export default index;
+export default ProductIndex;

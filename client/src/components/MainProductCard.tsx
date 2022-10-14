@@ -7,16 +7,16 @@ import Rating from '@mui/material/Rating';
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
 import React, { FC, useState } from 'react';
 
-import { ProductProps, ProductImage } from './interfaces';
+import { ProductProps, ProductImage, ProductCare, ProductComposition } from './interfaces';
 import ProductDetailCarousel from '../components/ProductDetailCarousel';
 
-export interface TypeProductProps {
+export interface ComponentProps {
   productId?: string;
 }
 
 const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 
-const MainProductCard: FC<{ productId: string }> = ({ productId }) => {
+const MainProductCard: FC<ComponentProps> = ({ productId }) => {
   const clothes: ProductProps[] = falseRequest.clothes;
   const singleProduct = (clothes.find(piece => piece._id === productId) ?? {}) as ProductProps;
 
@@ -78,6 +78,20 @@ const MainProductCard: FC<{ productId: string }> = ({ productId }) => {
       justifyContent: 'space-evenly',
       width: '100%',
     },
+    BtnSizes: {
+      my: '1%',
+      mx: '2%',
+      width: '42%',
+      borderRadius: '25px',
+      py: '2%',
+      px: '9%',
+      border: '1px solid',
+      '&:hover': {
+        backgroundColor: 'primary.main',
+        color: 'neutral.main',
+        borderColor: 'transparent',
+      },
+    },
     addToCartBtn: {
       py: '2%',
       borderRadius: '25px',
@@ -98,6 +112,8 @@ const MainProductCard: FC<{ productId: string }> = ({ productId }) => {
     },
     secondBoxCare: { mr: '2%', width: '40%', height: 'auto' },
     secondBoxComposition: { width: '40%', height: 'auto' },
+    detailBox: { display: 'flex', alignItems: 'center', mb: '2%' },
+    detailTypo: { textDecoration: 'underline dotted', my: '1%' },
   };
 
   return (
@@ -131,8 +147,8 @@ const MainProductCard: FC<{ productId: string }> = ({ productId }) => {
         <Box mb="2%">
           <Typography variant="subtitle2">Chosen color: {colorSelected}</Typography>
           <Box sx={style.boxColorImages}>
-            {singleProduct.image.map((colorImage: { color: string; url: string }, i: number) => (
-              <Card onClick={() => setImageClicked(colorImage)} sx={style.colorImagesStyle}>
+            {singleProduct.image.map((colorImage: ProductImage, i: number) => (
+              <Card key={i} onClick={() => setImageClicked(colorImage)} sx={style.colorImagesStyle}>
                 <CardMedia component="img" image={`${colorImage.url}`} sx={style.cardMediaStyle} />
               </Card>
             ))}
@@ -145,18 +161,12 @@ const MainProductCard: FC<{ productId: string }> = ({ productId }) => {
             {sizes.map((size, i) => {
               return (
                 <Button
+                  key={i}
                   sx={{
-                    m: '2%',
-                    p: '6%',
-                    border: '1px dashed',
-                    borderColor: btnSize === i ? 'primary.main' : 'highlight.main',
                     backgroundColor: btnSize === i ? 'primary.main' : 'transparent',
                     color: btnSize === i ? 'neutral.main' : 'primary.main',
-                    '&:hover': {
-                      backgroundColor: 'primary.main',
-                      color: 'neutral.main',
-                      borderColor: 'transparent',
-                    },
+
+                    ...style.BtnSizes,
                   }}
                   onClick={() => {
                     btnSize === i ? setBtnSize(false) : setBtnSize(i);
@@ -205,12 +215,12 @@ const MainProductCard: FC<{ productId: string }> = ({ productId }) => {
             <Typography variant="subtitle2" mb="2%">
               Care Instructions
             </Typography>
-            {singleProduct.details.care?.map((element: any, i: number) => {
-              const careElement = Object.keys(element);
+            {singleProduct.details.care?.map((element: ProductCare, i: number) => {
+              const [care]: string[] = Object.values(element);
               return (
-                <Box sx={{ display: 'flex', alignItems: 'center', mb: '2%' }}>
-                  <Typography variant="h6" sx={{ textDecoration: 'underline dotted', my: '1%' }}>
-                    {element[careElement[0]]}
+                <Box key={i} sx={style.detailBox}>
+                  <Typography variant="h6" sx={style.detailTypo}>
+                    {[care]}
                   </Typography>
                 </Box>
               );
@@ -220,13 +230,12 @@ const MainProductCard: FC<{ productId: string }> = ({ productId }) => {
             <Typography variant="subtitle2" mb="2%">
               Composition
             </Typography>
-            {singleProduct.details.composition?.map((element: any, i: number) => {
-              const compositionElement = Object.keys(element);
+            {singleProduct.details.composition?.map((element: ProductComposition, i: number) => {
+              const [composition] = Object.entries(element);
               return (
-                <Box sx={{ display: 'flex', alignItems: 'center', mb: '2%' }}>
-                  {/* <Typography variant="h6">-</Typography> */}
-                  <Typography variant="h6" sx={{ textDecoration: 'underline dotted', my: '1%' }}>
-                    {element[compositionElement[0]] + ' ' + compositionElement}
+                <Box key={i} sx={style.detailBox}>
+                  <Typography variant="h6" sx={style.detailTypo}>
+                    {composition[1] + ' ' + composition[0]}
                   </Typography>
                 </Box>
               );

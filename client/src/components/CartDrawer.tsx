@@ -6,7 +6,7 @@ import CartCard from '../common/CartCard';
 
 interface DrawerProps {
   open: boolean;
-  onClose: (a: boolean) => void;
+  onClose: (param: boolean) => void;
 }
 
 const CartDrawer: FC<DrawerProps> = ({ open, onClose }) => {
@@ -50,7 +50,7 @@ const CartDrawer: FC<DrawerProps> = ({ open, onClose }) => {
       alignItems: 'center',
       m: '5%',
     },
-    boxAfterItems: { p: '5%', mb: '5%', display: 'flex', justifyContent: 'center' },
+    boxAfterItems: { p: '5%', mb: '5%', pt: '10%', display: 'flex', justifyContent: 'center' },
     titleStyle: { textDecoration: 'underline dotted' },
     boxAllItems: {
       mt: '5%',
@@ -73,7 +73,6 @@ const CartDrawer: FC<DrawerProps> = ({ open, onClose }) => {
           </IconButton>
         </Toolbar>
       </AppBar>
-      <Box sx={styles.firstBoxDrawer}></Box>
       <Box sx={styles.boxAllItems}>
         <Box sx={styles.boxAfterItems}>
           <Typography variant="h6" color="primary" sx={styles.titleStyle} component="div">
@@ -81,9 +80,7 @@ const CartDrawer: FC<DrawerProps> = ({ open, onClose }) => {
           </Typography>
         </Box>
         {exampleRequest.clothes.map((product, i) => (
-          <Box key={i}>
-            <CartCard product={product} />
-          </Box>
+          <CartCard key={i} product={product} />
         ))}
       </Box>
     </Drawer>

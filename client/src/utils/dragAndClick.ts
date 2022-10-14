@@ -1,5 +1,5 @@
 import React from 'react';
-export const mouseDownCoords = (e: any) => {
+export const mouseDownCoords = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
   // @ts-ignore
   window.checkForDrag = e.clientX;
 };

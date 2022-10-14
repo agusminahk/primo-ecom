@@ -2,12 +2,12 @@ import Carousel from 'react-multi-carousel';
 import { Box, CardMedia, Card } from '@mui/material';
 import React, { FC, useState } from 'react';
 
-import { CardAsDots, LeftArrow, RightArrow, CustomDotMobile } from './CustomCarousel';
+import { CardAsDots, LeftArrow, RightArrow, CustomDotMobile } from '../common/CustomCarousel';
 import { responsiveCarousels } from '../utils/responsiveCarousels';
 import DialogProductDetail from './DialogProductDetail';
 import { mouseDownCoords, clickOrDrag } from '../utils/dragAndClick';
 import { promotionPrice, imagesFunction } from '../utils/productFunctions';
-import { ProductImage } from '../common/interfaces';
+import { ProductImage } from './interfaces';
 
 interface ProductDetailCarouselProps {
   imageClicked: ProductImage;
@@ -17,7 +17,7 @@ interface ProductDetailCarouselProps {
 
 const ProductDetailCarousel: FC<ProductDetailCarouselProps> = ({ imageClicked, allImages, setColorSelected }) => {
   const [open, setOpen] = useState<boolean>(false);
-  const image = allImages.find((image: any) => imageClicked.url === image.url) ?? allImages[0];
+  const image = allImages.find((image: ProductImage) => imageClicked.url === image.url) ?? allImages[0];
 
   const imagesLittle = imagesFunction({ image, size: 'small', setColor: setColorSelected });
   const imagesLarge = imagesFunction({ image, size: 'large', setColor: setColorSelected });
@@ -105,7 +105,7 @@ const ProductDetailCarousel: FC<ProductDetailCarouselProps> = ({ imageClicked, a
       {/* desktop carousel */}
       <Box sx={style.desktopCarouselBox}>
         <Carousel {...desktopCarouselProps}>
-          {imagesLarge.map((image, i) => {
+          {imagesLarge.map((image: string, i) => {
             return (
               <Box
                 id="img_carousel"
@@ -141,7 +141,7 @@ const ProductDetailCarousel: FC<ProductDetailCarouselProps> = ({ imageClicked, a
           })}
         </Carousel>
       </Box>
-      <DialogProductDetail open={open} setOpen={setOpen} imageUrl={image.url} />
+      <DialogProductDetail open={open} setOpen={setOpen} imagesLittle={imagesLittle} imagesLarge={imagesLarge} />
     </>
   );
 };

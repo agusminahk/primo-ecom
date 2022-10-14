@@ -2,7 +2,7 @@ import { Card, CardActions, CardContent, CardActionArea, CardMedia, Typography, 
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import React, { FC, useState } from 'react';
 
-import { CardProps } from './interfaces';
+import { CardProps } from '../components/interfaces';
 
 const CartCard: FC<CardProps> = ({ product }) => {
   const [readMore, setReadMore] = useState(false);

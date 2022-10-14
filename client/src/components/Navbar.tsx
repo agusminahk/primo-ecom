@@ -29,11 +29,11 @@ const Navbar: FC = () => {
       zIndex: '10',
     },
     appBarStyle: {
-      width: { xl: '50%', lg: '50%', md: '70%', xs: '98%' },
+      width: { xl: '50%', lg: '50%', md: '70%', xs: '100%' },
       height: { xl: '2.8rem', lg: '3rem', md: '3.2rem', xs: '3.5rem' },
       boxShadow: '0 0 0 0',
-      borderRadius: '30px',
-      m: '0.6%',
+      borderRadius: { xl: '30px', lg: '30px', md: '30px', xs: '0px' },
+      m: { xl: '0.6%', lg: '0.6%', md: '0.6%', xs: '0px' },
       justifyContent: 'center',
       backgroundColor: 'transparent',
       backdropFilter: 'blur(80px)',
@@ -56,12 +56,10 @@ const Navbar: FC = () => {
       <Box sx={styles.firstBoxStyle}>
         <AppBar component="div" ref={ref} sx={styles.appBarStyle} position="static">
           <Toolbar component="div" sx={styles.toolbarStyle}>
-            <Tooltip title="hola">
-              <Button size="small" sx={{ borderRadius: '15px' }}>
-                CATEGORIES
-                <ExpandMoreIcon fontSize="small" sx={{ fontSize: '90%' }} />
-              </Button>
-            </Tooltip>
+            <Button size="small" sx={{ borderRadius: '15px' }}>
+              CATEGORIES
+              <ExpandMoreIcon fontSize="small" sx={{ fontSize: '90%' }} />
+            </Button>
 
             <Typography
               variant="h5"

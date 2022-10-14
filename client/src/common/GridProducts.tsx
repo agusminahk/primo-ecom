@@ -1,12 +1,17 @@
 import Grid from '@mui/material/Grid';
-import ProductCard from '../common/ProductCard';
-import falseRequest from '../static/clothesNewExample.json';
+import ProductCard from '../components/ProductCard';
 import React, { FC } from 'react';
 
-const GridProducts: FC = () => {
+import { ProductProps } from '../components/interfaces';
+
+interface GridProductsProps {
+  products: ProductProps[];
+}
+
+const GridProducts: FC<GridProductsProps> = ({ products }) => {
   return (
     <Grid container spacing={{ lg: 4 }} columns={{ lg: 0 }} alignItems="center">
-      {falseRequest.clothes.map((product, i) => (
+      {products.map((product, i) => (
         <Grid item lg={3} rowSpacing={2} key={i}>
           <ProductCard product={product} />
         </Grid>

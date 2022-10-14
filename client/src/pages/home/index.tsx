@@ -2,10 +2,10 @@ import { NextPage } from 'next';
 
 import PromoCarousel from '../../components/PromoCarousel';
 
-import Layout from '../../components/Layout';
+import Layout from '../../common/Layout';
 import React from 'react';
 
-const home: NextPage = () => {
+const Home: NextPage = () => {
   return (
     <Layout>
       <PromoCarousel />
@@ -13,4 +13,4 @@ const home: NextPage = () => {
   );
 };
 
-export default home;
+export default Home;

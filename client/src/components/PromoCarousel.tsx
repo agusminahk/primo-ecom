@@ -1,34 +1,16 @@
-import { Box, Typography, IconButton } from '@mui/material';
+import { Box } from '@mui/material';
 import Carousel from 'react-multi-carousel';
-import { CustomButtonGroupAsArrows, CustomDot } from './CustomCarousel';
-import React, { FC, useState } from 'react';
+import { CustomDot, LeftArrowProduct, RightArrowProduct } from '../common/CustomCarousel';
+import React, { FC } from 'react';
+
 import falseRequest from '../static/promoExample.json';
-
 import PromoCard from '../common/PromoCard';
-
-const responsive = {
-  superLargeDesktop: {
-    breakpoint: { max: 4000, min: 3000 },
-    items: 1,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 1,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 1,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-};
+import { responsiveCarousels } from '../utils/responsiveCarousels';
 
 const styles = {
   firstBoxStyle: {
     zIndex: '-50',
-    mt: '-5%',
+    mt: { xl: '-5%', lg: '-7%', md: '-8%', xs: '0%' },
     mx: '0vw',
     height: '0px',
     position: 'relative',
@@ -36,24 +18,31 @@ const styles = {
   },
 };
 
+const desktopCarouselProps = {
+  additionalTransfrom: 0,
+  responsive: responsiveCarousels.responsive1,
+  pauseOnHover: true,
+  autoPlay: true,
+  autoPlaySpeed: 4500,
+  customTransition: `all 0.4s ease-in-out`,
+  infinite: true,
+  showDots: true,
+  draggable: true,
+  arrows: true,
+  ssr: true,
+  rewindWithAnimation: false,
+  minimumTouchDrag: 10,
+  partialVisible: true,
+  swipeable: true,
+  customLeftArrow: <LeftArrowProduct />,
+  customRightArrow: <RightArrowProduct />,
+  customDot: <CustomDot />,
+};
+
 const PromoCarousel: FC = () => {
   return (
     <Box component="div" sx={styles.firstBoxStyle}>
-      <Carousel
-        additionalTransfrom={0}
-        responsive={responsive}
-        pauseOnHover={true}
-        autoPlay={true}
-        autoPlaySpeed={5500}
-        infinite={true}
-        showDots={true}
-        draggable={true}
-        arrows={false}
-        minimumTouchDrag={80}
-        partialVisible
-        renderButtonGroupOutside
-        customDot={<CustomDot />}
-        customButtonGroup={<CustomButtonGroupAsArrows />}>
+      <Carousel {...desktopCarouselProps}>
         {falseRequest.images.map((image, i) => {
           return <PromoCard image={image} />;
         })}

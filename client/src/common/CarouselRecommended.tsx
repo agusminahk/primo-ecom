@@ -2,8 +2,8 @@ import Carousel from 'react-multi-carousel';
 import { Box } from '@mui/material';
 import React, { FC } from 'react';
 
-import ProductCard from './ProductCard';
-import { CustomDot } from '../components/CustomCarousel';
+import ProductCard from '../components/ProductCard';
+import { CustomDot } from './CustomCarousel';
 import falseRequest from '../static/clothesNewExample.json';
 import { responsiveCarousels } from '../utils/responsiveCarousels';
 

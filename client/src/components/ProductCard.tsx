@@ -9,6 +9,7 @@ import React, { FC, useState, useEffect, useMemo } from 'react';
 import { mouseDownCoords, clickOrDrag } from '../utils/dragAndClick';
 import { CardProps } from './interfaces';
 import { promotionPrice, imagesFunction } from '../utils/productFunctions';
+import { btnAnimation, btnAnimationReverse } from '../utils/animation';
 
 const ProductCard: FC<CardProps> = ({ product }) => {
   const [hover, setHover] = useState<boolean>(false);
@@ -26,28 +27,6 @@ const ProductCard: FC<CardProps> = ({ product }) => {
 
   const percentage = promotionPrice(product.promotion, product.price);
   const images = imagesFunction({ image: product.image[0], size: 'medium' });
-
-  const btnAnimation = keyframes`
-  0% {
-    transform: scale(0.75);
-    opacity: 0%
-  }
-  100% {
-    transform: scale(0.9);
-    opacity: 100%
-  }
-  `;
-
-  const btnAnimationReverse = keyframes`
-  0% {
-    transform: scale(0.9);
-    opacity: 100%
-  }
-  100% {
-    transform: scale(0.75);
-    opacity: 0%
-  }
-  `;
 
   const style = {
     cardStyle: {

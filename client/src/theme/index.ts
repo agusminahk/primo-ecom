@@ -220,14 +220,14 @@ const themeComponents = createTheme({
             width: '5px',
           },
           '&::-webkit-scrollbar-track': {
-            background: themeColors.palette.primary.main,
+            background: 'transparent',
           },
           '&::-webkit-scrollbar-thumb': {
-            background: themeColors.palette.highlight.main,
-            borderRadius: '8px',
+            background: themeColors.palette.primary.main,
+            borderRadius: '15px',
             width: '5px',
             '&:hover': {
-              background: themeColors.palette.highlight.light,
+              background: themeColors.palette.highlight.main,
             },
           },
         },

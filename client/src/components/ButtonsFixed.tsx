@@ -1,31 +1,16 @@
-import { Box, Fab, keyframes } from '@mui/material';
+import { Box, Fab } from '@mui/material';
 import LocalMallRoundedIcon from '@mui/icons-material/LocalMallRounded';
 import UpIcon from '@mui/icons-material/KeyboardArrowUp';
 import React, { FC, useState } from 'react';
 import CartDrawer from './CartDrawer';
+import { fabAnimation, fabAnimationReverse } from '../utils/animation';
 
-const ButtonsFixed: FC<{ inView: boolean }> = ({ inView }) => {
+interface FabProps {
+  inView: boolean;
+}
+
+const ButtonsFixed: FC<FabProps> = ({ inView }) => {
   const [open, setOpen] = useState<boolean>(false);
-
-  const fabAnimation = keyframes`
-  0% {
-    transform: rotate(0) scale(0.6)
-  }
-  100% {
-    transform: rotate(360deg) scale(1)
-  }
-  `;
-
-  const fabAnimationReverse = keyframes`
-  0% {
-    transform: rotate(0) scale(1);
-    opacity: 90%
-  }
-  100% {
-    transform: rotate(0) scale(0.7); 
-    opacity: 0%
-  }
-  `;
 
   const styles = {
     firstBoxStyle: {
