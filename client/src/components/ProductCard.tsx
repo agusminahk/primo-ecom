@@ -3,8 +3,8 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import PlusOneIcon from '@mui/icons-material/PlusOne';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useRouter } from 'next/router';
-import { Card, CardMedia, IconButton, Typography, Box, keyframes } from '@mui/material';
-import React, { FC, useState, useEffect, useMemo } from 'react';
+import { Card, CardMedia, IconButton, Typography, Box } from '@mui/material';
+import React, { FC, useState, useMemo } from 'react';
 
 import { mouseDownCoords, clickOrDrag } from '../utils/dragAndClick';
 import { CardProps } from './interfaces';

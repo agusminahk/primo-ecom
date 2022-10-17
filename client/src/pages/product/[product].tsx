@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import { NextPage } from 'next';
 import React, { FC } from 'react';
 import { Box, Typography } from '@mui/material';
 

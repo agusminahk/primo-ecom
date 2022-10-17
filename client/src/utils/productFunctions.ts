@@ -24,7 +24,3 @@ export const imagesFunction: ImageFunction = ({ image, size, setColor }) => {
   }
   return [];
 };
-
-type ReverseFunction = (params: ProductCare) => void;
-
-export const reverseFunction: ReverseFunction = obj => Object.fromEntries(Object.entries(obj).map(a => a.reverse()));

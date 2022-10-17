@@ -6,7 +6,7 @@ import { CardAsDots, LeftArrow, RightArrow, CustomDotMobile } from '../common/Cu
 import { responsiveCarousels } from '../utils/responsiveCarousels';
 import DialogProductDetail from './DialogProductDetail';
 import { mouseDownCoords, clickOrDrag } from '../utils/dragAndClick';
-import { promotionPrice, imagesFunction } from '../utils/productFunctions';
+import { imagesFunction } from '../utils/productFunctions';
 import { ProductImage } from './interfaces';
 
 interface ProductDetailCarouselProps {

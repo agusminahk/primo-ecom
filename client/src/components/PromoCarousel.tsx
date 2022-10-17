@@ -44,7 +44,7 @@ const PromoCarousel: FC = () => {
     <Box component="div" sx={styles.firstBoxStyle}>
       <Carousel {...desktopCarouselProps}>
         {falseRequest.images.map((image, i) => {
-          return <PromoCard image={image} />;
+          return <PromoCard image={image} key={i} />;
         })}
       </Carousel>
     </Box>

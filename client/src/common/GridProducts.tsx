@@ -12,7 +12,7 @@ const GridProducts: FC<GridProductsProps> = ({ products }) => {
   return (
     <Grid container spacing={{ lg: 4 }} columns={{ lg: 0 }} alignItems="center">
       {products.map((product, i) => (
-        <Grid item lg={3} rowSpacing={2} key={i}>
+        <Grid item lg={3} rowSpacing={2} key={product._id}>
           <ProductCard product={product} />
         </Grid>
       ))}
