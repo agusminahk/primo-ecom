@@ -2,7 +2,7 @@ import { Drawer, Typography, Box, IconButton, AppBar, Toolbar } from '@mui/mater
 import { FC } from 'react';
 import CancelIcon from '@mui/icons-material/Cancel';
 import exampleRequest from '../static/clothesNewExample.json';
-import CartCard from '../common/CartCard';
+import CartCard from './CartCard';
 
 interface DrawerProps {
   open: boolean;
