@@ -1,9 +1,10 @@
-import React from 'react';
+import { NextPage } from 'next';
+import React, { FC } from 'react';
 
 import FrontDoor from '../components/FrontDoor';
 
-const index = () => {
+const Index: FC<NextPage> = () => {
   return <FrontDoor />;
 };
 
-export default index;
+export default Index;

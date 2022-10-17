@@ -1,0 +1,14 @@
+{
+  "indice": "0",
+  "name": "Chomba",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam commodo diam at justo consequat tincidunt. Donec eleifend semper condimentum. Curabitur ultrices sem vel augue consequat sodales. Duis euismod rhoncus volutpat. Nam consectetur convallis lorem. Pellentesque porttitor et eros quis efficitur. Suspendisse imperdiet nibh purus, eget efficitur est vehicula id. Quisque odio lorem, mattis vitae luctus quis, suscipit sit amet metus. Curabitur felis erat, volutpat non luctus scelerisque, tempor in odio. Morbi et sagittis mi. Maecenas tincidunt fermentum nibh, quis vestibulum metus ullamcorper sed. Donec tristique ex sit amet velit finibus, id sodales tortor suscipit. Maecenas sed magna consequat, eleifend tortor ut, auctor diam. Nullam semper felis sit amet tortor congue, et ultricies neque consequat. Proin nec orci varius, venenatis lorem et, fermentum ipsum. Etiam eu volutpat urna. Pellentesque leo ligula, dignissim vel blandit id, mollis eget arcu. Sed sodales eget ipsum eu elementum. Duis hendrerit quam ut mi suscipit, ac porttitor dui dignissim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec aliquam elementum lacus, quis condimentum dolor scelerisque at. Sed vitae scelerisque quam. Nullam malesuada leo est, ac tincidunt est laoreet ut. Quisque a nisl libero. Pellentesque interdum ultricies neque, ut condimentum orci tincidunt tempor. Nunc sit amet maximus elit, eget pretium lectus.",
+  "images": {
+    "0": "https://i.pinimg.com/564x/cc/10/5f/cc105f9492e7222218706c227d3ee96c.jpg",
+    "1": "https://i.pinimg.com/564x/cc/10/5f/cc105f9492e7222218706c227d3ee96c.jpg",
+    "2": "https://i.pinimg.com/564x/cc/10/5f/cc105f9492e7222218706c227d3ee96c.jpg",
+    "3": "https://i.pinimg.com/564x/cc/10/5f/cc105f9492e7222218706c227d3ee96c.jpg",
+    "4": "https://i.pinimg.com/564x/cc/10/5f/cc105f9492e7222218706c227d3ee96c.jpg"
+  },
+
+  "price": 123
+}

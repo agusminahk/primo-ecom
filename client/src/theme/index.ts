@@ -5,7 +5,7 @@ declare module '@mui/material/styles' {
   interface Palette {
     neutral: Palette['primary'];
     dark: Palette['primary'];
-    highlights: Palette['primary'];
+    highlight: Palette['primary'];
     tone: Palette['common'];
   }
 
@@ -28,19 +28,16 @@ declare module '@mui/material/styles' {
     error?: PaletteOptions['primary'];
     warning?: PaletteOptions['primary'];
     success?: PaletteOptions['primary'];
-    highlights?: PaletteOptions['primary'];
+    highlight?: PaletteOptions['primary'];
+    highlightTransparent?: PaletteOptions['primary'];
+    primaryTransparent?: PaletteOptions['primary'];
   }
 
   interface PaletteColorOptions {
-    clear?: string;
     light?: string;
-    lightest?: string;
-    shiny?: string;
     medium?: string;
     main?: string;
-    blackness?: string;
     dark?: string;
-    darkness?: string;
     darkest?: string;
   }
 }
@@ -52,100 +49,74 @@ const themeColors = createTheme({
       black: '#000000',
     },
     primary: {
-      clear: '#FBF5FF',
-      light: '#F5E5FF',
-      lightest: '#E0B3FF',
-      shiny: '#CC80FF',
+      light: '#525969',
       medium: '#AD33FF',
-      main: '#9900FF',
-      blackness: '#811CCA',
-      dark: '#65159D',
-      darkness: '#480F70',
-      darkest: '#2E0A48',
+      main: '#0e101c',
+      dark: '#010308',
+      darkest: '#0f1617',
     },
     secondary: {
-      clear: '#F5F5FF',
       light: '#E5E5FF',
-      lightest: '#CCCCFF',
-      shiny: '#4D4DFF',
       medium: '#0000B3',
-      main: '#000066',
-      blackness: '#00004E',
+      main: '#474747',
       dark: '#000041',
-      darkness: '#000020',
       darkest: '#000013',
     },
     neutral: {
-      clear: '#F8F9FC',
       light: '#CFD9EF',
-      lightest: '#B8C5E0',
-      shiny: '#7F96C3',
       medium: '#5E7AB0',
-      main: '#3E598E',
-      blackness: '#2F436A',
+      main: '#FFF',
       dark: '#1F2C47',
-      darkness: '#172135',
       darkest: '#0E1420',
     },
     dark: {
-      clear: '#F9FAFB',
       light: '#EDEDED',
-      lightest: '#A5A5A5',
-      shiny: '#747579',
       medium: '#5B5B5B',
-      main: '#474747',
-      blackness: '#232426',
+      main: '#19181a',
       dark: '#1D1E20',
-      darkness: '#151617',
       darkest: '#101112',
     },
     error: {
-      clear: '#FFF5F8',
       light: '#FFCCDB',
-      lightest: '#FF99B8',
-      shiny: '#FF6694',
       medium: '#FF3370',
       main: '#E00043',
-      blackness: '#B30036',
       dark: '#99002E',
-      darkness: '#66001F',
       darkest: '#33000F',
     },
     warning: {
-      clear: '#FFFAEB',
       light: '#FEF0C7',
-      lightest: '#FEDF89',
-      shiny: '#F9CC66',
       medium: '#FBBA41',
-      main: '#F6982A',
-      blackness: '#DC6803',
+      main: '#ec5990',
       dark: '#B54708',
-      darkness: '#93370D',
       darkest: '#7A2E0E',
     },
     success: {
-      clear: '#ECFDF3',
       light: '#D1FADF',
-      lightest: '#A6F4C5',
-      shiny: '#6CE9A6',
       medium: '#32D583',
       main: '#12B76A',
-      blackness: '#039855',
       dark: '#027A48',
-      darkness: '#05603A',
       darkest: '#054F31',
     },
-    highlights: {
-      clear: '#F5FBFF',
-      light: '#CEE9FD',
-      lightest: '#6DBEF8',
-      shiny: '#3CA8F6',
+    highlight: {
+      light: '#ef7aa6',
       medium: '#0B93F4',
-      main: '#0975C3',
-      blackness: '#075892',
+      main: '#ec5990',
       dark: '#053B61',
-      darkness: '#021D31',
       darkest: '#010F18',
+    },
+    highlightTransparent: {
+      light: '#ec599000',
+      medium: '#ec5990c9',
+      main: '#ec599087',
+      dark: '#053B61',
+      darkest: '#010F18',
+    },
+    primaryTransparent: {
+      light: '#0e101c4a',
+      medium: '#0e101ccc',
+      main: '#0e101c9e',
+      dark: '#010308',
+      darkest: '#0f1617',
     },
   },
 });
@@ -156,7 +127,7 @@ const themeBreakpoints = createTheme({
       xs: 320,
       sm: 500,
       md: 768,
-      lg: 1040,
+      lg: 1024,
       xl: 1280,
     },
   },
@@ -236,6 +207,35 @@ const themeShadows = createTheme({
   ],
 });
 
+const themeComponents = createTheme({
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: themeParam => ({
+        body: {
+          '& ::selection': {
+            background: themeColors.palette.highlight.main,
+            color: themeColors.palette.neutral.main,
+          },
+          '&::-webkit-scrollbar': {
+            width: '5px',
+          },
+          '&::-webkit-scrollbar-track': {
+            background: 'transparent',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            background: themeColors.palette.primary.main,
+            borderRadius: '15px',
+            width: '5px',
+            '&:hover': {
+              background: themeColors.palette.highlight.main,
+            },
+          },
+        },
+      }),
+    },
+  },
+});
+
 export const theme = createTheme({
   palette: {
     ...themeColors.palette,
@@ -248,5 +248,8 @@ export const theme = createTheme({
   },
   shadows: {
     ...themeShadows.shadows,
+  },
+  components: {
+    ...themeComponents.components,
   },
 });

@@ -1,0 +1,151 @@
+{
+  "clothes": [
+    {
+      "indice": "1",
+      "name": "Chomba",
+      "description": "Talle Xl, 100% algodón, entrega inmédiata",
+      "image": "https://i.pinimg.com/564x/cc/10/5f/cc105f9492e7222218706c227d3ee96c.jpg",
+      "price": 123
+    },
+    {
+      "indice": "2",
+      "name": "Pantalon",
+      "description": "Talle 42, gabardina, entrega en 24hs.",
+      "image": "https://i.pinimg.com/564x/c6/23/09/c6230912bb92db6fbe49f46a4fc00fa2.jpg",
+      "price": 777
+    },
+    {
+      "indice": "3",
+      "name": "Campera",
+      "description": "Talle M, cuerina vegetal, no disponible para entrega inmediata ",
+      "image": "https://i.pinimg.com/564x/19/bd/36/19bd369f088ba69c0a97672c39e9a7cd.jpg",
+      "price": 777
+    },
+    {
+      "indice": "4",
+      "name": "Chomba",
+      "description": "Talle Xl, 100% algodón, entrega inmédiata",
+      "image": "https://i.pinimg.com/564x/cc/10/5f/cc105f9492e7222218706c227d3ee96c.jpg",
+      "price": 123
+    },
+    {
+      "indice": "5",
+      "name": "Pantalon",
+      "description": "Talle 42, gabardina, entrega en 24hs.",
+      "image": "https://i.pinimg.com/564x/c6/23/09/c6230912bb92db6fbe49f46a4fc00fa2.jpg",
+      "price": 777
+    },
+    {
+      "indice": "6",
+      "name": "Campera",
+      "description": "Talle M, cuerina vegetal, no disponible para entrega inmediata ",
+      "image": "https://i.pinimg.com/564x/19/bd/36/19bd369f088ba69c0a97672c39e9a7cd.jpg",
+      "price": 777
+    },
+    {
+      "indice": "7",
+      "name": "Chomba",
+      "description": "Talle Xl, 100% algodón, entrega inmédiata",
+      "image": "https://i.pinimg.com/564x/cc/10/5f/cc105f9492e7222218706c227d3ee96c.jpg",
+      "price": 123
+    },
+    {
+      "indice": "8",
+      "name": "Pantalon",
+      "description": "Talle 42, gabardina, entrega en 24hs.",
+      "image": "https://i.pinimg.com/564x/c6/23/09/c6230912bb92db6fbe49f46a4fc00fa2.jpg",
+      "price": 777
+    },
+    {
+      "indice": "9",
+      "name": "Campera",
+      "description": "Talle M, cuerina vegetal, no disponible para entrega inmediata ",
+      "image": "https://i.pinimg.com/564x/19/bd/36/19bd369f088ba69c0a97672c39e9a7cd.jpg",
+      "price": 777
+    },
+    {
+      "indice": "10",
+      "name": "Chomba",
+      "description": "Talle Xl, 100% algodón, entrega inmédiata",
+      "image": "https://i.pinimg.com/564x/cc/10/5f/cc105f9492e7222218706c227d3ee96c.jpg",
+      "price": 123
+    },
+    {
+      "indice": "11",
+      "name": "Pantalon",
+      "description": "Talle 42, gabardina, entrega en 24hs.",
+      "image": "https://i.pinimg.com/564x/c6/23/09/c6230912bb92db6fbe49f46a4fc00fa2.jpg",
+      "price": 777
+    },
+    {
+      "indice": "12",
+      "name": "Campera",
+      "description": "Talle M, cuerina vegetal, no disponible para entrega inmediata ",
+      "image": "https://i.pinimg.com/564x/19/bd/36/19bd369f088ba69c0a97672c39e9a7cd.jpg",
+      "price": 777
+    },
+    {
+      "indice": "13",
+      "name": "Chomba",
+      "description": "Talle Xl, 100% algodón, entrega inmédiata",
+      "image": "https://i.pinimg.com/564x/cc/10/5f/cc105f9492e7222218706c227d3ee96c.jpg",
+      "price": 123
+    },
+    {
+      "indice": "14",
+      "name": "Pantalon",
+      "description": "Talle 42, gabardina, entrega en 24hs.",
+      "image": "https://i.pinimg.com/564x/c6/23/09/c6230912bb92db6fbe49f46a4fc00fa2.jpg",
+      "price": 777
+    },
+    {
+      "indice": "15",
+      "name": "Campera",
+      "description": "Talle M, cuerina vegetal, no disponible para entrega inmediata ",
+      "image": "https://i.pinimg.com/564x/19/bd/36/19bd369f088ba69c0a97672c39e9a7cd.jpg",
+      "price": 777
+    },
+    {
+      "indice": "16",
+      "name": "Chomba",
+      "description": "Talle Xl, 100% algodón, entrega inmédiata",
+      "image": "https://i.pinimg.com/564x/cc/10/5f/cc105f9492e7222218706c227d3ee96c.jpg",
+      "price": 123
+    },
+    {
+      "indice": "17",
+      "name": "Pantalon",
+      "description": "Talle 42, gabardina, entrega en 24hs.",
+      "image": "https://i.pinimg.com/564x/c6/23/09/c6230912bb92db6fbe49f46a4fc00fa2.jpg",
+      "price": 777
+    },
+    {
+      "indice": "18",
+      "name": "Campera",
+      "description": "Talle M, cuerina vegetal, no disponible para entrega inmediata ",
+      "image": "https://i.pinimg.com/564x/19/bd/36/19bd369f088ba69c0a97672c39e9a7cd.jpg",
+      "price": 777
+    },
+    {
+      "indice": "19",
+      "name": "Chomba",
+      "description": "Talle Xl, 100% algodón, entrega inmédiata",
+      "image": "https://i.pinimg.com/564x/cc/10/5f/cc105f9492e7222218706c227d3ee96c.jpg",
+      "price": 123
+    },
+    {
+      "indice": "20",
+      "name": "Pantalon",
+      "description": "Talle 42, gabardina, entrega en 24hs.",
+      "image": "https://i.pinimg.com/564x/c6/23/09/c6230912bb92db6fbe49f46a4fc00fa2.jpg",
+      "price": 777
+    },
+    {
+      "indice": "21",
+      "name": "Campera",
+      "description": "Talle M, cuerina vegetal, no disponible para entrega inmediata ",
+      "image": "https://i.pinimg.com/564x/19/bd/36/19bd369f088ba69c0a97672c39e9a7cd.jpg",
+      "price": 777
+    }
+  ]
+}

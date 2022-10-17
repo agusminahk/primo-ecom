@@ -28,6 +28,7 @@ const FrontDoor = () => {
       userSelect: 'none',
       fontSize: { xl: '7vw', lg: '10vw', md: '12vw', xs: '19vw' },
       margin: '0rem',
+      cursor: 'pointer',
       color: gif.isActive ? gif.color || '' : 'black',
       '&:hover': gif.isActive
         ? { color: 'white' }
