@@ -68,11 +68,6 @@ class Review {
   this.isAvailable = this.quantity > 0;
   next();
 })
-@pre<Product>('validate', async function (next) {
-  console.log('NEW PRODUCT VALIDATED');
-  this.isAvailable = this.quantity > 0;
-  next();
-})
 @modelOptions({ schemaOptions: { collection: 'product', timestamps: true } })
 export class Product {
   @prop({ type: () => Boolean })
