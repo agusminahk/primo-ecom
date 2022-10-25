@@ -73,27 +73,6 @@ class Review {
   this.isAvailable = this.quantity > 0;
   next();
 })
-// @pre<Product>('findOneAndUpdate', async function (next) {
-//   console.log('PRODUCT UPDATED');
-//     //@ts-ignore
-//   const docFindUpdated = await this.model.findOne(this.getQuery());
-//   console.log('Found it');
-//   // this.isAvailable = docFindUpdated.quantity > 0
-//   if (docFindUpdated.quantity > 0) {
-//     //@ts-ignore
-//     // this.model.updateOne(this.getQuery(), { isAvailable: false });
-//     console.log('false');
-//   } else {
-//     //@ts-ignore
-//     // this.model.updateOne(this.getQuery(), { isAvailable: true });
-//     console.log('true');
-//   }
-// })
-
-// @pre<Product>(['updateOne', 'findOneAndUpdate'], async function (next) {
-//   console.log(this);
-// })
-
 @modelOptions({ schemaOptions: { collection: 'product', timestamps: true } })
 export class Product {
   @prop({ type: () => Boolean })
