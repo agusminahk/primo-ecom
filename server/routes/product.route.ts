@@ -7,8 +7,6 @@ export const register = (app: Express) => {
 
   app.get('/product/', <ExpressMiddleware>productController.getAll);
 
-  app.get('/product/category/:id', <ExpressMiddleware>productController.getFilter);
-
   app.get('/product/:id', <ExpressMiddleware>productController.getOne);
 
   app.post('/product/', <ExpressMiddleware>productController.createOne);

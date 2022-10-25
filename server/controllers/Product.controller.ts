@@ -5,12 +5,7 @@ export class ProductController {
   private productService = new ProductService();
 
   getAll: ExpressMiddleware = async (req, res) => {
-    const { data, error, status } = await this.productService.getAll();
-    return error ? res.status(status).json({ data, error }) : res.status(status).json({ data });
-  };
-
-  getFilter: ExpressMiddleware = async (req, res) => {
-    const { data, error, status } = await this.productService.getFilter(req.params.id, req.query);
+    const { data, error, status } = await this.productService.getAll(req.query);
     return error ? res.status(status).json({ data, error }) : res.status(status).json({ data });
   };
 
