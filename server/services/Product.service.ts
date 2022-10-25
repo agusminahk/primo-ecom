@@ -63,7 +63,7 @@ export class ProductService {
       //Filter by Sizes
       else if (Object.keys(query).includes('isSizes')) {
         //@ts-ignore
-        let sizes: string[] = query['isSizes']?.split(' ');
+        const sizes: string[] = query['isSizes']?.split(' ');
 
         const AllSize = await ProductEntity.find(
           { sizes: { $in: sizes }, isAvailable: true },
@@ -84,7 +84,7 @@ export class ProductService {
       //Filter by Colors
       else if (Object.keys(query).includes('isColor')) {
         //@ts-ignore
-        let colors: string[] = query['isColors']?.split(' ');
+        const colors: string[] = query['isColors']?.split(' ');
 
         const AllColor = await ProductEntity.find(
           { colors: { $in: colors }, isAvailable: true },
