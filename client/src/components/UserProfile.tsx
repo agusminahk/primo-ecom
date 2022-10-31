@@ -6,7 +6,9 @@ import {
   Drawer,
   FilledInput,
   FormControl,
+  FormHelperText,
   IconButton,
+  Input,
   InputAdornment,
   InputLabel,
   Typography,
@@ -19,6 +21,8 @@ import falseRequest from '../static/falseRequest.json';
 import { Avatar } from '@mui/material';
 import FavsCards from '../common/FavsCards';
 import { Email, PasswordOutlined, Visibility, VisibilityOff } from '@mui/icons-material';
+import axios from 'axios';
+import { useForm, useFormContext } from 'react-hook-form';
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -34,8 +38,29 @@ const UserProfile = () => {
   const [data, setData] = React.useState(false);
   const [carrito, setCarrito] = React.useState(false);
   const [edit, setEdit] = React.useState(false);
-
+  const [user, setUser] = React.useState({});
   const [eye, setEye] = React.useState(false);
+  const values = ['firstName', 'lastName', 'email'];
+  const {
+    register,
+    getValues,
+    formState: { errors, isValid },
+    setError,
+  } = useForm();
+
+  // console.log(user.firstName);
+  React.useEffect(() => {
+    axios
+      .get(`${process.env.NEXT_PUBLIC_BASE_URL}/user/6332e7220e6c29e65e615a3e`)
+      .then(({ data }) => setUser(data.data));
+  }, []);
+
+  //handleEdit no UseEffect
+  React.useEffect(() => {
+    axios
+      .put(`${process.env.NEXT_PUBLIC_BASE_URL}/user/6332e7220e6c29e65e615a3e`)
+      .then(({ data }) => console.log(data.data));
+  }, []);
 
   return (
     <>
@@ -51,12 +76,8 @@ const UserProfile = () => {
             width: '100%',
             height: '30%',
             display: 'flex',
-            justifyContent: 'center',
             alignItems: 'columm',
             bgcolor: '#FFD6EC',
-            // backgroundSize: 'cover',
-            // backgroundPosition: 'center',
-            // backgroundImage: `url(${'https://i.pinimg.com/564x/13/65/70/136570269471254ab366a94f075b1818.jpg'}) `,
           }}>
           <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
             <Typography variant="h2" fontFamily={'Poppins,sans-serif'} marginTop={'10px'}>
@@ -65,7 +86,7 @@ const UserProfile = () => {
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Typography fontFamily={'Poppins,sans-serif'} variant="h2">
-              Débora
+              {user.firstName}
             </Typography>
             <Avatar
               sx={{ display: 'flex', alignContent: 'center' }}
@@ -75,7 +96,6 @@ const UserProfile = () => {
           </Box>
         </Box>
         <Divider color="pink" />
-
         <Box
           sx={{
             display: 'flex',
@@ -93,8 +113,6 @@ const UserProfile = () => {
               width: '30%',
               borderRadius: '16px',
               boxShadow: '10px 10px 5px 0px rgba(240,184,230,0.75) ',
-              // border: '1px dashed ',
-              // borderColor: 'highlightTransparent.medium',
             }}>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignContent: 'center', flexWrap: 'wrap' }}>
               <Box sx={{ display: 'flex', alignItems: 'center', m: '15px' }}>
@@ -108,13 +126,13 @@ const UserProfile = () => {
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
                 <Typography fontFamily={'Poppins,sans-serif'} variant="h6">
-                  Name: Nicolas
+                  {user.firstName} {user.lastName}
                 </Typography>{' '}
                 <Typography fontFamily={'Poppins,sans-serif'} variant="h6">
-                  Phone : 99999
+                  {user.phone}
                 </Typography>{' '}
                 <Typography fontFamily={'Poppins,sans-serif'} variant="h6">
-                  City : Montevideo
+                  {user.country}
                 </Typography>{' '}
               </Box>
               <Box sx={{ display: 'flex', flexDirection: 'cneter', justifyContent: 'flex-end', m: '15px' }}>
@@ -137,8 +155,6 @@ const UserProfile = () => {
               width: '30%',
               borderRadius: '16px',
               boxShadow: '10px 10px 5px 0px rgba(240,184,230,0.75) ',
-              // border: '1px dashed ',
-              // borderColor: 'highlightTransparent.medium',
             }}>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignContent: 'center', flexWrap: 'wrap' }}>
               <Box sx={{ display: 'flex', alignItems: 'center', m: '15px' }}>
@@ -152,7 +168,7 @@ const UserProfile = () => {
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
                 <Typography fontFamily={'Poppins,sans-serif'} variant="h6">
-                  Email: Nicolas@tuvieja.com
+                  Email: {user.email}
                 </Typography>{' '}
                 <Typography fontFamily={'Poppins,sans-serif'} variant="h6">
                   Password: <PasswordOutlined sx={{ fontVariant: 'full-width' }}> contraseña</PasswordOutlined>
@@ -187,13 +203,25 @@ const UserProfile = () => {
               <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
                 <Typography fontFamily={'Poppins,sans-serif'} variant="h6">
                   {' '}
-                  actual name: "Nicolas"
+                  actual name: {user.firstName}
                 </Typography>
               </Box>
-              <InputLabel sx={{ m: '2vh' }} color="warning" variant="standard" defaultValue={'nico@mail.com'}>
+              {/* <InputLabel sx={{ m: '2vh' }} color="warning" variant="standard" defaultValue={'nico@mail.com'}>
                 New Name
-              </InputLabel>
-              <FilledInput sx={{ m: '2vh' }} color="warning" type="email" />
+              </InputLabel> */}
+              <Input
+                inputProps={{ sx: { color: 'white' } }}
+                id="firstName"
+                {...register('firstName', {
+                  required: 'Complete the field',
+                  minLength: {
+                    value: 3,
+                    message: 'Minimun length is 3',
+                  },
+                })}
+              />
+              {errors.firstName && <FormHelperText>{errors?.firstName?.message as string}</FormHelperText>}
+              {/* <FilledInput sx={{ m: '2vh' }} color="warning" type="email" /> */}
             </FormControl>
             <Divider />
             <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
@@ -212,7 +240,7 @@ const UserProfile = () => {
             <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
               <Typography fontFamily={'Poppins,sans-serif'} variant="h6">
                 {' '}
-                actual City: Montevideo
+                actual Country: {user.country}
               </Typography>
             </Box>
             <Divider />
@@ -261,12 +289,25 @@ const UserProfile = () => {
             <FormControl sx={{ m: 1, width: '47ch' }}>
               <Typography fontFamily={'Poppins,sans-serif'} variant="h6">
                 {' '}
-                actual Email: nico@mail.com
+                actual Email: {user.email}
               </Typography>
               <InputLabel sx={{ m: '2vh' }} color="warning">
                 New Email
               </InputLabel>
-              <FilledInput sx={{ m: '2vh' }} color="warning" type="email" />
+              <Input
+                inputProps={{ sx: { color: 'white' } }}
+                type="email"
+                id="email"
+                {...register('email', {
+                  required: 'Complete the field',
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: 'invalid email address',
+                  },
+                })}
+              />
+              {errors.email && <FormHelperText> {errors?.email?.message as string}</FormHelperText>}
+              {/* <FilledInput sx={{ m: '2vh' }} color="warning" type="email" /> */}
             </FormControl>
             <Divider />
             <FormControl sx={{ m: 1, width: '47ch' }}>
