@@ -29,6 +29,8 @@ declare module '@mui/material/styles' {
     warning?: PaletteOptions['primary'];
     success?: PaletteOptions['primary'];
     highlight?: PaletteOptions['primary'];
+    highlightTransparent?: PaletteOptions['primary'];
+    primaryTransparent?: PaletteOptions['primary'];
   }
 
   interface PaletteColorOptions {
@@ -49,28 +51,28 @@ const themeColors = createTheme({
     primary: {
       light: '#525969',
       medium: '#AD33FF',
-      main: '#081229',
+      main: '#0e101c',
       dark: '#010308',
       darkest: '#0f1617',
     },
     secondary: {
       light: '#E5E5FF',
       medium: '#0000B3',
-      main: '#000066',
+      main: '#474747',
       dark: '#000041',
       darkest: '#000013',
     },
     neutral: {
       light: '#CFD9EF',
       medium: '#5E7AB0',
-      main: '#3E598E',
+      main: '#FFF',
       dark: '#1F2C47',
       darkest: '#0E1420',
     },
     dark: {
       light: '#EDEDED',
       medium: '#5B5B5B',
-      main: '#474747',
+      main: '#19181a',
       dark: '#1D1E20',
       darkest: '#101112',
     },
@@ -96,11 +98,25 @@ const themeColors = createTheme({
       darkest: '#054F31',
     },
     highlight: {
-      light: '#CEE9FD',
+      light: '#ef7aa6',
       medium: '#0B93F4',
       main: '#ec5990',
       dark: '#053B61',
       darkest: '#010F18',
+    },
+    highlightTransparent: {
+      light: '#ec599000',
+      medium: '#ec5990c9',
+      main: '#ec599087',
+      dark: '#053B61',
+      darkest: '#010F18',
+    },
+    primaryTransparent: {
+      light: '#0e101c4a',
+      medium: '#0e101ccc',
+      main: '#0e101c9e',
+      dark: '#010308',
+      darkest: '#0f1617',
     },
   },
 });
@@ -111,7 +127,7 @@ const themeBreakpoints = createTheme({
       xs: 320,
       sm: 500,
       md: 768,
-      lg: 1040,
+      lg: 1024,
       xl: 1280,
     },
   },
@@ -193,45 +209,29 @@ const themeShadows = createTheme({
 
 const themeComponents = createTheme({
   components: {
-    MuiStepIcon: {
-      styleOverrides: {
-        root: {
-          '&.completed': {
-            color: themeColors.palette.highlight.main,
+    MuiCssBaseline: {
+      styleOverrides: themeParam => ({
+        body: {
+          '& ::selection': {
+            background: themeColors.palette.highlight.main,
+            color: themeColors.palette.neutral.main,
           },
-          '&.active': {
-            color: themeColors.palette.highlight.main,
+          '&::-webkit-scrollbar': {
+            width: '5px',
           },
-        },
-        active: {
-          color: themeColors.palette.highlight.main,
-        },
-        completed: {
-          color: themeColors.palette.highlight.main,
-        },
-      },
-    },
-    MuiStepLabel: {
-      styleOverrides: {
-        label: {
-          color: 'white',
-        },
-        active: {
-          color: themeColors.palette.highlight.main,
-        },
-      },
-    },
-    MuiStepper: {
-      styleOverrides: {
-        root: {
-          '&$completed': {
-            color: themeColors.palette.highlight.main,
+          '&::-webkit-scrollbar-track': {
+            background: 'transparent',
           },
-          '&$active': {
-            color: themeColors.palette.highlight.main,
+          '&::-webkit-scrollbar-thumb': {
+            background: themeColors.palette.primary.main,
+            borderRadius: '15px',
+            width: '5px',
+            '&:hover': {
+              background: themeColors.palette.highlight.main,
+            },
           },
         },
-      },
+      }),
     },
   },
 });

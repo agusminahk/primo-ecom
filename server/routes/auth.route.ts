@@ -1,6 +1,10 @@
 import { Express } from 'express';
-import passport, { AuthenticateOptions } from 'passport';
+// @ts-ignore
+import { AuthenticateOptions } from 'passport';
+import passport from '../security/passportLocal';
 import { AuthController } from '../controllers/Auth.controller';
+import { checkAuth } from '../middlewares';
+import { ExpressMiddleware } from '../shared/types/ExpressMiddleware';
 
 export const register = (app: Express) => {
   const redirects = {
@@ -8,13 +12,20 @@ export const register = (app: Express) => {
     failureRedirect: '/login/failed',
   };
 
-  app.get('/auth/google/success', AuthController.success);
+  app.get('/auth/local/me', <ExpressMiddleware>checkAuth);
 
-  app.get('/auth/google/failed', AuthController.failed);
+  app.post('/auth/local', <ExpressMiddleware>AuthController.localSignIn);
 
-  app.get('/auth/google', passport.authenticate('google', ['profile', 'email'] as AuthenticateOptions));
+  app.get('/auth/google/success', <ExpressMiddleware>AuthController.successGoogle);
+
+  app.get('/auth/google/failed', <ExpressMiddleware>AuthController.failed);
+
+  app.get(
+    '/auth/google',
+    passport.authenticate('google', ['profile', 'email'] as AuthenticateOptions),
+  );
 
   app.get('/auth/google/callback', passport.authenticate('google', redirects));
 
-  app.get('/auth/logout', AuthController.logout);
+  app.get('/auth/local/logout', <ExpressMiddleware>AuthController.logout);
 };

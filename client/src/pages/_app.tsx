@@ -1,12 +1,14 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import React from 'react';
+import React, { FC } from 'react';
 import { Provider } from 'react-redux';
 import { store } from '../state/store';
 import { theme } from '../theme';
+import 'react-multi-carousel/lib/styles.css';
+import '../styles/cardAsDots.css';
 
-export default function App({ Component, pageProps }: AppProps) {
+const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
@@ -21,4 +23,6 @@ export default function App({ Component, pageProps }: AppProps) {
       </Provider>
     </>
   );
-}
+};
+
+export default App;

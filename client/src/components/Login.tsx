@@ -1,12 +1,22 @@
+import {
+  Button,
+  FormControl,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  Typography,
+  Input,
+  Divider,
+  Box,
+} from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { Button, FilledInput, FormControl, IconButton, InputAdornment, InputLabel, Typography } from '@mui/material';
+import GoogleButton from 'react-google-button';
+import Link from 'next/link';
+import React, { FC, useState } from 'react';
 
-import { Box } from '@mui/system';
-import { useState } from 'react';
-
-const Login = () => {
-  const [eye, setEye] = useState(false);
+const Login: FC = () => {
+  const [eye, setEye] = useState(true);
 
   const style = {
     firstBox: {
@@ -14,60 +24,151 @@ const Login = () => {
       justifyContent: 'center',
       alignItems: 'center',
       height: '100vh',
-      // background: 'linear-gradient(90deg, rgba(184,216,190,1) 0%, rgba(232,244,234,1) 100%)',
-      backgroundImage:
-        'url(https://bafybeifzfde6j4if4c7unk5n46cp5g2obawcsquwkuf6ii5k5rzxlvurwu.ipfs.nftstorage.link//)',
-      backgroundPosition: 'center',
-      backgroundSize: 'cover',
-      borderColor: 'white',
+      backgroundColor: 'primary.main',
+      backgroundPosition: 'cover',
+      flexDirection: 'column',
+    },
+    secondBox: {
+      width: { xl: '50%', lg: '50%', md: '70%', sm: '90%', xs: '90%' },
+      display: 'flex',
+      flexDirection: { xl: 'row', lg: 'row', md: 'column', xs: 'column' },
+      justifyContent: 'space-evenly',
+      alignItems: 'center',
+      mb: '5%',
     },
     formBox: {
       display: 'flex',
+      alignItems: 'center',
+      flexDirection: 'column',
+      width: { xl: '40%', lg: '40%', md: '55%', sm: '60%', xs: '90%' },
+    },
+    titleBox: {
+      display: 'flex',
+      alignItems: 'center',
+      flexWrap: 'wrap',
+      flexDirection: 'column',
+      color: 'neutral.main',
+      width: '100%',
+      mb: '1.5vh',
+    },
+    eachForm: {
+      my: '3vh',
+      width: '100%',
+    },
+    inputLabel: {
+      color: 'highlight.main',
+    },
+    input: {
+      color: 'white',
+      '&multilineColor': { color: 'white' },
+    },
+    divider: {
+      width: '0.1rem',
+      color: 'white',
+      '& .MuiDivider-wrapper': {
+        alignSelf: 'center',
+      },
+      '&::before, &::after': { border: '0.5px solid', borderRadius: '20px', height: '8vh' },
+    },
+    boxDivider: {
       justifyContent: 'center',
       alignItems: 'center',
-      alignContent: 'space-around',
-      flexDirection: 'column',
-      background: 'linear-gradient(-90deg, rgba(184,216,190,1) 0%, rgba(232,244,234,1) 100%)',
-      width: { xs: '90%', md: '40vw', lg: '30vw', xl: '35vw' }, //Responsive
-      borderRadius: '12px',
-      height: 'fit-content',
-      borderColor: 'divider',
-      padding: 2,
+      display: { xs: 'none', lg: 'flex' },
+    },
+    divider1: {
+      color: 'white',
+      alignItems: 'center',
+      height: '3px',
+      mx: '100%',
+      '&::before, &::after': {
+        border: '0.5px solid',
+        borderRadius: '20px',
+        mx: 1,
+        borderRigthWidth: '5rem',
+        borderLeftWidth: '5rem',
+      },
+      '& .MuiDivider-wrapper': {
+        mt: '4px',
+      },
+    },
+    boxDivider1: { justifyContent: 'center', alignItems: 'center', display: { xs: 'flex', lg: 'none' }, my: 5 },
+    SignInBtn: {
+      color: 'dark.main',
+      backgroundColor: 'neutral.main',
+      width: '90%',
+      borderRadius: '7rem',
+      '&:hover': { color: 'dark.main', backgroundColor: 'warning.main' },
+    },
+    googleBtn: {
+      color: 'dark.main',
+      width: '100%',
+      height: '100%',
+      borderRadius: 0,
+      boxShadow: '0 0 0 0 ',
     },
   };
 
   return (
     <Box className="first Box" sx={style.firstBox}>
-      <Box className="fromBox" sx={style.formBox}>
-        <Typography variant="h2" color="#ff4d00">
-          Login
+      <Box sx={style.titleBox}>
+        <Typography variant="h1" fontSize="4rem" m="1vh">
+          LOGIN
         </Typography>
-        <FormControl sx={{ m: 1, width: '25ch' }}>
-          <InputLabel sx={{ m: '2vh' }} color="warning">
-            Email
-          </InputLabel>
-          <FilledInput sx={{ m: '2vh' }} color="warning" type="email" />
-        </FormControl>
-        <FormControl sx={{ m: 1, width: '25ch' }}>
-          <InputLabel sx={{ m: '2vh' }} color="warning">
-            Password
-          </InputLabel>
-          <FilledInput
-            sx={{ m: '2vh' }}
-            color="warning"
-            type={eye ? 'password' : 'text'}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton onClick={() => setEye(!eye)} edge="end">
-                  {eye ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-        </FormControl>
-        <Button variant="contained" color="warning" sx={{ color: 'white', backgroundColor: '#4c9054' }}>
-          Sing in
-        </Button>
+        <Box display="flex">
+          <Typography variant="h6" fontSize="0.8rem" mr="0.3rem">
+            Don't have an account yet?
+          </Typography>
+          <Link href="/signup">
+            <Typography variant="h6" sx={{ color: 'highlight.main', cursor: 'pointer' }}>
+              Sign up then...
+            </Typography>
+          </Link>
+        </Box>
+      </Box>
+      <Box className="fromBox" sx={style.secondBox}>
+        <Box sx={style.formBox}>
+          <FormControl size="medium" color="warning" variant="standard" sx={style.eachForm}>
+            <InputLabel sx={style.inputLabel}>Email</InputLabel>
+            <Input sx={style.input} color="warning" type="email" />
+          </FormControl>
+          <FormControl size="medium" color="warning" variant="standard" sx={style.eachForm}>
+            <InputLabel sx={style.inputLabel}>Password</InputLabel>
+            <Input
+              sx={style.input}
+              color="warning"
+              type={eye ? 'password' : 'text'}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton onClick={() => setEye(!eye)} edge="end">
+                    {eye ? (
+                      <VisibilityOff fontSize="small" sx={{ color: 'neutral.main' }} />
+                    ) : (
+                      <Visibility fontSize="small" sx={{ color: 'warning.main' }} />
+                    )}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          </FormControl>
+          <Button variant="contained" sx={style.SignInBtn}>
+            Sign in
+          </Button>
+        </Box>
+        <Box sx={style.boxDivider}>
+          <Divider sx={style.divider} orientation="vertical" flexItem>
+            or
+          </Divider>
+        </Box>
+        <Box sx={style.boxDivider1}>
+          <Divider sx={style.divider1} component="li">
+            or
+          </Divider>
+        </Box>
+        <Box sx={style.formBox}>
+          <GoogleButton type="dark" style={style.googleBtn}>
+            SIGN IN WITH GOOGLE
+          </GoogleButton>
+        </Box>
       </Box>
     </Box>
   );
