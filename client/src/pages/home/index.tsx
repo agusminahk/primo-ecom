@@ -4,6 +4,7 @@ import PromoCarousel from '../../components/PromoCarousel';
 
 import Layout from '../../common/Layout';
 import React from 'react';
+import { authGuard } from '../../core/hooks/authGuard/authGuard';
 
 const Home: NextPage = () => {
   return (
@@ -13,4 +14,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default authGuard()(Home);

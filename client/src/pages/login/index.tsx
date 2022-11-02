@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react';
-import { NextPage } from 'next';
+import { GetStaticPropsResult, NextPage } from 'next';
 import Login from '../../components/Login';
 import { useRouter } from 'next/router';
 import { useAppSelector } from '../../core/hooks/redux/useRedux';
@@ -11,3 +11,4 @@ const LoginPage = () => {
 };
 
 export default authGuard()(LoginPage);
+// export default LoginPage;

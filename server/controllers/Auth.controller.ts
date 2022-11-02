@@ -11,7 +11,10 @@ export class AuthController {
 
       req.logIn(user, err => {
         if (err) throw new Error(err);
-        res.status(200).json({ user });
+        const {
+          _doc: { password, __v, ...restUser },
+        } = user;
+        res.status(200).json({ user: restUser });
       });
     })(req, res, next);
   };

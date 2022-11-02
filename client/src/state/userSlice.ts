@@ -1,4 +1,4 @@
-import { createReducer, createAsyncThunk, PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { createReducer, createAsyncThunk, PayloadAction, createSlice, AnyAction } from '@reduxjs/toolkit';
 import { axiosInstance } from '../core/clients/axios';
 import { BaseInitialState } from './baseInitialState';
 import { HYDRATE } from 'next-redux-wrapper';
@@ -46,6 +46,12 @@ const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
+    builder.addCase(HYDRATE, (state: UserState, action: AnyAction) => {
+      return {
+        ...state,
+        ...action.payload.user,
+      };
+    });
     builder.addCase(loginRequest.fulfilled, (state, action: PayloadAction<User>) => {
       state.userInfo = action.payload;
       state.isLoading = false;

@@ -30,12 +30,9 @@ export const useLogin = () => {
     },
   });
 
-  const handleLogin: SubmitHandler<LoginFields> = async (data, e) => {
-    e?.preventDefault();
-    if (isValid) await dispatch(loginRequest(data));
-  };
+  const handleLogin = (data: LoginFields) => dispatch(loginRequest(data));
 
-  return { handleLogin: handleSubmit(handleLogin), emailRegister, passwRegister, errors };
+  return { handleSubmit, handleLogin, emailRegister, passwRegister, errors };
 };
 
 export default useLogin;

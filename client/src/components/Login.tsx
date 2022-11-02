@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState } from 'react';
 import {
   Button,
   FormControl,
@@ -19,7 +19,6 @@ import Link from 'next/link';
 
 import useLogin from '../hooks/useLogin';
 import { useAppSelector } from '../core/hooks/redux/useRedux';
-import { useRouter } from 'next/router';
 
 const style = {
   firstBox: {
@@ -119,7 +118,7 @@ const style = {
 
 const Login: FC = () => {
   const userState = useAppSelector(state => state.user);
-  const { handleLogin, emailRegister, passwRegister, errors } = useLogin();
+  const { handleSubmit, handleLogin, emailRegister, passwRegister, errors } = useLogin();
   const [eye, setEye] = useState(true);
 
   return (
@@ -140,7 +139,7 @@ const Login: FC = () => {
         </Box>
       </Box>
       <Box className="fromBox" sx={style.secondBox}>
-        <Box component="form" sx={style.formBox} onSubmit={handleLogin}>
+        <Box component="form" sx={style.formBox} onSubmit={handleSubmit(handleLogin)}>
           <FormControl
             size="medium"
             color="warning"
