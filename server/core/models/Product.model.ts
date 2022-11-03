@@ -74,7 +74,7 @@ class Review {
 
 @pre<Product>('save', async function (next) {
   this.isAvailable = this.quantity > 0;
-  next();
+  return next();
 })
 @modelOptions({ schemaOptions: { collection: 'product', timestamps: true } })
 export class Product {

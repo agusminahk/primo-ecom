@@ -80,16 +80,21 @@ export class ProductService {
 
   async updateOne(id: string, product_update: Partial<Product>): Promise<Service> {
     try {
+      const full = product_update?.reviews?.reduce(
+        (acc, { ranking }, i, p) => acc + ranking / p.length,
+        0,
+      );
+
       if (!product_update?.quantity || product_update?.quantity < 0) {
         const updatedProduct = await ProductEntity.updatePopulate(id, {
-          $set: { isAvailable: false, ...product_update },
+          $set: { isAvailable: false, ranking: full, ...product_update },
         });
 
         return { status: 200, data: updatedProduct, error: false };
       }
 
       const updatedProduct = await ProductEntity.updatePopulate(id, {
-        $set: { isAvailable: true, ...product_update },
+        $set: { isAvailable: true, ranking: full, ...product_update },
       });
 
       return { status: 200, data: updatedProduct, error: false };
@@ -100,12 +105,6 @@ export class ProductService {
   async removeOne(id: string): Promise<Service> {
     try {
       const deletedProduct = await ProductEntity.findByIdAndRemove(id, { new: true });
-      if (deletedProduct === null)
-        return {
-          status: 410,
-          data: { message: 'The requested resource is no longer available at the server.' },
-          error: true,
-        };
       return { status: 200, data: { message: 'Object ' + id + ' deleted' }, error: false };
     } catch (error) {
       return { status: 500, data: error, error: true };
