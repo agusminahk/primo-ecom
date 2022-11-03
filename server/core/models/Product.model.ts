@@ -1,9 +1,18 @@
-import { prop, pre, getModelForClass, modelOptions, Ref } from '@typegoose/typegoose';
+import {
+  prop,
+  pre,
+  getModelForClass,
+  modelOptions,
+  Ref,
+  ReturnModelType,
+} from '@typegoose/typegoose';
+
+import { FilterQuery, UpdateQuery } from 'mongoose';
 import { Category } from './Category.model';
 import { SubCategory } from './SubCategory.model';
 import { User } from './User.model';
 
-type Sizes = 'XL' | 'L' | 'M' | 'S' | 'XS' | number;
+type Sizes = 'XL' | 'L' | 'M' | 'S' | 'XS';
 
 class Care {
   @prop({ type: () => String })
@@ -16,10 +25,10 @@ class Care {
   iron?: string;
 }
 class Material {
-  @prop({ type: () => [String] })
+  @prop({ type: () => Array })
   exterior: string[];
 
-  @prop({ type: () => [String] })
+  @prop({ type: () => Array })
   sole: string[];
 }
 class Characteristic {
@@ -31,16 +40,16 @@ class Characteristic {
 }
 
 class Details {
-  @prop({ type: () => [Material], default: undefined })
+  @prop({ type: () => Array })
   material!: Material[];
 
-  @prop({ type: () => [Characteristic], default: undefined })
+  @prop({ type: () => Array })
   characteristic!: Characteristic[];
 
-  @prop({ type: () => [String], default: undefined })
+  @prop({ type: () => Array })
   composition!: string[];
 
-  @prop({ type: () => Care, default: undefined })
+  @prop({ type: () => Care })
   care!: Care;
 }
 
@@ -64,12 +73,42 @@ class Review {
 }
 
 @pre<Product>('save', async function (next) {
-  console.log('NEW PRODUCT SAVED');
   this.isAvailable = this.quantity > 0;
   next();
 })
 @modelOptions({ schemaOptions: { collection: 'product', timestamps: true } })
 export class Product {
+  static async queryFilter(
+    this: ReturnModelType<typeof Product>,
+    options: FilterQuery<typeof Product>,
+  ) {
+    return this.find({ ...options, isAvailable: true }, { __v: 0 })
+      .populate({
+        path: 'category',
+        select: ' -__v -subCategories',
+      })
+      .populate({
+        path: 'subCategory',
+        select: '_id subCategoryName',
+      });
+  }
+
+  static async updatePopulate(
+    this: ReturnModelType<typeof Product>,
+    id: string,
+    options: UpdateQuery<Partial<Product>>,
+  ) {
+    return this.findOneAndUpdate({ _id: id }, [options], { new: true })
+      .populate({
+        path: 'category',
+        select: ' -__v -subCategories',
+      })
+      .populate({
+        path: 'subCategory',
+        select: '_id subCategoryName',
+      });
+  }
+
   @prop({ type: () => Boolean })
   public isAvailable!: boolean;
 
@@ -85,7 +124,7 @@ export class Product {
   @prop({ type: () => String, default: null })
   public description?: string;
 
-  @prop({ type: () => Array, required: true })
+  @prop({ type: () => Array<Sizes>, required: true })
   public sizes!: Sizes[];
 
   @prop({ type: () => Number, default: 0 })
