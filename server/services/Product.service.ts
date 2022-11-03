@@ -98,20 +98,16 @@ export class ProductService {
   async updateOne(id: string, product_update: Partial<Product>): Promise<Service> {
     try {
       if (!product_update?.quantity || product_update?.quantity < 0) {
-        const updatedProduct = await ProductEntity.updatePopulate(
-          id,
-
-          { $set: { isAvailable: false, ...product_update } },
-        );
+        const updatedProduct = await ProductEntity.updatePopulate(id, {
+          $set: { isAvailable: false, ...product_update },
+        });
 
         return { status: 200, data: updatedProduct, error: false };
       }
 
-      const updatedProduct = await ProductEntity.updatePopulate(
-        id,
-
-        { $set: { isAvailable: true, ...product_update } },
-      );
+      const updatedProduct = await ProductEntity.updatePopulate(id, {
+        $set: { isAvailable: true, ...product_update },
+      });
 
       return { status: 200, data: updatedProduct, error: false };
     } catch (error) {
