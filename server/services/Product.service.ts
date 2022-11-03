@@ -99,8 +99,14 @@ export class ProductService {
   }
   async removeOne(id: string): Promise<Service> {
     try {
-      await ProductEntity.findByIdAndRemove({ _id: id }, { new: true });
-      return { status: 200, data: 'Object ' + id + ' deleted', error: false };
+      const deletedProduct = await ProductEntity.findByIdAndRemove(id, { new: true });
+      if (deletedProduct === null)
+        return {
+          status: 410,
+          data: { message: 'The requested resource is no longer available at the server.' },
+          error: true,
+        };
+      return { status: 200, data: { message: 'Object ' + id + ' deleted' }, error: false };
     } catch (error) {
       return { status: 500, data: error, error: true };
     }
