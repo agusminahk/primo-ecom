@@ -12,7 +12,7 @@ import { Category } from './Category.model';
 import { SubCategory } from './SubCategory.model';
 import { User } from './User.model';
 
-type Sizes = 'XL' | 'L' | 'M' | 'S' | 'XS';
+type Sizes = 'XL' | 'L' | 'M' | 'S' | 'XS' | number;
 
 class Care {
   @prop({ type: () => String })
