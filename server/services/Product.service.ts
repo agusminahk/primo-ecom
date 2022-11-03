@@ -7,99 +7,46 @@ export class ProductService {
   async getAll(query: ParsedQs): Promise<Service> {
     try {
       //Filter by Subcategory
-      if (Object.keys(query).includes('isSub')) {
-        const AllSubCategory = await ProductEntity.find(
-          { subCategory: { _id: query['isSub'] }, isAvailable: true },
-          { __v: 0 },
-        )
-          .populate({
-            path: 'category',
-            select: '-__v -subCategories',
-          })
-          .populate({
-            path: 'subCategory',
-            select: '_id subCategoryName',
-          })
-          .lean();
-        return { status: 200, data: AllSubCategory, error: false };
+      if (Object.keys(query).includes('subcategory')) {
+        const allSubCategory = await ProductEntity.queryFilter({
+          subCategory: { _id: query['subcategory'] },
+        });
+
+        return { status: 200, data: allSubCategory, error: false };
       }
 
       //Filter by Category
-      else if (Object.keys(query).includes('isCateg')) {
-        const AllCategory = await ProductEntity.find(
-          { category: query['isCateg'], isAvailable: true },
-          { __v: 0 },
-        )
-          .populate({
-            path: 'category',
-            select: ' -__v -subCategories',
-          })
-          .populate({
-            path: 'subCategory',
-            select: '_id subCategoryName',
-          })
-          .lean();
-        return { status: 201, data: AllCategory, error: false };
+      else if (Object.keys(query).includes('category')) {
+        const allCategory = await ProductEntity.queryFilter({ category: query['category'] });
+
+        return { status: 201, data: allCategory, error: false };
       }
 
       //Filter by Name
-      else if (Object.keys(query).includes('isName')) {
-        const AllName = await ProductEntity.find(
-          { name: { $regex: query['isName'] }, isAvailable: true },
-          { __v: 0 },
-        )
-          .populate({
-            path: 'category',
-            select: ' -__v -subCategories',
-          })
-          .populate({
-            path: 'subCategory',
-            select: '_id subCategoryName',
-          })
-          .lean();
-        return { status: 200, data: AllName, error: false };
+      else if (Object.keys(query).includes('name')) {
+        const allName = await ProductEntity.queryFilter({ name: { $regex: query['name'] } });
+
+        return { status: 200, data: allName, error: false };
       }
 
       //Filter by Sizes
-      else if (Object.keys(query).includes('isSizes')) {
+      else if (Object.keys(query).includes('sizes')) {
         //@ts-ignore
-        const sizes: string[] = query['isSizes']?.split(' ');
+        const sizes: string[] = query['sizes']?.split(' ');
 
-        const AllSize = await ProductEntity.find(
-          { sizes: { $in: sizes }, isAvailable: true },
-          { __v: 0 },
-        )
-          .populate({
-            path: 'category',
-            select: ' -__v -subCategories',
-          })
-          .populate({
-            path: 'subCategory',
-            select: '_id subCategoryName',
-          })
-          .lean();
-        return { status: 200, data: AllSize, error: false };
+        const allSize = await ProductEntity.queryFilter({ sizes: { $in: sizes } });
+
+        return { status: 200, data: allSize, error: false };
       }
 
       //Filter by Colors
-      else if (Object.keys(query).includes('isColor')) {
+      else if (Object.keys(query).includes('colors')) {
         //@ts-ignore
-        const colors: string[] = query['isColors']?.split(' ');
+        const colors: string[] = query['colors']?.split(' ');
 
-        const AllColor = await ProductEntity.find(
-          { colors: { $in: colors }, isAvailable: true },
-          { __v: 0 },
-        )
-          .populate({
-            path: 'category',
-            select: ' -__v -subCategories',
-          })
-          .populate({
-            path: 'subCategory',
-            select: '_id subCategoryName',
-          })
-          .lean();
-        return { status: 200, data: AllColor, error: false };
+        const allColor = await ProductEntity.queryFilter({ colors: { $in: colors } });
+
+        return { status: 200, data: allColor, error: false };
       }
 
       //Don't Filter, All Products
@@ -150,17 +97,21 @@ export class ProductService {
 
   async updateOne(id: string, product_update: Partial<Product>): Promise<Service> {
     try {
-      const updatedProduct = await ProductEntity.findByIdAndUpdate({ _id: id }, product_update, {
-        new: true,
-      })
-        .populate({
-          path: 'category',
-          select: ' -__v -subCategories',
-        })
-        .populate({
-          path: 'subCategory',
-          select: '_id subCategoryName',
-        });
+      if (!product_update?.quantity || product_update?.quantity < 0) {
+        const updatedProduct = await ProductEntity.updatePopulate(
+          id,
+
+          { $set: { isAvailable: false, ...product_update } },
+        );
+
+        return { status: 200, data: updatedProduct, error: false };
+      }
+
+      const updatedProduct = await ProductEntity.updatePopulate(
+        id,
+
+        { $set: { isAvailable: true, ...product_update } },
+      );
 
       return { status: 200, data: updatedProduct, error: false };
     } catch (error) {

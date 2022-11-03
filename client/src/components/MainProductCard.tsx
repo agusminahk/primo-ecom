@@ -28,6 +28,7 @@ const MainProductCard: FC<ComponentProps> = ({ productId }) => {
 
   const style = {
     firstBoxStyle: {
+      transition: `all 0.2s ease-in-out`,
       display: 'flex',
       justifyContent: 'center',
       flexDirection: { xl: 'row', lg: 'row', md: 'column', sm: 'column', xs: 'column' },
@@ -35,12 +36,12 @@ const MainProductCard: FC<ComponentProps> = ({ productId }) => {
     rightBoxStyle: {
       width: { xl: '25%', lg: '30%', md: '90%', sm: '90%', xs: '90%' },
       height: 'auto',
-      bgcolor: 'neutral.main',
+      bgcolor: 'transparent',
       display: 'flex',
       flexDirection: 'column',
       ml: { xl: '7%', lg: '7%', md: '3%', sm: '3%', xs: '3%' },
     },
-    titleStyle: { my: '2%' },
+    titleStyle: { mt: '2%' },
     ratingStyle: {
       mb: '2%',
       '& .MuiRating-iconFilled': {
@@ -61,16 +62,23 @@ const MainProductCard: FC<ComponentProps> = ({ productId }) => {
     },
     colorImagesStyle: {
       mx: '2%',
+      my: '2%',
+      transition: `all 0.2s ease-in-out`,
+      userSelect: 'none',
+      cursor: 'pointer',
+      userDrag: 'none',
       '&.MuiPaper-root': {
+        userSelect: 'none',
+        userDrag: 'none',
         boxShadow: '0px 0px 0px 0px',
-        borderRadius: '0 0 0 0',
+        borderRadius: '50px',
         height: '4rem',
         width: '4rem',
       },
     },
     boxColorImages: { display: 'flex', width: 'auto' },
-    cardMediaStyle: { transform: 'scale(0.9)', cursor: 'pointer' },
-    firstBoxSizes: { display: 'flex', justifyContent: 'center', mb: '2%', mx: '3%' },
+    cardMediaStyle: { height: '100%', pointerEvents: 'none', userSelect: 'none', userDrag: 'none' },
+    firstBoxSizes: { display: 'flex', justifyContent: 'center', my: '2%', mx: '3%' },
     secondBoxSizes: {
       display: 'flex',
       alignItems: 'center',
@@ -147,11 +155,19 @@ const MainProductCard: FC<ComponentProps> = ({ productId }) => {
         <Box mb="2%">
           <Typography variant="subtitle2">Chosen color: {colorSelected}</Typography>
           <Box sx={style.boxColorImages}>
-            {singleProduct.image.map((colorImage: ProductImage, i: number) => (
-              <Card key={i} onClick={() => setImageClicked(colorImage)} sx={style.colorImagesStyle}>
-                <CardMedia component="img" image={`${colorImage.url}`} sx={style.cardMediaStyle} />
-              </Card>
-            ))}
+            {singleProduct.image.map((colorImage: ProductImage, i: number) => {
+              return (
+                <Card
+                  key={i}
+                  onClick={() => setImageClicked(colorImage)}
+                  sx={{
+                    opacity: colorSelected.toLowerCase() == colorImage.color ? '100%' : '60%',
+                    ...style.colorImagesStyle,
+                  }}>
+                  <CardMedia component="img" image={`${colorImage.url}`} sx={style.cardMediaStyle} />
+                </Card>
+              );
+            })}
           </Box>
         </Box>
 

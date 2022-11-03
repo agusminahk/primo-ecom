@@ -229,9 +229,9 @@
       ],
       "promotion": 0,
       "details": {
-        "material": "TO DO | undefined",
-        "charasteristic": "TO DO | undefined",
-        "composition": [{ "cotton": "100%" }],
+        "material": [{ "exterior": ["90% leather", "10% polyester"] }, { "sole": ["100% rubber"] }],
+        "charasteristic": [{ "typeOf": "low" }, { "heelHeight": "3cm" }],
+        "composition": ["100% cotton"],
         "care": [{ "wash": "Maximum 30º wash" }, { "bleach": "Do not use bleach" }, { "iron": "Do not iron" }]
       },
       "ranking": 0,

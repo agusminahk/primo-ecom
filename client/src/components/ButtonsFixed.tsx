@@ -15,12 +15,12 @@ const ButtonsFixed: FC<FabProps> = ({ inView }) => {
   const styles = {
     firstBoxStyle: {
       position: 'fixed',
-      left: { xl: '95%', lg: '95%', md: '90%', xs: '83%' },
-      top: { xl: '86%', lg: '86%', md: '86%', xs: '78%' },
+      right: '2%',
+      bottom: '3%',
       display: 'flex',
       alignContent: 'center',
       flexDirection: 'column',
-      zIndex: 99999,
+      zIndex: 1100,
     },
     cartFabStyle: {
       backgroundColor: 'highlight.main',
