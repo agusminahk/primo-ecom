@@ -80,7 +80,7 @@ class Review {
 export class Product {
   static async queryFilter(
     this: ReturnModelType<typeof Product>,
-    options: FilterQuery<typeof Product>,
+    options?: FilterQuery<typeof Product>,
   ) {
     return this.find({ ...options, isAvailable: true }, { __v: 0 })
       .populate({

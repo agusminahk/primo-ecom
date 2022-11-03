@@ -50,16 +50,7 @@ export class ProductService {
       }
 
       //Don't Filter, All Products
-      const allProducts = await ProductEntity.find({ isAvailable: true }, { __v: 0 })
-        .populate({
-          path: 'category',
-          select: '-__v -subCategories',
-        })
-        .populate({
-          path: 'subCategory',
-          select: '_id subCategoryName',
-        })
-        .lean();
+      const allProducts = await ProductEntity.queryFilter();
 
       return { status: 200, data: allProducts, error: false };
     } catch (error) {
@@ -69,16 +60,8 @@ export class ProductService {
 
   async getOne(id: string): Promise<Service> {
     try {
-      const product = await ProductEntity.find({ _id: id }, { __v: 0 })
-        .populate({
-          path: 'category',
-          select: '-__v -subCategories',
-        })
-        .populate({
-          path: 'subCategory',
-          select: '_id subCategoryName',
-        })
-        .lean();
+      const product = await ProductEntity.queryFilter({ _id: id });
+
       return { status: 200, data: product, error: false };
     } catch (error) {
       return { status: 500, data: error, error: true };
