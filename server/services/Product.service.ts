@@ -8,7 +8,7 @@ export class ProductService {
     try {
       //Filter by Subcategory
       if (Object.keys(query).includes('subcategory')) {
-        const allSubCategory = await ProductEntity.queryFilter({
+        const allSubCategory = await ProductEntity.findPopulate({
           subCategory: { _id: query['subcategory'] },
         });
 
@@ -17,14 +17,14 @@ export class ProductService {
 
       //Filter by Category
       else if (Object.keys(query).includes('category')) {
-        const allCategory = await ProductEntity.queryFilter({ category: query['category'] });
+        const allCategory = await ProductEntity.findPopulate({ category: query['category'] });
 
         return { status: 201, data: allCategory, error: false };
       }
 
       //Filter by Name
       else if (Object.keys(query).includes('name')) {
-        const allName = await ProductEntity.queryFilter({ name: { $regex: query['name'] } });
+        const allName = await ProductEntity.findPopulate({ name: { $regex: query['name'] } });
 
         return { status: 200, data: allName, error: false };
       }
@@ -34,7 +34,7 @@ export class ProductService {
         //@ts-ignore
         const sizes: string[] = query['sizes']?.split(' ');
 
-        const allSize = await ProductEntity.queryFilter({ sizes: { $in: sizes } });
+        const allSize = await ProductEntity.findPopulate({ sizes: { $in: sizes } });
 
         return { status: 200, data: allSize, error: false };
       }
@@ -44,13 +44,13 @@ export class ProductService {
         //@ts-ignore
         const colors: string[] = query['colors']?.split(' ');
 
-        const allColor = await ProductEntity.queryFilter({ colors: { $in: colors } });
+        const allColor = await ProductEntity.findPopulate({ colors: { $in: colors } });
 
         return { status: 200, data: allColor, error: false };
       }
 
       //Don't Filter, All Products
-      const allProducts = await ProductEntity.queryFilter();
+      const allProducts = await ProductEntity.findPopulate();
 
       return { status: 200, data: allProducts, error: false };
     } catch (error) {
@@ -60,7 +60,7 @@ export class ProductService {
 
   async getOne(id: string): Promise<Service> {
     try {
-      const product = await ProductEntity.queryFilter({ _id: id });
+      const product = await ProductEntity.findPopulate({ _id: id });
 
       return { status: 200, data: product, error: false };
     } catch (error) {

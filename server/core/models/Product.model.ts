@@ -78,7 +78,7 @@ class Review {
 })
 @modelOptions({ schemaOptions: { collection: 'product', timestamps: true } })
 export class Product {
-  static async queryFilter(
+  static async findPopulate(
     this: ReturnModelType<typeof Product>,
     options?: FilterQuery<typeof Product>,
   ) {
