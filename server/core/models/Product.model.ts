@@ -74,13 +74,13 @@ class Review {
 
 @pre<Product>('save', async function (next) {
   this.isAvailable = this.quantity > 0;
-  next();
+  return next();
 })
 @modelOptions({ schemaOptions: { collection: 'product', timestamps: true } })
 export class Product {
-  static async queryFilter(
+  static async findPopulate(
     this: ReturnModelType<typeof Product>,
-    options: FilterQuery<typeof Product>,
+    options?: FilterQuery<typeof Product>,
   ) {
     return this.find({ ...options, isAvailable: true }, { __v: 0 })
       .populate({
