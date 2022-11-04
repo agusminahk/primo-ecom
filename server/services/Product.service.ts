@@ -81,7 +81,7 @@ export class ProductService {
   async updateOne(id: string, product_update: Partial<Product>): Promise<Service> {
     try {
       const totalRanking =
-        product_update?.reviews?.reduce((acc, { ranking }, i, p) => acc + ranking / p.length, 0) ??
+        product_update?.reviews?.reduce((acc, { ranking }, _, p) => acc + ranking / p.length, 0) ??
         0;
 
       if (!product_update?.quantity || product_update?.quantity < 0) {
