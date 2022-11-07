@@ -55,21 +55,21 @@ class Details {
 
 class Image {
   @prop({ type: () => String, required: true })
-  public url: string;
+  url!: string;
 
   @prop({ type: () => String, required: true })
-  public color: string;
+  color!: string;
 }
 
 class Review {
   @prop({ ref: () => User, required: true })
-  public user!: Ref<User>;
+  user!: Ref<User>;
 
   @prop({ type: () => String })
-  public content!: string;
+  content!: string;
 
   @prop({ type: () => Number, required: true })
-  public ranking!: number;
+  ranking!: number;
 }
 
 @pre<Product>('save', async function (next) {
