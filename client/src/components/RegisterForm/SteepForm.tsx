@@ -47,11 +47,13 @@ const StepForm = () => {
             {labels.map(label => (
               <Step
                 key={label}
-                sx={
-                  {
-                    // '& .MuiStepLabel-label': { color: '#fff' },
-                  }
-                }>
+                sx={{
+                  '& $active': { color: 'red' },
+                  // '& .MuiStepLabel-label': { color: 'neutral.main' },
+                  // '& .Mui-active': { color: 'highlight.main', zIndex: 10 },
+                  // '& .Mui-completed': { color: 'primary.light' },
+                  // '& .Mui-disabled .MuiStepIcon-root': { color: 'primary.dark' },
+                }}>
                 <StepLabel>{label}</StepLabel>
               </Step>
             ))}

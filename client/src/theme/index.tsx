@@ -233,6 +233,25 @@ const themeComponents = createTheme({
         },
       }),
     },
+    MuiStep: {
+      styleOverrides: {
+        //   root: {
+        //     '& .Mui-active': { color: 'highlight.main', zIndex: 10 },
+        //     color: 'primary.dark',
+        //   },
+        //   completed: {
+        //     color: 'primary.light',
+        //   },
+        //   alternativeLabel: {
+        //     color: 'neutral.main',
+        //   },
+        // },
+        // defaultProps: {
+        //   active: {
+        //     color: 'highlight.main',
+        //   },
+      },
+    },
   },
 });
 
