@@ -20,7 +20,12 @@ export class ProductController {
   };
 
   updateOne: ExpressMiddleware = async (req, res) => {
-    const { data, error, status } = await this.productService.updateOne(req.params.id, req.body);
+    console.log(req.files);
+    const { data, error, status } = await this.productService.updateOne(
+      req.params.id,
+      req.body,
+      req.files,
+    );
     return error ? res.status(status).json({ data, error }) : res.status(status).json({ data });
   };
 

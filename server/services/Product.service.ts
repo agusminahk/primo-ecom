@@ -3,6 +3,8 @@ import { ParsedQs } from 'qs';
 import { Service } from '../shared/interfaces';
 import { ProductEntity } from '../core/models';
 
+import { Multer } from 'multer';
+
 export class ProductService {
   async getAll(query: ParsedQs): Promise<Service> {
     try {
@@ -78,7 +80,15 @@ export class ProductService {
     }
   }
 
-  async updateOne(id: string, product_update: Partial<Product>): Promise<Service> {
+  async updateOne(
+    id: string,
+    product_update: Partial<Product>,
+    files?:
+      | Express.Multer.File[]
+      | {
+          [fieldname: string]: Express.Multer.File[];
+        },
+  ): Promise<Service> {
     try {
       const totalRanking =
         product_update?.reviews?.reduce((acc, { ranking }, _, p) => acc + ranking / p.length, 0) ??
