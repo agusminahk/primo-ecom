@@ -4,17 +4,21 @@ import type { RequestHandler } from 'express';
 
 export const uploadImages: RequestHandler = async (req, res, next) => {
   const upload = multer().array('images', 5);
-  //   console.log(req.files);
 
-  //   upload(req, res, async err => {
-  //     const img = async () => req.file?.filename!;
-  //     console.log(img);
-  //     // const finalImg = {
-  //     //   contentType: req.file?.mimetype,
-  //     //   image: Buffer.from(encode_image, 'base64'),
-  //     // };
-  //     // console.log(finalImg);
-  //   });
+  upload(req, res, async err => {
+    const arrayImages = req.files as Express.Multer.File[];
+
+    const result = arrayImages?.map(file => {
+      return {
+        originalname: file.originalname,
+        mimetype: file.mimetype,
+        size: file.size,
+        base64: file.buffer.toString('base64'),
+      };
+    });
+
+    return result;
+  });
 
   return next();
 };

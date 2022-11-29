@@ -16,13 +16,7 @@ export const register = (app: Express) => {
 
   app.post('/product/', <ExpressMiddleware>productController.createOne);
 
-  app.put(
-    '/product/:id',
-    // uploadImage.array('images', 5),
-    // uploadImage
-    uploadImages,
-    <ExpressMiddleware>productController.updateOne,
-  );
+  app.put('/product/:id', uploadImages, <ExpressMiddleware>productController.updateOne);
 
   app.delete('/product/:id', <ExpressMiddleware>productController.removeOne);
 };
