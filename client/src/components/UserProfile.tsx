@@ -78,6 +78,7 @@ const UserProfile = () => {
             display: 'flex',
             alignItems: 'columm',
             bgcolor: '#FFD6EC',
+            justifyContent: 'center',
           }}>
           <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
             <Typography variant="h2" fontFamily={'Poppins,sans-serif'} marginTop={'10px'}>
@@ -209,8 +210,10 @@ const UserProfile = () => {
               {/* <InputLabel sx={{ m: '2vh' }} color="warning" variant="standard" defaultValue={'nico@mail.com'}>
                 New Name
               </InputLabel> */}
-              <Input
-                inputProps={{ sx: { color: 'white' } }}
+              <FilledInput
+                type="firstName"
+                inputProps={{ sx: { color: 'black' } }}
+                color="warning"
                 id="firstName"
                 {...register('firstName', {
                   required: 'Complete the field',
@@ -294,7 +297,7 @@ const UserProfile = () => {
               <InputLabel sx={{ m: '2vh' }} color="warning">
                 New Email
               </InputLabel>
-              <Input
+              <FilledInput
                 inputProps={{ sx: { color: 'white' } }}
                 type="email"
                 id="email"
